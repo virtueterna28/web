@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="id"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260828-05-5fe3063","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YAHO2-t-jNE,0","Arial":"YAGyDvJ_4Ts,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Canva Sans":"YAFLd8sKbwc,2","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAHO2VMiyZo,0","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAEul-FRQw4,0","Georgia":"YAGzXkO0pEM,0","Helvetica Neue":"YAFcf6CtJfI,0","Impact":"YAFcfnjI7Vk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YAHO2a5g66Q,0","JetBrains Mono":"YAFdJksXcAk,0","Libre Baskerville":"YACgEUFdPdA,0","Manrope":"YAHO2b2feC4,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YADLjI9qxTA,0","Nunito":"YACgEX8C5Gg,0","Oleo Script":"YACgEQQ14jI,0","Phantom Sans":"YAHO2E8Pb88,0","Playfair Display":"YACgEYmuCJE,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YADWjpfPmdk,0","Raleway":"YACgEVg3xZg,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Spectral":"YAHO2rVUHIM,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Ubuntu":"YACgERDU--Q,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YADlN8CFZ8Q,0","ui-sans-serif":"YACkoN-xg4g,0"}}');</script><script src="/_sdk/50d846425a1e5082.telemetry_sdk.js" integrity="sha512-Otbex+ztlVbcEGql0rXGd/3E3ee/hqAntg6DeuUEMG6pIPbXGOSvZbFZVzknAXi1tH/itQ+ijEhOTr2aWj6CXg=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtu Eterna — Angkatan XXVIII</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root { --blue:#233686; --navy:#101b50; --gold:#d9ad46; --mist:#eef3ff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:"DM Sans",sans-serif; color:#18234d; }
+    .serif { font-family:"Playfair Display",serif; }
+    .page { display:none; animation:fade .45s ease both; }
+    .page.active { display:block; }
+    @keyframes fade { from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)} }
+    .site-header { background:rgba(16,27,80,.94); backdrop-filter:blur(12px); }
+    .hero { min-height:calc(80 * min(var(--vh, 1vh), 1vh)); }
+    .hero-slide { opacity:0; transition:opacity 700ms ease; }
+    .hero-slide.active { opacity:1; }
+    .hero-overlay { background:linear-gradient(90deg,rgba(8,17,59,.91),rgba(16,27,80,.62),rgba(16,27,80,.2)); }
+    .eyebrow { letter-spacing:.18em; text-transform:uppercase; font-size:.72rem; font-weight:700; color:var(--gold); }
+    .section-title { font-family:"Playfair Display",serif; color:var(--navy); font-size:clamp(2rem,4vw,3.4rem); line-height:1.1; }
+    .blue-rule { width:52px;height:4px;background:var(--gold);margin-top:1rem; }
+    .photo-card { overflow:hidden; border-radius:1.25rem; background:#dfe7ff; box-shadow:0 12px 30px rgba(18,36,104,.12); }
+    .outfit-class-card { overflow:hidden; border-radius:1.5rem; border:1px solid #dbe5ff; background:#fff; box-shadow:0 12px 30px rgba(18,36,104,.08); }
+    .outfit-class-card img { aspect-ratio:3 / 4; width:100%; object-fit:contain; border-radius:1rem; background:#f5f7ff; }
+    @media (max-width:767px){ .outfit-class-card { grid-template-columns:1fr!important; } .outfit-class-card .outfit-copy { order:-1; } }
+    .photo-card img { width:100%;height:100%;object-fit:cover; transition:transform .5s ease; }
+    .photo-card:hover img { transform:scale(1.05); }
+    .quote-card { border-left:4px solid var(--gold); }
+    .gallery-grid { columns:2; column-gap:1rem; }
+    .gallery-item { break-inside:avoid; margin-bottom:1rem; display:block; cursor:pointer; }
+    .gallery-item:nth-child(3n) { height:300px; }
+    .gallery-item:nth-child(3n+1) { height:210px; }
+    .gallery-item:nth-child(3n+2) { height:260px; }
+    .gallery-item img { height:100%; }
+    .timeline::before { content:""; position:absolute; top:0; bottom:0; left:50%; width:2px; background:#c6d2ff; }
+    .timeline-dot { box-shadow:0 0 0 7px #eef3ff; }
+    .member-card { transition:transform .25s ease, box-shadow .25s ease; }
+    .member-card:hover { transform:translateY(-5px); box-shadow:0 18px 34px rgba(18,36,104,.14); }
+    .hidden-card { display:none !important; }
+    .modal { opacity:0;pointer-events:none;transition:.25s; }
+    .modal.open { opacity:1;pointer-events:auto; }
+    @media (min-width:768px){ .gallery-grid{columns:4} }
+    @media (max-width:767px){
+      .timeline::before{left:18px}
+      .timeline-item{padding-left:3rem!important}
+      .timeline-item .timeline-dot{left:10px!important}
+      .timeline-item .timeline-content{grid-column:auto!important}
+    }
+  </style>
+  <script src="/_sdk/b3bf9e8ac58e6ad6.data_sdk.js" type="text/javascript" integrity="sha512-otc1u9NYq9Ms5Jt//7vmhrrqR5CLPr8Jdgs6741gqniClfLMcfmC+jK/cKuQdhLv6G0esJ/FzaMS9tv0T/vj/Q=="></script>
+  <script src="/_sdk/a6de989e8af05ea5.resizing_sdk.js" type="text/javascript" integrity="sha512-cceAQMIleYr/3eg7o5WzN46w0HpgI1sxi+5kDUb7CmTjHEpgBtINDxtOpnNeUtujjui8NG0OSDgUMl0/E2lT2A=="></script>
+ </head>
+ <body data-template-id="__page-root" class="w-full" style="background: rgb(255, 255, 255);">
+  <header class="site-header sticky top-0 z-50 w-full shadow-lg">
+   <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8" aria-label="Navigasi utama"><button type="button" class="flex items-center gap-3 text-left" data-nav="home" aria-label="Kembali ke beranda"> <img data-template-id="brand-logo" loading="lazy" class="canva-image h-11 w-11 rounded-full object-contain bg-white p-1" src="canva://MAHTu198oTQ/1" alt="logo-removebg-preview (1).png"> <span data-template-id="brand-name" class="canva-text font-semibold tracking-wide text-white" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">VIRTU ETERNA</span> </button>
+    <div class="hidden items-center gap-6 md:flex"><button data-template-id="nav-home" class="canva-button text-sm font-semibold text-white/90 hover:text-white" type="button" data-nav="home" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Beranda</button> <button data-template-id="nav-gallery" class="canva-button text-sm font-semibold text-white/90 hover:text-white" type="button" data-nav="gallery" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Galeri</button> <button data-template-id="nav-outfit" class="canva-button text-sm font-semibold text-white/90 hover:text-white" type="button" data-nav="outfit" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Outfit</button> <button data-template-id="nav-story" class="canva-button text-sm font-semibold text-white/90 hover:text-white" type="button" data-nav="story" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Storyboard</button> <button data-template-id="nav-members" class="canva-button text-sm font-semibold text-white/90 hover:text-white" type="button" data-nav="members" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Members</button>
+    </div><button id="menu-toggle" type="button" class="rounded-lg p-2 text-white md:hidden" aria-label="Buka menu" aria-expanded="false"><i data-lucide="menu"></i></button>
+   </nav>
+   <div id="mobile-menu" class="hidden border-t border-white/15 px-5 py-4 md:hidden">
+    <div class="grid gap-3"><button data-template-id="mobile-home" class="canva-button text-left font-semibold text-white" type="button" data-nav="home" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Beranda</button> <button data-template-id="mobile-gallery" class="canva-button text-left font-semibold text-white" type="button" data-nav="gallery" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Galeri</button> <button data-template-id="mobile-outfit" class="canva-button text-left font-semibold text-white" type="button" data-nav="outfit" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Outfit</button> <button data-template-id="mobile-story" class="canva-button text-left font-semibold text-white" type="button" data-nav="story" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Storyboard</button> <button data-template-id="mobile-members" class="canva-button text-left font-semibold text-white" type="button" data-nav="members" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Members</button>
+    </div>
+   </div>
+  </header>
+  <main>
+   <section id="home" class="page active">
+    <section class="hero relative overflow-hidden">
+     <div class="hero-slide active absolute inset-0">
+      <img data-template-id="hero-slide-1" loading="lazy" class="canva-image h-full w-full object-cover" src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Foto kebersamaan angkatan Virtu Eterna">
+     </div>
+     <div class="hero-slide absolute inset-0">
+      <img data-template-id="hero-slide-2" loading="lazy" class="canva-image h-full w-full object-cover" src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Kader Virtu Eterna di lingkungan sekolah">
+     </div>
+     <div class="hero-slide absolute inset-0">
+      <img data-template-id="hero-slide-3" loading="lazy" class="canva-image h-full w-full object-cover" src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Momen angkatan Virtu Eterna">
+     </div>
+     <div class="hero-overlay absolute inset-0"></div>
+     <div class="relative mx-auto flex min-h-[calc(80*min(var(--vh,1vh),1vh))] max-w-7xl items-center px-6 py-20 lg:px-8">
+      <div class="max-w-3xl">
+       <p data-template-id="hero-basmalah" class="canva-text mb-5 text-lg text-amber-200" style="color: rgb(253, 233, 174); font-weight: 400; font-style: normal; font-size: 20px;">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
+       <p data-template-id="hero-kicker" class="canva-text eyebrow" style="color: rgb(217, 173, 70); font-weight: 700; font-style: normal; font-size: 16px;">Angkatan XXVIII · 2024 — 2027</p>
+       <h1 data-template-id="hero-title" class="canva-text serif mt-4 text-5xl font-bold leading-tight text-white md:text-7xl" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Welcome to Virtu Eterna</h1>
+       <p data-template-id="hero-description" class="canva-text mt-5 max-w-2xl text-lg leading-relaxed text-blue-50" style="color: rgb(234, 240, 255); font-weight: 400; font-style: normal; font-size: 18px;">Kebajikan yang abadi. Satu langkah, satu ikatan, satu perjalanan menuju masa depan.</p>
+       <div class="mt-9 flex flex-wrap gap-4"><button data-template-id="hero-explore" class="canva-button rounded-full px-6 py-3 font-bold shadow-lg transition hover:-translate-y-1" type="button" data-nav="profile" style="background: rgb(217, 173, 70); color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 16px;">Jelajahi Veterna</button> <a data-template-id="hero-contact" class="canva-link rounded-full border border-white/60 px-6 py-3 font-bold text-white transition hover:bg-white/10" href="https://www.instagram.com/veterna28/" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Hubungi Kami</a>
+       </div>
+      </div>
+     </div>
+     <div class="absolute bottom-7 right-6 flex gap-2"><button id="slide-prev" class="rounded-full bg-white/15 p-3 text-white hover:bg-white/30" type="button" aria-label="Foto sebelumnya"><i data-lucide="chevron-left"></i></button> <button id="slide-next" class="rounded-full bg-white/15 p-3 text-white hover:bg-white/30" type="button" aria-label="Foto berikutnya"><i data-lucide="chevron-right"></i></button>
+     </div>
+    </section>
+    <section id="profile" class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+     <div class="grid items-center gap-10 md:grid-cols-2">
+      <div>
+       <p data-template-id="profile-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Beranda · Profil</p>
+       <h2 data-template-id="profile-title" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Profil Veterna</h2>
+       <div class="blue-rule"></div>
+       <p data-template-id="profile-text" class="canva-text mt-6 leading-8 text-slate-600" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 17px;">Virtu Eterna (Veterna) adalah nama angkatan di SMA Ar-Rohmah Putra yang memiliki ikatan solidaritas tinggi, disiplin, dan tujuan yang abadi. Kami tumbuh dalam proses yang sama, saling menguatkan, serta berkomitmen membawa nama baik almamater.</p>
+      </div>
+      <figure class="photo-card aspect-video"><img data-template-id="profile-image" loading="lazy" class="canva-image" src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Seluruh kader Veterna">
+       <figcaption data-template-id="profile-caption" class="canva-text bg-white px-5 py-3 text-center text-sm font-semibold text-slate-600" style="color: rgb(71, 85, 105); font-weight: 600; font-style: normal; font-size: 16px;">Seluruh kader Veterna</figcaption>
+      </figure>
+     </div>
+    </section>
+    <section class="bg-[#eef3ff] py-20">
+     <div class="mx-auto max-w-7xl space-y-20 px-6 lg:px-8">
+      <div class="grid items-center gap-10 md:grid-cols-2">
+       <div>
+        <p data-template-id="logo-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Identitas Angkatan</p>
+        <h2 data-template-id="logo-title" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Logo Veterna</h2>
+        <div class="blue-rule"></div>
+        <p data-template-id="logo-text" class="canva-text mt-6 leading-8 text-slate-600" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 17px;">Logo Veterna mengambil referensi dari makna Virtu Eterna: kebajikan yang abadi. Bintang keemasan di dalam lingkaran biru menjadi simbol angkatan yang solid, kokoh, dan berani menghadapi setiap proses.</p>
+       </div>
+       <figure class="photo-card aspect-video">
+        <img data-template-id="logo-image" loading="lazy" class="canva-image" src="https://i.ibb.co.com/pvHkzHkH/wdwd.png" alt="Lambang bintang biru Veterna">
+        <figcaption data-template-id="logo-caption" class="canva-text bg-white px-5 py-3 text-center text-sm font-semibold text-slate-600" style="color: rgb(71, 85, 105); font-weight: 600; font-style: normal; font-size: 16px;">Bintang biru</figcaption>
+       </figure>
+      </div>
+      <div class="grid items-center gap-10 md:grid-cols-2">
+       <figure class="photo-card aspect-video">
+        <img data-template-id="mascot-image" loading="lazy" class="canva-image" src="https://i.ibb.co.com/qYLDsMps/XXVIII.png" alt="Maskot burung hantu putih Veterna">
+        <figcaption data-template-id="mascot-caption" class="canva-text bg-white px-5 py-3 text-center text-sm font-semibold text-slate-600" style="color: rgb(71, 85, 105); font-weight: 600; font-style: normal; font-size: 16px;">Burung hantu putih</figcaption>
+       </figure>
+       <div>
+        <p data-template-id="mascot-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Semangat Veterna</p>
+        <h2 data-template-id="mascot-title" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Maskot Veterna</h2>
+        <div class="blue-rule"></div>
+        <p data-template-id="mascot-text" class="canva-text mt-6 leading-8 text-slate-600" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 17px;">Burung hantu putih menjadi gambaran ketajaman berpikir, ketenangan, serta kesetiaan dalam menjaga arah perjuangan. Maskot ini mengingatkan Veterna untuk terus bijak, kompak, dan pantang menyerah.</p>
+       </div>
+      </div>
+     </div>
+    </section>
+    <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+     <div class="grid gap-12 lg:grid-cols-[.72fr_1.28fr]">
+      <figure class="photo-card self-start">
+       <img data-template-id="chairman-image" loading="lazy" class="canva-image aspect-square" src="https://i.ibb.co.com/3mxKpf4b/wdwdwdwd.png" alt="Muhammad Dzaky Ammar ketua angkatan Veterna">
+       <figcaption data-template-id="chairman-caption" class="canva-text bg-white px-5 py-3 text-center font-semibold text-slate-700" style="color: rgb(51, 65, 85); font-weight: 700; font-style: normal; font-size: 16px;">Muhammad Dzaky Ammar</figcaption>
+      </figure>
+      <article>
+       <p data-template-id="chairman-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Sambutan Ketua Angkatan</p>
+       <h2 data-template-id="chairman-title" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Pesan untuk Kader Veterna</h2>
+       <div class="blue-rule"></div>
+       <p data-template-id="chairman-message" class="canva-text mt-7 whitespace-pre-line leading-7 text-slate-600" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 16px; line-height: 1.7;">Assalamu’alaikum Warahmatullahi Wabarakatuh,
+
+Puji syukur kita panjatkan ke hadirat Allah SWT atas rahmat-Nya. Tidak terasa, perjalanan bersama di sekolah tercinta ini telah membentuk banyak kenangan, pembelajaran, serta persaudaraan.
+
+Terima kasih kepada Bapak dan Ibu Guru atas kesabaran, keikhlasan, dan ilmu yang diberikan. Kepada orang tua, terima kasih atas doa serta dukungan tanpa henti.
+
+Untuk teman-teman Veterna, perjalanan kita masih panjang. Mari jaga nama baik almamater, terus melangkah maju, dan bawa setiap kenangan baik ini ke masa depan.
+
+Wassalamu’alaikum Warahmatullahi Wabarakatuh.</p>
+      </article>
+     </div>
+    </section>
+    <section class="bg-[#101b50] py-20">
+     <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <p data-template-id="fame-kicker" class="canva-text eyebrow" style="color: rgb(217, 173, 70); font-weight: 700; font-style: normal; font-size: 16px;">Apresiasi Kader</p>
+      <h2 data-template-id="fame-title" class="canva-text serif mt-3 text-4xl font-bold text-white" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 24px;">Hall of Fame</h2>
+      <div id="fame-grid" class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"></div>
+     </div>
+    </section>
+    <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
+     <div class="grid gap-7 md:grid-cols-2">
+      <article data-template-id="quran-card" class="canva-card quote-card rounded-2xl p-8 shadow-sm" style="background: rgb(248, 250, 255);">
+       <p data-template-id="quran-reference" class="canva-text font-bold text-[#233686]" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">QS. Ali 'Imran: 103</p>
+       <p data-template-id="quran-text" class="canva-text serif mt-4 text-xl leading-relaxed text-slate-700" style="color: rgb(51, 65, 85); font-weight: 400; font-style: normal; font-size: 16px;">“Dan berpegangteguhlah kamu semuanya pada tali Allah, dan janganlah kamu bercerai-berai.”</p>
+      </article>
+      <article data-template-id="hadith-card" class="canva-card quote-card rounded-2xl p-8 shadow-sm" style="background: rgb(248, 250, 255);">
+       <p data-template-id="hadith-reference" class="canva-text font-bold text-[#233686]" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">HR. Bukhari dan Muslim</p>
+       <p data-template-id="hadith-text" class="canva-text serif mt-4 text-xl leading-relaxed text-slate-700" style="color: rgb(51, 65, 85); font-weight: 400; font-style: normal; font-size: 16px;">“Seorang mukmin bagi mukmin lainnya seperti bangunan yang saling menguatkan.”</p>
+      </article>
+     </div>
+    </section>
+   </section>
+   <section id="gallery" class="page">
+    <section class="bg-[#101b50] px-6 py-20 text-center">
+     <p data-template-id="gallery-kicker" class="canva-text eyebrow" style="color: rgb(217, 173, 70); font-weight: 700; font-style: normal; font-size: 16px;">Arsip Kenangan</p>
+     <h1 data-template-id="gallery-title" class="canva-text serif mt-3 text-5xl font-bold text-white" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Galeri Veterna</h1>
+     <p data-template-id="gallery-description" class="canva-text mx-auto mt-4 max-w-2xl text-blue-100" style="color: rgb(219, 230, 255); font-weight: 400; font-style: normal; font-size: 17px;">Potongan momen, proses, dan kebersamaan yang akan selalu menjadi cerita Virtu Eterna.</p>
+    </section>
+    <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+     <div id="gallery-grid" class="gallery-grid"></div>
+    </section>
+    <section class="bg-[#eef3ff] py-20">
+     <div class="mx-auto grid max-w-6xl items-center gap-10 px-6 md:grid-cols-2 lg:px-8">
+      <div>
+       <p data-template-id="members-only-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Ruang Khusus</p>
+       <h2 data-template-id="members-only-title" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Only Members</h2>
+       <p data-template-id="members-only-text" class="canva-text mt-5 leading-7 text-slate-600" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 16px;">Ruang ini mengarahkan kader menuju arsip media sosial anggota. Untuk keamanan, website ini tidak menyediakan kolom kata sandi atau autentikasi.</p><a data-template-id="members-only-button" class="canva-link mt-7 inline-flex rounded-full px-6 py-3 font-bold" href="https://www.instagram.com/isyanzzz_/" target="_blank" rel="noopener noreferrer" style="background: rgb(35, 54, 134); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Buka Ruang Anggota</a>
+      </div>
+      <div class="photo-card aspect-video">
+       <img data-template-id="members-only-image" loading="lazy" class="canva-image" src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Foto kebersamaan angkatan Virtu Eterna">
+      </div>
+     </div>
+    </section>
+    <section class="mx-auto max-w-5xl px-6 py-20 text-center">
+     <p data-template-id="song-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Nada Kebersamaan</p>
+     <h2 data-template-id="song-title" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Lagu Kebanggaan Veterna</h2>
+     <div class="mt-9 flex justify-center gap-5">
+      <img data-template-id="song-image-1" loading="lazy" class="canva-image w-52 rounded-2xl shadow-xl" src="https://i.ibb.co.com/LzkpPmxC/kop-surat-veterna-a4-1.jpg" alt="Visual lagu kebanggaan Veterna"><img data-template-id="song-image-2" loading="lazy" class="canva-image w-52 rounded-2xl shadow-xl" src="https://i.ibb.co.com/LzkpPmxC/kop-surat-veterna-a4-1.jpg" alt="Visual lagu kebanggaan Veterna kedua">
+     </div>
+    </section>
+   </section>
+   <section id="outfit" class="page">
+    <section class="bg-[#101b50] px-6 py-20 text-center">
+     <p data-template-id="outfit-kicker" class="canva-text eyebrow" style="color: rgb(217, 173, 70); font-weight: 700; font-style: normal; font-size: 16px;">Identitas Berpakaian</p>
+     <h1 data-template-id="outfit-title" class="canva-text serif mt-3 text-5xl font-bold text-white" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Outfit Veterna</h1>
+     <p data-template-id="outfit-description" class="canva-text mt-4 text-blue-100" style="color: rgb(219, 230, 255); font-weight: 400; font-style: normal; font-size: 17px;">Koleksi seragam dan baju kelas yang membawa identitas angkatan dalam setiap aktivitas.</p>
+    </section>
+    <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+     <div id="outfit-list" class="space-y-8"></div>
+    </section>
+   </section>
+   <section id="story" class="page">
+    <section class="bg-[#101b50] px-6 py-20 text-center">
+     <p data-template-id="story-kicker" class="canva-text eyebrow" style="color: rgb(217, 173, 70); font-weight: 700; font-style: normal; font-size: 16px;">Jejak Perjalanan</p>
+     <h1 data-template-id="story-title" class="canva-text serif mt-3 text-5xl font-bold text-white" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Storyboard Veterna</h1>
+     <p data-template-id="story-description" class="canva-text mt-4 text-blue-100" style="color: rgb(219, 230, 255); font-weight: 400; font-style: normal; font-size: 17px;">Menyusuri bab-bab kecil yang merangkai perjalanan besar angkatan XXVIII.</p>
+    </section>
+    <section class="mx-auto max-w-6xl px-6 py-16 lg:px-8">
+     <div id="timeline" class="timeline relative space-y-10"></div>
+    </section>
+   </section>
+   <section id="members" class="page">
+    <section class="bg-[#101b50] px-6 py-20 text-center">
+     <p data-template-id="members-kicker" class="canva-text eyebrow" style="color: rgb(217, 173, 70); font-weight: 700; font-style: normal; font-size: 16px;">Satu Angkatan, Satu Keluarga</p>
+     <h1 data-template-id="members-title" class="canva-text serif mt-3 text-5xl font-bold text-white" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Kader Veterna</h1>
+     <p data-template-id="members-description" class="canva-text mt-4 text-blue-100" style="color: rgb(219, 230, 255); font-weight: 400; font-style: normal; font-size: 17px;">Kenali kader-kader yang bertumbuh bersama dalam perjalanan Virtu Eterna.</p>
+    </section>
+    <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8"><label data-template-id="search-label" class="canva-text mb-2 block font-bold text-[#233686]" for="member-search" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Cari anggota Veterna</label>
+     <div class="relative max-w-xl">
+      <i data-lucide="search" class="absolute left-4 top-3.5 text-slate-400"></i><input id="member-search" data-template-id="search-input" class="canva-input w-full rounded-xl border border-blue-100 py-3 pl-12 pr-4 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ketik nama kader..." style="color: rgb(100, 116, 139); font-weight: 400; font-style: normal; font-size: 16px;">
+     </div>
+     <p id="member-count" class="mt-5 text-sm font-semibold text-slate-500" aria-live="polite"></p>
+     <div id="member-grid" class="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"></div>
+    </section>
+    <section class="bg-[#eef3ff] py-16">
+     <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <p data-template-id="distribution-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Peta Kebersamaan</p>
+      <h2 data-template-id="distribution-title" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Sebaran Kader Veterna</h2>
+      <div class="photo-card mt-8 aspect-video">
+       <img data-template-id="distribution-image" loading="lazy" class="canva-image" src="https://i.ibb.co.com/JRCVjfBy/Cuplikan-layar-2025-10-19-161215.png" alt="Visual sebaran kader Veterna">
+      </div>
+     </div>
+    </section>
+    <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
+     <p data-template-id="groups-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Ruang Berkarya</p>
+     <nav aria-label="Kategori Veterna" class="mt-6 flex flex-wrap gap-3"><a data-template-id="groups-nav-organisasi" class="canva-link rounded-full border border-blue-200 px-4 py-2 font-semibold text-[#233686]" href="#organisasi" style="color: rgb(35, 54, 134); font-weight: 600; font-style: normal; font-size: 16px;">Organisasi</a> <a data-template-id="groups-nav-komunitas" class="canva-link rounded-full border border-blue-200 px-4 py-2 font-semibold text-[#233686]" href="#komunitas" style="color: rgb(35, 54, 134); font-weight: 600; font-style: normal; font-size: 16px;">Komunitas</a> <a data-template-id="groups-nav-kelas" class="canva-link rounded-full border border-blue-200 px-4 py-2 font-semibold text-[#233686]" href="#kelas" style="color: rgb(35, 54, 134); font-weight: 600; font-style: normal; font-size: 16px;">Kelas</a> <a data-template-id="groups-nav-kamar" class="canva-link rounded-full border border-blue-200 px-4 py-2 font-semibold text-[#233686]" href="#kamar" style="color: rgb(35, 54, 134); font-weight: 600; font-style: normal; font-size: 16px;">Kamar</a>
+     </nav>
+     <section id="organisasi" class="mt-10">
+      <h2 data-template-id="groups-title-organisasi" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Organisasi</h2>
+      <div id="organisasi-grid" class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+       <article class="overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm">
+        <img src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Kegiatan KOPASTRA" class="aspect-video w-full object-cover">
+        <div class="p-5">
+         <div class="flex items-center gap-3">
+          <img src="https://i.ibb.co.com/QsdhyLv/631525398-17873143623537190-2606139853809085870-n-1.jpg" alt="Logo KOPASTRA" class="h-12 w-12 rounded-full object-cover">
+          <div>
+           <h3 class="font-bold text-[#101b50]">KOPASTRA</h3>
+           <p>Komando Pasukan SMA Ar-Rohmah Putra</p>
+          </div>
+         </div>
+         <p class="mt-4 text-sm leading-6 text-slate-600">denganjghjgjhgjhfjhhhhhhhhhffhfffgggggggggggggggggggggggggggggggggggggghgcg</p>
+        </div>
+       </article>
+       <article class="overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm">
+        <img src="https://i.ibb.co.com/nNfQQHH5/Pencinta-Alam-1024x577.jpg" alt="Kegiatan SARPALA" class="aspect-video w-full object-cover">
+        <div class="p-5">
+         <div class="flex items-center gap-3">
+          <img src="https://i.ibb.co.com/4ZFcQr27/logo-SARPALA-KAMUFISA-1.png" alt="Logo SARPALA" class="h-12 w-12 rounded-full object-cover">
+          <div>
+           <h3 class="font-bold text-[#101b50]">SARPALA</h3>
+           <p>Santri Pecinta Alam</p>
+          </div>
+         </div>
+         <p class="mt-4 text-sm leading-6 text-slate-600">denganjghjgjhgjhfjhhhhhhhhhffhfffgggggggggggggggggggggggggggggggggggggghgcg</p>
+        </div>
+       </article>
+      </div>
+     </section>
+     <section id="komunitas" class="mt-14">
+      <h2 data-template-id="groups-title-komunitas" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Komunitas</h2>
+      <div id="komunitas-grid" class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+     </section>
+     <section id="kelas" class="mt-14">
+      <h2 data-template-id="groups-title-kelas" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Kelas</h2>
+      <div id="kelas-grid" class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+     </section>
+     <section id="kamar" class="mt-14">
+      <h2 data-template-id="groups-title-kamar" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Kamar</h2>
+      <div id="kamar-grid" class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
+     </section>
+    </section>
+   </section>
+  </main>
+  <footer data-template-id="site-footer" class="canva-footer bg-[#101b50] px-6 py-12 text-white" style="background: rgb(16, 27, 80);">
+   <div class="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-end">
+    <div>
+     <p data-template-id="footer-title" class="canva-text serif text-2xl font-bold" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Virtu Eterna · XXVIII</p>
+     <p data-template-id="footer-text" class="canva-text mt-2 max-w-lg text-sm leading-6 text-blue-100" style="color: rgb(219, 230, 255); font-weight: 400; font-style: normal; font-size: 14px;">SMA Pondok Pesantren Ar-Rohmah Putra Malang · Angkatan 2024—2027. Kebajikan yang abadi, persaudaraan yang menguatkan.</p>
+    </div>
+    <div>
+     <p data-template-id="social-title" class="canva-text mb-3 text-sm font-bold uppercase tracking-widest text-amber-300" style="color: rgb(253, 233, 174); font-weight: 700; font-style: normal; font-size: 16px;">Ikuti Perjalanan Kami</p>
+     <div class="flex gap-3">
+      <a class="rounded-full bg-white p-2" href="https://www.instagram.com/veterna28/" target="_blank" rel="noopener noreferrer"><img data-template-id="social-instagram" loading="lazy" class="canva-image h-6 w-6" src="https://i.ibb.co.com/SXfnj442/ig.png" alt="Instagram Veterna"></a><a class="rounded-full bg-white p-2" href="https://www.tiktok.com/@smaarrohmahputra" target="_blank" rel="noopener noreferrer"><img data-template-id="social-tiktok" loading="lazy" class="canva-image h-6 w-6" src="https://i.ibb.co.com/rRsMT240/tiktok.png" alt="TikTok Veterna"></a><a class="rounded-full bg-white p-2" href="https://www.youtube.com/@smaartramalang" target="_blank" rel="noopener noreferrer"><img data-template-id="social-youtube" loading="lazy" class="canva-image h-6 w-6" src="https://i.ibb.co.com/tMrZjRZx/yt.png" alt="YouTube SMA Ar-Rohmah Putra"></a>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <div id="image-modal" class="modal fixed inset-0 z-[80] flex items-center justify-center bg-slate-950/90 p-6" role="dialog" aria-modal="true" aria-label="Tampilan foto"><button id="modal-close" type="button" class="absolute right-6 top-6 rounded-full bg-white/15 p-3 text-white" aria-label="Tutup foto"><i data-lucide="x"></i></button> <img id="modal-image" class="max-h-full max-w-full rounded-xl object-contain" alt="">
+  </div>
+  <template id="fame-template">
+   <article class="rounded-2xl bg-white/10 p-4 text-center ring-1 ring-white/15">
+    <img data-template-id="fame-photo" loading="lazy" class="canva-image mx-auto aspect-square w-full rounded-xl object-cover">
+    <h3 class="mt-4 font-bold text-white"></h3>
+    <p class="mt-2 text-sm leading-6 text-blue-100"></p>
+   </article>
+  </template>
+  <template id="gallery-template">
+   <button type="button" class="gallery-item photo-card w-full" aria-label="Perbesar foto galeri"><img data-template-id="gallery-photo" loading="lazy" class="canva-image"></button>
+  </template>
+  <template id="outfit-template">
+   <article class="grid items-center gap-5 rounded-3xl border border-blue-100 bg-white p-5 shadow-sm md:grid-cols-[1fr_1.15fr_1fr]">
+    <img data-template-id="outfit-left" loading="lazy" class="canva-image aspect-[3/4] w-full rounded-2xl object-cover">
+    <div class="text-center">
+     <p class="eyebrow">Koleksi Veterna</p>
+     <h2 class="serif mt-3 text-3xl font-bold text-[#101b50]"></h2>
+     <p class="mt-4 text-sm leading-7 text-slate-600"></p>
+    </div><img data-template-id="outfit-right" loading="lazy" class="canva-image aspect-[3/4] w-full rounded-2xl object-cover">
+   </article>
+  </template>
+  <template id="outfit-class-template">
+   <article class="outfit-class-card grid items-center gap-5 p-5 md:grid-cols-[1fr_1.15fr_1fr]">
+    <img data-template-id="outfit-class-engineering-left" loading="lazy" class="canva-image"> <img data-template-id="outfit-class-agrobisnis-left" loading="lazy" class="hidden"> <img data-template-id="outfit-class-medical-left" loading="lazy" class="hidden"> <img data-template-id="outfit-class-kedinasan-left" loading="lazy" class="hidden"> <img data-template-id="outfit-class-humanities-left" loading="lazy" class="hidden">
+    <div class="outfit-copy text-center">
+     <p class="eyebrow">Koleksi Veterna</p>
+     <h2 class="serif mt-3 text-3xl font-bold text-[#101b50]"></h2>
+     <p class="mt-4 text-sm leading-7 text-slate-600"></p>
+    </div><img data-template-id="outfit-class-engineering-right" loading="lazy" class="canva-image"> <img data-template-id="outfit-class-agrobisnis-right" loading="lazy" class="hidden"> <img data-template-id="outfit-class-medical-right" loading="lazy" class="hidden"> <img data-template-id="outfit-class-kedinasan-right" loading="lazy" class="hidden"> <img data-template-id="outfit-class-humanities-right" loading="lazy" class="hidden">
+   </article>
+  </template>
+  <template id="story-template">
+   <article class="timeline-item relative grid items-center gap-7 md:grid-cols-2">
+    <span class="timeline-dot absolute left-1/2 z-10 h-5 w-5 -translate-x-1/2 rounded-full bg-[#d9ad46]"></span>
+    <div class="timeline-content photo-card aspect-video"></div>
+    <div class="timeline-content rounded-2xl bg-[#eef3ff] p-7">
+     <p class="eyebrow"></p>
+     <h2 class="serif mt-2 text-3xl font-bold text-[#101b50]"></h2>
+     <p class="mt-3 leading-7 text-slate-600"></p>
+    </div>
+   </article>
+  </template>
+  <template id="member-template">
+   <article class="member-card overflow-hidden rounded-2xl border border-blue-100 bg-white">
+    <img data-template-id="member-photo" loading="lazy" class="canva-image aspect-square w-full object-cover">
+    <div class="p-5">
+     <h3 class="font-bold text-[#101b50]"></h3>
+     <p class="mt-2 text-sm text-slate-500"></p>
+     <p class="mt-2 text-sm italic text-slate-600"></p><a class="mt-4 inline-flex text-sm font-bold text-[#233686]" target="_blank" rel="noopener noreferrer">Instagram <i data-lucide="arrow-up-right" class="ml-1 h-4 w-4"></i></a>
+    </div>
+   </article>
+  </template>
+  <template id="group-template">
+   <article class="overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm">
+    <img data-template-id="group-banner" loading="lazy" class="canva-image aspect-video w-full object-cover">
+    <div class="p-5">
+     <div class="flex items-center gap-3">
+      <img data-template-id="group-logo" loading="lazy" class="canva-image h-12 w-12 rounded-full object-cover">
+      <h3 class="font-bold text-[#101b50]"></h3>
+     </div>
+     <p class="mt-4 text-sm leading-6 text-slate-600"></p>
+    </div>
+   </article>
+  </template>
+  <script src="/_sdk/c6bcadf20ce5820f.editing_sdk.js" integrity="sha512-LVukVCTKnKSxy98w+wCVzDAxVXBG2vy32XblXlmJD9CPFnF2/FVc75CFngl41IdXcX3sVHJc9olw64zrPM/FIA=="></script>
+  <script>
+    const supplied = {
+      group:"https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg",
+      logo:"https://i.ibb.co.com/ccPhq5Wd/logo-removebg-preview-1.png",
+      emblem:"https://i.ibb.co.com/Kzsn6L9n/Untitled-design.jpg",
+      owl:"https://i.ibb.co.com/qYLDsMps/XXVIII.png",
+      chair:"https://i.ibb.co.com/3mxKpf4b/wdwdwdwd.png",
+      portrait:"https://i.ibb.co.com/qLr93kW8/Foto-hijrah-Laki-laki.jpg",
+      gallery:["https://i.ibb.co.com/vCXMRKhv/MG-7463.jpg","https://i.ibb.co.com/JRCVjfBy/Cuplikan-layar-2025-10-19-161215.png","https://i.ibb.co.com/Kzsn6L9n/Untitled-design.jpg","https://i.ibb.co.com/qLr93kW8/Foto-hijrah-Laki-laki.jpg"],
+      outfitL:"https://i.ibb.co.com/zVvP7T4R/VETERNA-ENGINEERING-Ar-Rohmah-Putra-SHS-Engineering-Major-class-uniforma-class-of-young-minds-le.jpg",
+      outfitR:"https://i.ibb.co.com/wrbXSGSX/VETERNA-ENGINEERING-Ar-Rohmah-Putra-SHS-Engineering-Major-class-uniforma-class-of-young-minds-le-1.jpg"
+    };
+
+    function addTemplate(id, target) { return document.getElementById(id).content.cloneNode(true); }
+    function setImg(el, src) { el.src = src; }
+
+    document.querySelectorAll("[data-nav]").forEach(btn => btn.addEventListener("click", () => {
+      let target = btn.dataset.nav; if(target === "profile") target="home";
+      document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+      document.getElementById(target).classList.add("active");
+      document.getElementById("mobile-menu").classList.add("hidden");
+      window.scrollTo({top:0,behavior:"smooth"});
+      if(btn.dataset.nav==="profile") document.getElementById("profile").scrollIntoView({behavior:"smooth"});
+    }));
+
+    const menu=document.getElementById("mobile-menu"), toggle=document.getElementById("menu-toggle");
+    toggle.addEventListener("click",()=>{menu.classList.toggle("hidden");toggle.setAttribute("aria-expanded",String(!menu.classList.contains("hidden")));});
+
+    const slides=[...document.querySelectorAll(".hero-slide")]; let index=0;
+    function showSlide(next){slides[index].classList.remove("active"); index=(next+slides.length)%slides.length; slides[index].classList.add("active");}
+    document.getElementById("slide-prev").onclick=()=>showSlide(index-1);
+    document.getElementById("slide-next").onclick=()=>showSlide(index+1);
+    setInterval(()=>showSlide(index+1),5500);
+
+    const fame=document.getElementById("fame-grid");
+    for(let i=1;i<=28;i++){const n=addTemplate("fame-template"); const card=n.querySelector("article"); setImg(n.querySelector("img"),supplied.portrait); n.querySelector("h3").textContent="Akh. Muhammad Isyan Aryastya"; n.querySelector("p").textContent="Prestasi unik: juara 1 lomba tidur, angkat beban, dan makan kerupuk."; fame.appendChild(n);}
+
+    const gallery=document.getElementById("gallery-grid");
+    for(let i=0;i<50;i++){const n=addTemplate("gallery-template"), img=n.querySelector("img"); setImg(img,supplied.gallery[i%supplied.gallery.length]); n.querySelector("button").addEventListener("click",()=>{document.getElementById("modal-image").src=img.src;document.getElementById("image-modal").classList.add("open");}); gallery.appendChild(n);}
+    document.getElementById("modal-close").onclick=()=>document.getElementById("image-modal").classList.remove("open");
+    document.getElementById("image-modal").addEventListener("click",e=>{if(e.target.id==="image-modal")e.currentTarget.classList.remove("open");});
+
+    const outfitNames=["Baju Veterna","Seragam Senin – Selasa","Seragam Rabu – Kamis","Seragam Jumat","Seragam Sabtu"];
+    const outfitList=document.getElementById("outfit-list");
+    outfitNames.forEach(name=>{const n=addTemplate("outfit-template");setImg(n.querySelector('[data-template-id="outfit-left"]'),supplied.outfitL);setImg(n.querySelector('[data-template-id="outfit-right"]'),supplied.outfitR);n.querySelector("h2").textContent=name;n.querySelector("p:last-child").textContent="Identitas kebersamaan Veterna: sederhana, rapi, dan siap menjalani setiap proses dengan disiplin.";outfitList.appendChild(n);});
+    const classOutfits=["Engineering","Agrobisnis","Medical","Kedinasan","Humanities"];
+    classOutfits.forEach(name=>{const n=addTemplate("outfit-class-template");n.querySelector("h2").textContent="Kelas "+name;n.querySelector("p:last-child").textContent="baju baju bajua baju baju baju abuabu abu abu abuuiasukdawkdjawkjdkjwacbjhwhdbwkqudwkuqudkjqwhkjwqbkwhqd";n.querySelector('[data-template-id="outfit-class-engineering-left"]').dataset.templateId="outfit-class-"+name.toLowerCase()+"-left";n.querySelector('[data-template-id="outfit-class-engineering-right"]').dataset.templateId="outfit-class-"+name.toLowerCase()+"-right";outfitList.appendChild(n);});
+
+    const storyNames=["Mastasis","yntkts","Mulyono","Mulyadi","Makannasi Ikan","Kalimantan Api Pa","Malang Panas","Molen Kepannham","Sante Tanteo","Mlopolijunn","mkmkmk","Mamkm","Maskkijiff","Massfewgrg","Wisuda"];
+    const timeline=document.getElementById("timeline");
+    storyNames.forEach((name,i)=>{const n=addTemplate("story-template"), slots=n.querySelectorAll(".timeline-content"); const image=document.createElement("img");image.src=supplied.gallery[0];image.alt="Momen Veterna";image.className="h-full w-full object-cover";slots[0].appendChild(image);slots[1].querySelector(".eyebrow").textContent="Momen "+String(i+1).padStart(2,"0");slots[1].querySelector("h2").textContent=name;slots[1].querySelector("p").textContent=i===4?"Momen khusus yang menyimpan cerita kebersamaan kader Veterna.":"Potongan perjalanan, kebersamaan, dan kenangan yang membentuk Virtu Eterna selama masa sekolah.";if(i%2){slots[0].classList.add("md:order-2");slots[1].classList.add("md:order-1");}timeline.appendChild(n);});
+
+    const members=document.getElementById("member-grid"), memberData=[];
+    for(let i=1;i<=96;i++){memberData.push({name:"Muhammad Isyan Aryasatya "+String(i).padStart(2,"0"),birth:"10 Agustus 2000",motto:"Keimanan lebih utama daripada lalai"});}
+    memberData.forEach(m=>{const n=addTemplate("member-template");setImg(n.querySelector("img"),supplied.portrait);const text=n.querySelectorAll("h3,p");text[0].textContent=m.name;text[1].textContent="Tanggal lahir: "+m.birth;text[2].textContent="“"+m.motto+"”";n.querySelector("a").href="https://www.instagram.com/isyanzzz_/";n.querySelector("article").dataset.name=m.name.toLowerCase();members.appendChild(n);});
+    lucide.createIcons();
+    const count=document.getElementById("member-count"); function filterMembers(){const q=document.getElementById("member-search").value.toLowerCase();let total=0;[...members.children].forEach(c=>{const hit=c.dataset.name.includes(q);c.classList.toggle("hidden-card",!hit);if(hit)total++;});count.textContent=total+" kader ditemukan";} filterMembers();
+    document.getElementById("member-search").addEventListener("input",filterMembers);
+
+    const groups=["GPH (Gerakan Pandu Hidayatullah)","DKM Takmir Baiturrohmah","Boarschar Avanti","JMYK","Yanber","Kelas Engineering","Kelas Agrobisnis","Kelas Kedinasan","Kelas Medical","Kelas Humanities","Ekstrakurikuler Veterna","Kamar B1","Kamar B2","Kamar B3","Kamar B4","Kamar B5","Kamar B6","Kamar B7","Kamar B8"];
+    const groupGrids={organisasi:document.getElementById("organisasi-grid"),komunitas:document.getElementById("komunitas-grid"),kelas:document.getElementById("kelas-grid"),kamar:document.getElementById("kamar-grid")};
+    groups.forEach(name=>{const n=addTemplate("group-template");setImg(n.querySelector('[data-template-id="group-banner"]'),supplied.group);setImg(n.querySelector('[data-template-id="group-logo"]'),supplied.logo);n.querySelector("h3").textContent=name;n.querySelector("p").textContent="Ruang bertumbuh, berkhidmat, dan menguatkan solidaritas kader Veterna dalam setiap kegiatan.";const category=name.startsWith("Kamar")?"kamar":name.startsWith("Kelas")?"kelas":["Boarschar Avanti","JMYK","Yanber","Ekstrakurikuler Veterna"].includes(name)?"komunitas":"organisasi";groupGrids[category].appendChild(n);});
+  </script>
+ 
+</body></html>
