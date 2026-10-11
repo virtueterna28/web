@@ -1,443 +1,1334 @@
-<!doctype html>
-<html lang="id"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260828-05-5fe3063","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YAHO2-t-jNE,0","Arial":"YAGyDvJ_4Ts,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Canva Sans":"YAFLd8sKbwc,2","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAHO2VMiyZo,0","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAEul-FRQw4,0","Georgia":"YAGzXkO0pEM,0","Helvetica Neue":"YAFcf6CtJfI,0","Impact":"YAFcfnjI7Vk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YAHO2a5g66Q,0","JetBrains Mono":"YAFdJksXcAk,0","Libre Baskerville":"YACgEUFdPdA,0","Manrope":"YAHO2b2feC4,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YADLjI9qxTA,0","Nunito":"YACgEX8C5Gg,0","Oleo Script":"YACgEQQ14jI,0","Phantom Sans":"YAHO2E8Pb88,0","Playfair Display":"YACgEYmuCJE,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YADWjpfPmdk,0","Raleway":"YACgEVg3xZg,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Spectral":"YAHO2rVUHIM,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Ubuntu":"YACgERDU--Q,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YADlN8CFZ8Q,0","ui-sans-serif":"YACkoN-xg4g,0"}}');</script><script src="/_sdk/50d846425a1e5082.telemetry_sdk.js" integrity="sha512-Otbex+ztlVbcEGql0rXGd/3E3ee/hqAntg6DeuUEMG6pIPbXGOSvZbFZVzknAXi1tH/itQ+ijEhOTr2aWj6CXg=="></script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Virtu Eterna</title>
-  <link rel="icon" type="image/png" href="https://i.ibb.co.com/1Wbm2TX/STICKER-VETERNA-removebg-preview.png">
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet">
-  <style>
-    :root { --blue:#233686; --navy:#101b50; --gold:#d9ad46; --mist:#eef3ff; }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; font-family:"DM Sans",sans-serif; color:#18234d; }
-    .serif { font-family:"Playfair Display",serif; }
-    .page { display:none; animation:fade .45s ease both; }
-    .page.active { display:block; }
-    @keyframes fade { from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)} }
-    .site-header { background:rgba(16,27,80,.94); backdrop-filter:blur(12px); }
-    .hero { min-height:calc(80 * min(var(--vh, 1vh), 1vh)); }
-    .hero-slide { opacity:0; transition:opacity 700ms ease; }
-    .hero-slide.active { opacity:1; }
-    .hero-overlay { background:linear-gradient(90deg,rgba(8,17,59,.91),rgba(16,27,80,.62),rgba(16,27,80,.2)); }
-    .eyebrow { letter-spacing:.18em; text-transform:uppercase; font-size:.72rem; font-weight:700; color:var(--gold); }
-    .section-title { font-family:"Playfair Display",serif; color:var(--navy); font-size:clamp(2rem,4vw,3.4rem); line-height:1.1; }
-    .blue-rule { width:52px;height:4px;background:var(--gold);margin-top:1rem; }
-    .photo-card { overflow:hidden; border-radius:1.25rem; background:#dfe7ff; box-shadow:0 12px 30px rgba(18,36,104,.12); }
-    .outfit-class-card { overflow:hidden; border-radius:1.5rem; border:1px solid #dbe5ff; background:#fff; box-shadow:0 12px 30px rgba(18,36,104,.08); }
-    .outfit-class-card img { aspect-ratio:3 / 4; width:100%; object-fit:contain; border-radius:1rem; background:#f5f7ff; }
-    @media (max-width:767px){ .outfit-class-card { grid-template-columns:1fr!important; } .outfit-class-card .outfit-copy { order:-1; } }
-    .photo-card img { width:100%;height:100%;object-fit:cover; transition:transform .5s ease; }
-    .photo-card:hover img { transform:scale(1.05); }
-    .quote-card { border-left:4px solid var(--gold); }
-    .gallery-grid { columns:2; column-gap:1rem; }
-    .gallery-item { break-inside:avoid; margin-bottom:1rem; display:block; cursor:pointer; }
-    .gallery-item:nth-child(3n) { height:300px; }
-    .gallery-item:nth-child(3n+1) { height:210px; }
-    .gallery-item:nth-child(3n+2) { height:260px; }
-    .gallery-item img { height:100%; }
-    .timeline::before { content:""; position:absolute; top:0; bottom:0; left:50%; width:2px; background:#c6d2ff; }
-    .timeline-dot { box-shadow:0 0 0 7px #eef3ff; }
-    .member-card { transition:transform .25s ease, box-shadow .25s ease; }
-    .member-card:hover { transform:translateY(-5px); box-shadow:0 18px 34px rgba(18,36,104,.14); }
-    .hidden-card { display:none !important; }
-    .modal { opacity:0;pointer-events:none;transition:.25s; }
-    .modal.open { opacity:1;pointer-events:auto; }
-    @media (min-width:768px){ .gallery-grid{columns:4} }
-    @media (max-width:767px){
-      .timeline::before{left:18px}
-      .timeline-item{padding-left:3rem!important}
-      .timeline-item .timeline-dot{left:10px!important}
-      .timeline-item .timeline-content{grid-column:auto!important}
-    }
-  </style>
-  <script src="/_sdk/b3bf9e8ac58e6ad6.data_sdk.js" type="text/javascript" integrity="sha512-otc1u9NYq9Ms5Jt//7vmhrrqR5CLPr8Jdgs6741gqniClfLMcfmC+jK/cKuQdhLv6G0esJ/FzaMS9tv0T/vj/Q=="></script>
-  <script src="/_sdk/a6de989e8af05ea5.resizing_sdk.js" type="text/javascript" integrity="sha512-cceAQMIleYr/3eg7o5WzN46w0HpgI1sxi+5kDUb7CmTjHEpgBtINDxtOpnNeUtujjui8NG0OSDgUMl0/E2lT2A=="></script>
- </head>
- <body data-template-id="__page-root" class="w-full" style="background: rgb(255, 255, 255);">
-  <header class="site-header sticky top-0 z-50 w-full shadow-lg">
-   <nav class="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 lg:px-8" aria-label="Navigasi utama"><button type="button" class="flex items-center gap-3 text-left" data-nav="home" aria-label="Kembali ke beranda"> <img data-template-id="brand-logo" loading="lazy" class="canva-image h-11 w-11 rounded-full object-contain bg-white p-1" src="canva://MAHTu198oTQ/1" alt="logo-removebg-preview (1).png"> <span data-template-id="brand-name" class="canva-text font-semibold tracking-wide text-white" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">VIRTU ETERNA</span> </button>
-    <div class="hidden items-center gap-6 md:flex"><button data-template-id="nav-home" class="canva-button text-sm font-semibold text-white/90 hover:text-white" type="button" data-nav="home" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Beranda</button> <button data-template-id="nav-gallery" class="canva-button text-sm font-semibold text-white/90 hover:text-white" type="button" data-nav="gallery" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Galeri</button> <button data-template-id="nav-outfit" class="canva-button text-sm font-semibold text-white/90 hover:text-white" type="button" data-nav="outfit" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Outfit</button> <button data-template-id="nav-story" class="canva-button text-sm font-semibold text-white/90 hover:text-white" type="button" data-nav="story" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Storyboard</button> <button data-template-id="nav-members" class="canva-button text-sm font-semibold text-white/90 hover:text-white" type="button" data-nav="members" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Members</button>
-    </div><button id="menu-toggle" type="button" class="rounded-lg p-2 text-white md:hidden" aria-label="Buka menu" aria-expanded="false"><i data-lucide="menu"></i></button>
-   </nav>
-   <div id="mobile-menu" class="hidden border-t border-white/15 px-5 py-4 md:hidden">
-    <div class="grid gap-3"><button data-template-id="mobile-home" class="canva-button text-left font-semibold text-white" type="button" data-nav="home" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Beranda</button> <button data-template-id="mobile-gallery" class="canva-button text-left font-semibold text-white" type="button" data-nav="gallery" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Galeri</button> <button data-template-id="mobile-outfit" class="canva-button text-left font-semibold text-white" type="button" data-nav="outfit" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Outfit</button> <button data-template-id="mobile-story" class="canva-button text-left font-semibold text-white" type="button" data-nav="story" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Storyboard</button> <button data-template-id="mobile-members" class="canva-button text-left font-semibold text-white" type="button" data-nav="members" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Members</button>
-    </div>
-   </div>
-  </header>
-  <main>
-   <section id="home" class="page active">
-    <section class="hero relative overflow-hidden">
-     <div class="hero-slide active absolute inset-0">
-      <img data-template-id="hero-slide-1" loading="lazy" class="canva-image h-full w-full object-cover" src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Foto kebersamaan angkatan Virtu Eterna">
-     </div>
-     <div class="hero-slide absolute inset-0">
-      <img data-template-id="hero-slide-2" loading="lazy" class="canva-image h-full w-full object-cover" src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Kader Virtu Eterna di lingkungan sekolah">
-     </div>
-     <div class="hero-slide absolute inset-0">
-      <img data-template-id="hero-slide-3" loading="lazy" class="canva-image h-full w-full object-cover" src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Momen angkatan Virtu Eterna">
-     </div>
-     <div class="hero-overlay absolute inset-0"></div>
-     <div class="relative mx-auto flex min-h-[calc(80*min(var(--vh,1vh),1vh))] max-w-7xl items-center px-6 py-20 lg:px-8">
-      <div class="max-w-3xl">
-       <p data-template-id="hero-basmalah" class="canva-text mb-5 text-lg text-amber-200" style="color: rgb(253, 233, 174); font-weight: 400; font-style: normal; font-size: 20px;">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
-       <p data-template-id="hero-kicker" class="canva-text eyebrow" style="color: rgb(217, 173, 70); font-weight: 700; font-style: normal; font-size: 16px;">Angkatan XXVIII · 2024 — 2027</p>
-       <h1 data-template-id="hero-title" class="canva-text serif mt-4 text-5xl font-bold leading-tight text-white md:text-7xl" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Welcome to Virtu Eterna</h1>
-       <p data-template-id="hero-description" class="canva-text mt-5 max-w-2xl text-lg leading-relaxed text-blue-50" style="color: rgb(234, 240, 255); font-weight: 400; font-style: normal; font-size: 18px;">Kebajikan yang abadi. Satu langkah, satu ikatan, satu perjalanan menuju masa depan.</p>
-       <div class="mt-9 flex flex-wrap gap-4"><button data-template-id="hero-explore" class="canva-button rounded-full px-6 py-3 font-bold shadow-lg transition hover:-translate-y-1" type="button" data-nav="profile" style="background: rgb(217, 173, 70); color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 16px;">Jelajahi Veterna</button> <a data-template-id="hero-contact" class="canva-link rounded-full border border-white/60 px-6 py-3 font-bold text-white transition hover:bg-white/10" href="https://www.instagram.com/veterna28/" target="_blank" rel="noopener noreferrer" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Hubungi Kami</a>
-       </div>
-      </div>
-     </div>
-     <div class="absolute bottom-7 right-6 flex gap-2"><button id="slide-prev" class="rounded-full bg-white/15 p-3 text-white hover:bg-white/30" type="button" aria-label="Foto sebelumnya"><i data-lucide="chevron-left"></i></button> <button id="slide-next" class="rounded-full bg-white/15 p-3 text-white hover:bg-white/30" type="button" aria-label="Foto berikutnya"><i data-lucide="chevron-right"></i></button>
-     </div>
-    </section>
-    <section id="profile" class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-     <div class="grid items-center gap-10 md:grid-cols-2">
-      <div>
-       <p data-template-id="profile-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Beranda · Profil</p>
-       <h2 data-template-id="profile-title" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Profil Veterna</h2>
-       <div class="blue-rule"></div>
-       <p data-template-id="profile-text" class="canva-text mt-6 leading-8 text-slate-600" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 17px;">Virtu Eterna (Veterna) adalah nama angkatan di SMA Ar-Rohmah Putra yang memiliki ikatan solidaritas tinggi, disiplin, dan tujuan yang abadi. Kami tumbuh dalam proses yang sama, saling menguatkan, serta berkomitmen membawa nama baik almamater.</p>
-      </div>
-      <figure class="photo-card aspect-video"><img data-template-id="profile-image" loading="lazy" class="canva-image" src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Seluruh kader Veterna">
-       <figcaption data-template-id="profile-caption" class="canva-text bg-white px-5 py-3 text-center text-sm font-semibold text-slate-600" style="color: rgb(71, 85, 105); font-weight: 600; font-style: normal; font-size: 16px;">Seluruh kader Veterna</figcaption>
-      </figure>
-     </div>
-    </section>
-    <section class="bg-[#eef3ff] py-20">
-     <div class="mx-auto max-w-7xl space-y-20 px-6 lg:px-8">
-      <div class="grid items-center gap-10 md:grid-cols-2">
-       <div>
-        <p data-template-id="logo-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Identitas Angkatan</p>
-        <h2 data-template-id="logo-title" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Logo Veterna</h2>
-        <div class="blue-rule"></div>
-        <p data-template-id="logo-text" class="canva-text mt-6 leading-8 text-slate-600" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 17px;">Logo Veterna mengambil referensi dari makna Virtu Eterna: kebajikan yang abadi. Bintang keemasan di dalam lingkaran biru menjadi simbol angkatan yang solid, kokoh, dan berani menghadapi setiap proses.</p>
-       </div>
-       <figure class="photo-card aspect-video">
-        <img data-template-id="logo-image" loading="lazy" class="canva-image" src="https://i.ibb.co.com/pvHkzHkH/wdwd.png" alt="Lambang bintang biru Veterna">
-        <figcaption data-template-id="logo-caption" class="canva-text bg-white px-5 py-3 text-center text-sm font-semibold text-slate-600" style="color: rgb(71, 85, 105); font-weight: 600; font-style: normal; font-size: 16px;">Bintang biru</figcaption>
-       </figure>
-      </div>
-      <div class="grid items-center gap-10 md:grid-cols-2">
-       <figure class="photo-card aspect-video">
-        <img data-template-id="mascot-image" loading="lazy" class="canva-image" src="https://i.ibb.co.com/qYLDsMps/XXVIII.png" alt="Maskot burung hantu putih Veterna">
-        <figcaption data-template-id="mascot-caption" class="canva-text bg-white px-5 py-3 text-center text-sm font-semibold text-slate-600" style="color: rgb(71, 85, 105); font-weight: 600; font-style: normal; font-size: 16px;">Burung hantu putih</figcaption>
-       </figure>
-       <div>
-        <p data-template-id="mascot-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Semangat Veterna</p>
-        <h2 data-template-id="mascot-title" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Maskot Veterna</h2>
-        <div class="blue-rule"></div>
-        <p data-template-id="mascot-text" class="canva-text mt-6 leading-8 text-slate-600" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 17px;">Burung hantu putih menjadi gambaran ketajaman berpikir, ketenangan, serta kesetiaan dalam menjaga arah perjuangan. Maskot ini mengingatkan Veterna untuk terus bijak, kompak, dan pantang menyerah.</p>
-       </div>
-      </div>
-     </div>
-    </section>
-    <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-     <div class="grid gap-12 lg:grid-cols-[.72fr_1.28fr]">
-      <figure class="photo-card self-start">
-       <img data-template-id="chairman-image" loading="lazy" class="canva-image aspect-square" src="https://i.ibb.co.com/3mxKpf4b/wdwdwdwd.png" alt="Muhammad Dzaky Ammar ketua angkatan Veterna">
-       <figcaption data-template-id="chairman-caption" class="canva-text bg-white px-5 py-3 text-center font-semibold text-slate-700" style="color: rgb(51, 65, 85); font-weight: 700; font-style: normal; font-size: 16px;">Muhammad Dzaky Ammar</figcaption>
-      </figure>
-      <article>
-       <p data-template-id="chairman-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Sambutan Ketua Angkatan</p>
-       <h2 data-template-id="chairman-title" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Pesan untuk Kader Veterna</h2>
-       <div class="blue-rule"></div>
-       <p data-template-id="chairman-message" class="canva-text mt-7 whitespace-pre-line leading-7 text-slate-600" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 16px; line-height: 1.7;">Assalamu’alaikum Warahmatullahi Wabarakatuh,
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtu Eterna - Angkatan 28 SMA Ar-Rohmah Putra Malang (2024-2027)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        emerald: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            800: '#065f46',
+                            900: '#064e3b',
+                            950: '#022c22'
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                            700: '#b45309'
+                        },
+                        darkBg: '#0b132b',
+                        cardBg: '#1c2541'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Alpine.js for reactive state -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        .glass-nav {
+            background: rgba(11, 19, 43, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        .glass-card {
+            background: rgba(28, 37, 65, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b132b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #059669;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-gray-100 font-sans antialiased min-h-screen selection:bg-emerald-500 selection:text-white" x-data="{ currentTab: 'beranda', mobileMenu: false, modalOpen: false, modalType: '', modalImg: '', modalTitle: '', modalDesc: '' }">
 
-Puji syukur kita panjatkan ke hadirat Allah SWT atas rahmat-Nya. Tidak terasa, perjalanan bersama di sekolah tercinta ini telah membentuk banyak kenangan, pembelajaran, serta persaudaraan.
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-emerald-900/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo & Title -->
+                <div class="flex items-center space-x-3 cursor-pointer" @click="currentTab = 'beranda'">
+                    <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/logo%20veterna%20(1).png?raw=true" alt="Logo Veterna 28" class="w-12 h-12 object-contain drop-shadow-[0_0_10px_rgba(245,158,11,0.5)]" onerror="this.src='https://placehold.co/100x100/064e3b/fbbf24?text=V28'">
+                    <div>
+                        <h1 class="text-lg font-bold bg-gradient-to-r from-gold-400 via-emerald-400 to-teal-300 bg-clip-text text-transparent">Virtu Eterna</h1>
+                        <p class="text-xs text-emerald-300/80 font-medium">Angkatan 28 SMA Ar-Rohmah Putra</p>
+                    </div>
+                </div>
 
-Terima kasih kepada Bapak dan Ibu Guru atas kesabaran, keikhlasan, dan ilmu yang diberikan. Kepada orang tua, terima kasih atas doa serta dukungan tanpa henti.
+                <!-- Desktop Navigation Tabs -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <template x-for="tab in ['beranda', 'galery', 'outfit', 'storyboard', 'leadership', 'members']">
+                        <button @click="currentTab = tab" 
+                            :class="currentTab === tab ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-900/50' : 'text-gray-300 hover:text-white hover:bg-emerald-900/30'"
+                            class="px-4 py-2 rounded-xl text-sm font-semibold capitalize transition-all duration-300">
+                            <span x-text="tab === 'storyboard' ? 'Story Board' : tab"></span>
+                        </button>
+                    </template>
+                </nav>
 
-Untuk teman-teman Veterna, perjalanan kita masih panjang. Mari jaga nama baik almamater, terus melangkah maju, dan bawa setiap kenangan baik ini ke masa depan.
-
-Wassalamu’alaikum Warahmatullahi Wabarakatuh.</p>
-      </article>
-     </div>
-    </section>
-    <section class="bg-[#101b50] py-20">
-     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <p data-template-id="fame-kicker" class="canva-text eyebrow" style="color: rgb(217, 173, 70); font-weight: 700; font-style: normal; font-size: 16px;">Apresiasi Kader</p>
-      <h2 data-template-id="fame-title" class="canva-text serif mt-3 text-4xl font-bold text-white" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 24px;">Hall of Fame</h2>
-      <div id="fame-grid" class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"></div>
-     </div>
-    </section>
-    <section class="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-     <div class="grid gap-7 md:grid-cols-2">
-      <article data-template-id="quran-card" class="canva-card quote-card rounded-2xl p-8 shadow-sm" style="background: rgb(248, 250, 255);">
-       <p data-template-id="quran-reference" class="canva-text font-bold text-[#233686]" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">QS. Ali 'Imran: 103</p>
-       <p data-template-id="quran-text" class="canva-text serif mt-4 text-xl leading-relaxed text-slate-700" style="color: rgb(51, 65, 85); font-weight: 400; font-style: normal; font-size: 16px;">“Dan berpegangteguhlah kamu semuanya pada tali Allah, dan janganlah kamu bercerai-berai.”</p>
-      </article>
-      <article data-template-id="hadith-card" class="canva-card quote-card rounded-2xl p-8 shadow-sm" style="background: rgb(248, 250, 255);">
-       <p data-template-id="hadith-reference" class="canva-text font-bold text-[#233686]" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">HR. Bukhari dan Muslim</p>
-       <p data-template-id="hadith-text" class="canva-text serif mt-4 text-xl leading-relaxed text-slate-700" style="color: rgb(51, 65, 85); font-weight: 400; font-style: normal; font-size: 16px;">“Seorang mukmin bagi mukmin lainnya seperti bangunan yang saling menguatkan.”</p>
-      </article>
-     </div>
-    </section>
-   </section>
-   <section id="gallery" class="page">
-    <section class="bg-[#101b50] px-6 py-20 text-center">
-     <p data-template-id="gallery-kicker" class="canva-text eyebrow" style="color: rgb(217, 173, 70); font-weight: 700; font-style: normal; font-size: 16px;">Arsip Kenangan</p>
-     <h1 data-template-id="gallery-title" class="canva-text serif mt-3 text-5xl font-bold text-white" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Galeri Veterna</h1>
-     <p data-template-id="gallery-description" class="canva-text mx-auto mt-4 max-w-2xl text-blue-100" style="color: rgb(219, 230, 255); font-weight: 400; font-style: normal; font-size: 17px;">Potongan momen, proses, dan kebersamaan yang akan selalu menjadi cerita Virtu Eterna.</p>
-    </section>
-    <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-     <div id="gallery-grid" class="gallery-grid"></div>
-    </section>
-    <section class="bg-[#eef3ff] py-20">
-     <div class="mx-auto grid max-w-6xl items-center gap-10 px-6 md:grid-cols-2 lg:px-8">
-      <div>
-       <p data-template-id="members-only-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Ruang Khusus</p>
-       <h2 data-template-id="members-only-title" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Only Vens</h2>
-       <p data-template-id="members-only-text" class="canva-text mt-5 leading-7 text-slate-600" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 16px;">Ruang ini mengarahkan kader menuju arsip media sosial anggota. Untuk keamanan, password bisa tanya mas Damas.</p><a data-template-id="members-only-button" class="canva-link mt-7 inline-flex rounded-full px-6 py-3 font-bold" href="https://virtueterna28.github.io/v-cloud/" target="_blank" rel="noopener noreferrer" style="background: rgb(35, 54, 134); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Buka Ruang Anggota</a>
-      </div>
-      <div class="photo-card aspect-video">
-       <img data-template-id="members-only-image" loading="lazy" class="canva-image" src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/gallery/foto%20perwakilan%20kelas%20.png?raw=true" alt="Foto kebersamaan angkatan Virtu Eterna">
-      </div>
-     </div>
-    </section>
-    <section class="mx-auto max-w-5xl px-6 py-20 text-center">
-     <p data-template-id="song-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Nada Kebersamaan</p>
-     <h2 data-template-id="song-title" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Lagu Kebanggaan Veterna</h2>
-     <div class="mt-9 flex justify-center gap-5">
-      <img data-template-id="song-image-1" loading="lazy" class="canva-image w-52 rounded-2xl shadow-xl" src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/gallery/foto%20perwakilan%20kelas%20.png?raw=true" alt="Visual lagu kebanggaan Veterna"><img data-template-id="song-image-2" loading="lazy" class="canva-image w-52 rounded-2xl shadow-xl" src="https://i.ibb.co.com/LzkpPmxC/kop-surat-veterna-a4-1.jpg" alt="Visual lagu kebanggaan Veterna kedua">
-     </div>
-    </section>
-   </section>
-   <section id="outfit" class="page">
-    <section class="bg-[#101b50] px-6 py-20 text-center">
-     <p data-template-id="outfit-kicker" class="canva-text eyebrow" style="color: rgb(217, 173, 70); font-weight: 700; font-style: normal; font-size: 16px;">Identitas Berpakaian</p>
-     <h1 data-template-id="outfit-title" class="canva-text serif mt-3 text-5xl font-bold text-white" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Outfit Veterna</h1>
-     <p data-template-id="outfit-description" class="canva-text mt-4 text-blue-100" style="color: rgb(219, 230, 255); font-weight: 400; font-style: normal; font-size: 17px;">Koleksi seragam dan baju kelas yang membawa identitas angkatan dalam setiap aktivitas.</p>
-    </section>
-    <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-     <div id="outfit-list" class="space-y-8"></div>
-    </section>
-   </section>
-   <section id="story" class="page">
-    <section class="bg-[#101b50] px-6 py-20 text-center">
-     <p data-template-id="story-kicker" class="canva-text eyebrow" style="color: rgb(217, 173, 70); font-weight: 700; font-style: normal; font-size: 16px;">Jejak Perjalanan</p>
-     <h1 data-template-id="story-title" class="canva-text serif mt-3 text-5xl font-bold text-white" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Storyboard Veterna</h1>
-     <p data-template-id="story-description" class="canva-text mt-4 text-blue-100" style="color: rgb(219, 230, 255); font-weight: 400; font-style: normal; font-size: 17px;">Menyusuri bab-bab kecil yang merangkai perjalanan besar angkatan XXVIII.</p>
-    </section>
-    <section class="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-     <div id="timeline" class="timeline relative space-y-10"></div>
-    </section>
-   </section>
-   <section id="members" class="page">
-    <section class="bg-[#101b50] px-6 py-20 text-center">
-     <p data-template-id="members-kicker" class="canva-text eyebrow" style="color: rgb(217, 173, 70); font-weight: 700; font-style: normal; font-size: 16px;">Satu Angkatan, Satu Keluarga</p>
-     <h1 data-template-id="members-title" class="canva-text serif mt-3 text-5xl font-bold text-white" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Kader Veterna</h1>
-     <p data-template-id="members-description" class="canva-text mt-4 text-blue-100" style="color: rgb(219, 230, 255); font-weight: 400; font-style: normal; font-size: 17px;">Kenali kader-kader yang bertumbuh bersama dalam perjalanan Virtu Eterna.</p>
-    </section>
-    <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8"><label data-template-id="search-label" class="canva-text mb-2 block font-bold text-[#233686]" for="member-search" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Cari anggota Veterna</label>
-     <div class="relative max-w-xl">
-      <i data-lucide="search" class="absolute left-4 top-3.5 text-slate-400"></i><input id="member-search" data-template-id="search-input" class="canva-input w-full rounded-xl border border-blue-100 py-3 pl-12 pr-4 outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ketik nama kader..." style="color: rgb(100, 116, 139); font-weight: 400; font-style: normal; font-size: 16px;">
-     </div>
-     <p id="member-count" class="mt-5 text-sm font-semibold text-slate-500" aria-live="polite"></p>
-     <div id="member-grid" class="mt-7 grid gap-5 sm:grid-cols-2 lg:grid-cols-4"></div>
-    </section>
-    <section class="bg-[#eef3ff] py-16">
-     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <p data-template-id="distribution-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Peta Kebersamaan</p>
-      <h2 data-template-id="distribution-title" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Sebaran Kader Veterna</h2>
-      <div class="photo-card mt-8 aspect-video">
-       <img data-template-id="distribution-image" loading="lazy" class="canva-image" src="https://i.ibb.co.com/JRCVjfBy/Cuplikan-layar-2025-10-19-161215.png" alt="Visual sebaran kader Veterna">
-      </div>
-     </div>
-    </section>
-    <section class="mx-auto max-w-7xl px-6 py-16 lg:px-8">
-     <p data-template-id="groups-kicker" class="canva-text eyebrow" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Ruang Berkarya</p>
-     <nav aria-label="Kategori Veterna" class="mt-6 flex flex-wrap gap-3"><a data-template-id="groups-nav-organisasi" class="canva-link rounded-full border border-blue-200 px-4 py-2 font-semibold text-[#233686]" href="#organisasi" style="color: rgb(35, 54, 134); font-weight: 600; font-style: normal; font-size: 16px;">Organisasi</a> <a data-template-id="groups-nav-komunitas" class="canva-link rounded-full border border-blue-200 px-4 py-2 font-semibold text-[#233686]" href="#komunitas" style="color: rgb(35, 54, 134); font-weight: 600; font-style: normal; font-size: 16px;">Komunitas</a> <a data-template-id="groups-nav-kelas" class="canva-link rounded-full border border-blue-200 px-4 py-2 font-semibold text-[#233686]" href="#kelas" style="color: rgb(35, 54, 134); font-weight: 600; font-style: normal; font-size: 16px;">Kelas</a> <a data-template-id="groups-nav-kamar" class="canva-link rounded-full border border-blue-200 px-4 py-2 font-semibold text-[#233686]" href="#kamar" style="color: rgb(35, 54, 134); font-weight: 600; font-style: normal; font-size: 16px;">Kamar</a>
-     </nav>
-     <section id="organisasi" class="mt-10">
-      <h2 data-template-id="groups-title-organisasi" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Organisasi</h2>
-      <div id="organisasi-grid" class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-       <article class="overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm">
-        <img src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Kegiatan KOPASTRA" class="aspect-video w-full object-cover">
-        <div class="p-5">
-         <div class="flex items-center gap-3">
-          <img src="https://i.ibb.co.com/QsdhyLv/631525398-17873143623537190-2606139853809085870-n-1.jpg" alt="Logo KOPASTRA" class="h-12 w-12 rounded-full object-cover">
-          <div>
-           <h3 class="font-bold text-[#101b50]">KOPASTRA</h3>
-           <p>Komando Pasukan SMA Ar-Rohmah Putra</p>
-          </div>
-         </div>
-         <p class="mt-4 text-sm leading-6 text-slate-600">denganjghjgjhgjhfjhhhhhhhhhffhfffgggggggggggggggggggggggggggggggggggggghgcg</p>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button @click="mobileMenu = !mobileMenu" class="p-2 rounded-xl text-gray-300 hover:text-white hover:bg-emerald-900/55 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6" x-show="!mobileMenu"></i>
+                        <i data-lucide="x" class="w-6 h-6" x-show="mobileMenu" style="display: none;"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-       </article>
-       <article class="overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm">
-        <img src="https://i.ibb.co.com/nNfQQHH5/Pencinta-Alam-1024x577.jpg" alt="Kegiatan SARPALA" class="aspect-video w-full object-cover">
-        <div class="p-5">
-         <div class="flex items-center gap-3">
-          <img src="https://i.ibb.co.com/4ZFcQr27/logo-SARPALA-KAMUFISA-1.png" alt="Logo SARPALA" class="h-12 w-12 rounded-full object-cover">
-          <div>
-           <h3 class="font-bold text-[#101b50]">SARPALA</h3>
-           <p>Santri Pecinta Alam</p>
-          </div>
-         </div>
-         <p class="mt-4 text-sm leading-6 text-slate-600">denganjghjgjhgjhfjhhhhhhhhhffhfffgggggggggggggggggggggggggggggggggggggghgcg</p>
+
+        <!-- Mobile Dropdown Menu -->
+        <div class="md:hidden glass-card border-t border-emerald-900/50 px-4 pt-2 pb-4 space-y-1" x-show="mobileMenu" style="display: none;" @click.away="mobileMenu = false">
+            <template x-for="tab in ['beranda', 'galery', 'outfit', 'storyboard', 'leadership', 'members']">
+                <button @click="currentTab = tab; mobileMenu = false" 
+                    :class="currentTab === tab ? 'bg-emerald-600 text-white' : 'text-gray-300 hover:bg-emerald-900/30'"
+                    class="w-full text-left px-4 py-3 rounded-xl text-base font-semibold capitalize transition-all">
+                    <span x-text="tab === 'storyboard' ? 'Story Board' : tab"></span>
+                </button>
+            </template>
         </div>
-       </article>
-      </div>
-     </section>
-     <section id="komunitas" class="mt-14">
-      <h2 data-template-id="groups-title-komunitas" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Komunitas</h2>
-      <div id="komunitas-grid" class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
-     </section>
-     <section id="kelas" class="mt-14">
-      <h2 data-template-id="groups-title-kelas" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Kelas</h2>
-      <div id="kelas-grid" class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
-     </section>
-     <section id="kamar" class="mt-14">
-      <h2 data-template-id="groups-title-kamar" class="canva-text section-title mt-3" style="color: rgb(16, 27, 80); font-weight: 700; font-style: normal; font-size: 24px;">Kamar</h2>
-      <div id="kamar-grid" class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3"></div>
-     </section>
+    </header>
+
+    <!-- Hero Section with Image Slider -->
+    <section class="relative pt-24 pb-16 overflow-hidden bg-gradient-to-b from-darkBg via-emerald-950/20 to-darkBg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+            <div class="text-center mb-8" data-aos="fade-down">
+                <span class="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest bg-gold-500/10 text-gold-400 border border-gold-500/30 inline-block mb-4">
+                    Angkatan 28 • 2024 - 2027
+                </span>
+                <p class="text-xl md:text-2xl font-arabic text-emerald-400 font-medium mb-2 tracking-wide">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+                <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-4">
+                    Welcome to <span class="bg-gradient-to-r from-gold-400 via-emerald-400 to-teal-300 bg-clip-text text-transparent">Virtu Eterna</span>
+                </h2>
+                <p class="max-w-2xl mx-auto text-gray-300 text-base sm:text-lg">
+                    Website Resmi Angkatan 28 SMA Pondok Pesantren Ar-Rohmah Putra Malang. Solid, Disiplin, dan Abadi dalam Kebajikan.
+                </p>
+            </div>
+
+            <!-- Image Slider 16:9 -->
+            <div class="relative max-w-5xl mx-auto rounded-3xl overflow-hidden glass-card shadow-2xl border border-emerald-500/20" x-data="{ 
+                activeSlide: 0, 
+                slides: [
+                    { img: 'https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg', title: 'Kader Virtu Eterna 28', desc: 'Kebajikan yang abadi membentuk solidaritas tangguh' },
+                    { img: 'https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg', title: 'Kebersamaan Angkatan', desc: 'Mengarungi perjalanan mulia di Ar-Rohmah Putra Malang' },
+                    { img: 'https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png?raw=true', title: 'Coban Talun Expedition', desc: 'Momen kebersamaan dan petualangan alam angkatan Veterna' }
+                ],
+                init() {
+                    setInterval(() => {
+                        this.activeSlide = (this.activeSlide + 1) % this.slides.length;
+                    }, 5000);
+                }
+            }">
+                <div class="relative aspect-video w-full overflow-hidden">
+                    <template x-for="(slide, index) in slides" :key="index">
+                        <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out" :class="activeSlide === index ? 'opacity-100 z-10' : 'opacity-0 z-0'">
+                            <img :src="slide.img" :alt="slide.title" class="w-full h-full object-cover transform scale-105 transition-transform duration-700" onerror="this.src='https://placehold.co/1280x720/064e3b/ffffff?text=Virtu+Eterna+28'">
+                            <div class="absolute inset-0 bg-gradient-to-t from-darkBg via-darkBg/40 to-transparent flex flex-col justify-end p-6 sm:p-10">
+                                <span class="text-gold-400 font-semibold text-xs uppercase tracking-wider mb-1" x-text="slide.title"></span>
+                                <h3 class="text-xl sm:text-2xl font-bold text-white" x-text="slide.desc"></h3>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <!-- Slider Controls -->
+                <div class="absolute bottom-4 right-4 z-20 flex space-x-2">
+                    <template x-for="(_, index) in slides">
+                        <button @click="activeSlide = index" :class="activeSlide === index ? 'bg-gold-500 w-6' : 'bg-white/50 w-2.5'" class="h-2.5 rounded-full transition-all duration-300"></button>
+                    </template>
+                </div>
+            </div>
+        </div>
     </section>
-   </section>
-  </main>
-  <footer data-template-id="site-footer" class="canva-footer bg-[#101b50] px-6 py-12 text-white" style="background: rgb(16, 27, 80);">
-   <div class="mx-auto flex max-w-7xl flex-col justify-between gap-8 md:flex-row md:items-end">
-    <div>
-     <p data-template-id="footer-title" class="canva-text serif text-2xl font-bold" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Virtu Eterna · XXVIII</p>
-     <p data-template-id="footer-text" class="canva-text mt-2 max-w-lg text-sm leading-6 text-blue-100" style="color: rgb(219, 230, 255); font-weight: 400; font-style: normal; font-size: 14px;">SMA Pondok Pesantren Ar-Rohmah Putra Malang · Angkatan 2024—2027. Kebajikan yang abadi, persaudaraan yang menguatkan.</p>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- ================= TAB A: BERANDA ================= -->
+        <div x-show="currentTab === 'beranda'" class="space-y-20">
+            
+            <!-- 1. Profil Veterna -->
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-emerald-500/20 shadow-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-4">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold">
+                            <i data-lucide="shield-check" class="w-4 h-4"></i>
+                            <span>Profil Angkatan</span>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white">Virtu Eterna (Veterna)</h3>
+                        <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                            Virtu Eterna (Veterna) adalah nama angkatan di SMA Ar-Rohmah Putra yang memiliki ikatan solidaritas yang tinggi dan salah satu angkatan paling disiplin daripada angkatan yang lainnya serta memiliki tujuan yang abadi.
+                        </p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-emerald-500/30 aspect-video w-full">
+                            <img src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Profil Veterna" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x450/064e3b/ffffff?text=Kader+Veterna'">
+                        </div>
+                        <span class="mt-3 text-sm font-semibold text-gold-400 tracking-wider">seluruh kader veterna</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Logo Veterna -->
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-emerald-500/20 shadow-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-4">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 text-xs font-semibold">
+                            <i data-lucide="award" class="w-4 h-4"></i>
+                            <span>Filosofi Logo</span>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white">Makna Logo Veterna</h3>
+                        <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                            Logo Veterna mengambil referensi dari makna “Virtu Eterna” yakni kebajikan yang abadi, sehingga menjadikan angkatan yang solid dan kokoh dalam menghadapi tantangan. Terinspirasi pula dari bintang segitiga berwarna keemasan di dalam lingkaran biru yang melambangkan keteguhan dan kejayaan.
+                        </p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-blue-500/30 aspect-video w-full bg-blue-950/40 flex items-center justify-center p-4">
+                            <img src="https://i.ibb.co.com/Kzsn6L9n/Untitled-design.jpg" alt="Logo Veterna" class="max-h-full object-contain hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x450/1e3a8a/ffffff?text=Logo+Bintang+Biru'">
+                        </div>
+                        <span class="mt-3 text-sm font-semibold text-blue-400 tracking-wider">bintang biru</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Maskot Veterna -->
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-emerald-500/20 shadow-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="flex flex-col items-center order-2 lg:order-1">
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-emerald-500/30 aspect-square sm:aspect-video w-full bg-emerald-950/20 flex items-center justify-center p-4">
+                            <img src="https://i.ibb.co.com/qYLDsMps/XXVIII.png" alt="Maskot Veterna" class="max-h-full object-contain hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x450/064e3b/ffffff?text=Burung+Hantu+Putih'">
+                        </div>
+                        <span class="mt-3 text-sm font-semibold text-emerald-400 tracking-wider">burung hantu putih</span>
+                    </div>
+                    <div class="space-y-4 order-1 lg:order-2">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-gold-500/10 text-gold-400 text-xs font-semibold">
+                            <i data-lucide="feather" class="w-4 h-4"></i>
+                            <span>Maskot Angkatan</span>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white">Burung Hantu Putih (XXVIII)</h3>
+                        <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                            Maskot Veterna melambangkan kebijaksanaan, ketajaman penglihatan dalam membaca situasi, ketenangan, serta kewibawaan angkatan ke-28 dalam mengarungi masa pendidikan di Ar-Rohmah Putra.
+                        </p>
+                        <div class="pt-2">
+                            <a href="#3dmodel" @click.prevent="alert('Fitur 3D Model View Maskot Veterna akan segera hadir!')" class="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-gradient-to-r from-gold-500 to-amber-600 text-darkBg font-bold text-sm shadow-lg shadow-gold-500/30 hover:opacity-95 transition-all">
+                                <i data-lucide="box" class="w-5 h-5"></i>
+                                <span>3D Model View</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Sambutan Ketua Angkatan -->
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-emerald-500/20 shadow-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                    <div class="flex flex-col items-center">
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-emerald-500/30 aspect-square w-full max-w-[280px]">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/IMG-20260323-WA0007%20-%20Dzaky%20Ammar.jpg?raw=true" alt="Abhipraya Damas Okta Ardana" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/064e3b/ffffff?text=Ketua+Angkatan'">
+                        </div>
+                        <span class="mt-3 text-base font-bold text-white">Muhammad Dzaky Ammar</span>
+                        <span class="text-xs text-emerald-400 font-medium">Ketua Angkatan Veterna 28</span>
+                        <a href="https://www.instagram.com/dzakmarr/" target="_blank" class="mt-3 inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-pink-600/20 text-pink-400 border border-pink-500/30 text-xs font-semibold hover:bg-pink-600/30 transition-all">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                            <span>@dzakmarr</span>
+                        </a>
+                    </div>
+                    <div class="lg:col-span-2 space-y-4">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold">
+                            <i data-lucide="mic" class="w-4 h-4"></i>
+                            <span>Sambutan Ketua Angkatan</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Pesan & Kesan Perjalanan Bersama</h3>
+                        <div class="text-gray-300 text-sm sm:text-base space-y-3 leading-relaxed max-h-[350px] overflow-y-auto pr-2">
+                            <p>Assalamu’alaikum Warahmatullahi Wabarakatuh,<br>Selamat pagi/siang, salam sejahtera untuk kita semua, Syalom, Om Swastiastu, Namo Buddhaya, Salam Kebajikan.</p>
+                            <p>Puji syukur kita panjatkan ke hadirat Allah SWT, karena atas rahmat-Nya kita dapat berkumpul hari ini dalam keadaan sehat walafat...</p>
+                            <p>Tidak terasa tiga tahun sudah kita bersama-sama menimba ilmu di sekolah tercinta ini. Rasanya baru kemarin kita memakai seragam putih abu-abu untuk pertama kalinya, berkenalan dengan rasa gugup, dan mulai merajut mimpi di aula ini. Selama tiga tahun ini, kita sudah melalui banyak hal bersama. Mulai dari tugas menumpuk, ujian yang melelahkan, hingga tawa canda di jam istirahat.</p>
+                            <p>Saya mewakili seluruh teman-teman angkatan Veterna ingin mengucapkan terima kasih yang sebesar-besarnya kepada Bapak dan Ibu Guru atas kesabaran, keikhlasan, dan ilmu yang luar biasa. Kepada orang tua kami tercinta, terima kasih atas doa dan dukungan tanpa henti.</p>
+                            <p>Dan untuk teman-temanku, perpisahan ini bukanlah akhir dari segalanya. Mari kita jaga nama baik almamater dan terus melangkah maju membawa kenangan indah masa SMA. Mohon maaf atas segala kesalahan dan kekhilafan. Sukses selalu untuk kita semua!</p>
+                            <p class="font-semibold text-emerald-400">Wabillahi taufiq wal hidayah, Wassalamu’alaikum Warahmatullahi Wabarakatuh.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Sambutan Koordinator Website -->
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-emerald-500/20 shadow-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                    <div class="flex flex-col items-center">
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-emerald-500/30 aspect-square w-full max-w-[280px]">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/damas.jpeg?raw=true" alt="Muhammad Dzaky Ammar" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/064e3b/ffffff?text=Koordinator+Web'">
+                        </div>
+                        <span class="mt-3 text-base font-bold text-white">Abhipraya Damas Okta Ardana</span>
+                        <span class="text-xs text-emerald-400 font-medium">Koordinator Website Angkatan</span>
+                        <a href="https://www.instagram.com/rayfin_cruise/" target="_blank" class="mt-3 inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-pink-600/20 text-pink-400 border border-pink-500/30 text-xs font-semibold hover:bg-pink-600/30 transition-all">
+                            <i data-lucide="instagram" class="w-4 h-4"></i>
+                            <span>@rayfin_cruise</span>
+                        </a>
+                        <a href="https://virtueterna28.github.io/developerwebveterna/" target="_blank" class="mt-2 inline-flex items-center space-x-2 px-4 py-2 rounded-xl bg-emerald-600/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold hover:bg-emerald-600/30 transition-all">
+                            <i data-lucide="code" class="w-4 h-4"></i>
+                            <span>biodata web developer</span>
+                    </div>
+                    <div class="lg:col-span-2 space-y-4">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold">
+                            <i data-lucide="code-2" class="w-4 h-4"></i>
+                            <span>Sambutan Koordinator Website</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Membangun Jembatan Digital Ukhuwah Veterna</h3>
+                        <div class="text-gray-300 text-sm sm:text-base space-y-3 leading-relaxed max-h-[350px] overflow-y-auto pr-2">
+                            <p>Assalamu’alaikum Warahmatullahi Wabarakatuh.<br>Alhamdulillahirabbil ‘alamin, washalatu wasalamu ‘ala asyrafil anbiya’i wal mursalin, wa ‘ala alihi washabihi ajma’in. Amma ba'du.</p>
+                            <p>Yang kami hormati, Pimpinan Pondok Pesantren Ar-Rohmah Putra beserta jajaran asatidz dan keluarga besar Angkatan Veterna.</p>
+                            <p>Berdirinya saya di sini mewakili tim pengembang, ingin menyampaikan rasa syukur dan terima kasih yang tak terhingga atas rampungnya proyek digital ini. Membangun sebuah ruang digital yang merepresentasikan identitas, kreativitas visual, dan rekam jejak kebaikan angkatan bukanlah hal yang mudah tanpa dukungan segenap asatidz dan teman-teman.</p>
+                            <p>Layar digital ini adalah etalase ukhuwah kita; sebuah karya dari kita, oleh kita, dan untuk kenangan kita bersama di Ar-Rohmah Putra tercinta. Semoga Allah SWT mencatat ikhtiar kecil ini sebagai amal jariyah.</p>
+                            <p class="font-semibold text-emerald-400">Nasrun minallah wa fathun qariib. Wassalamu’alaikum Warahmatullahi Wabarakatuh.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Hall of Fame & Social Media -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Hall of Fame -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border border-emerald-500/20 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-gold-500/10 text-gold-400 text-xs font-semibold mb-4">
+                            <i data-lucide="trophy" class="w-4 h-4"></i>
+                            <span>Prestasi & Rekognisi</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-2">Hall of Fame Santri</h3>
+                        <p class="text-gray-300 text-sm mb-6">
+                            Jelajahi berbagai pencapaian gemilang, prestasi akademik, dan apresiasi santri Veterna dalam kancah nasional maupun internasional.
+                        </p>
+                    </div>
+                    <a href="https://www.msn.com/id-id?ocid=wispr&pc=u477&AR=2" target="_blank" class="inline-flex items-center justify-center space-x-2 w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-sm shadow-lg shadow-emerald-900/50 hover:opacity-95 transition-all">
+                        <span>Lihat Prestasi Santri</span>
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Social Media -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border border-emerald-500/20 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold mb-4">
+                            <i data-lucide="share-2" class="w-4 h-4"></i>
+                            <span>Official Channels</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-4">Media Sosial Veterna</h3>
+                        <div class="grid grid-cols-3 gap-4">
+                            <!-- Instagram -->
+                            <a href="https://www.instagram.com/veterna28/" target="_blank" class="flex flex-col items-center p-3 rounded-2xl bg-emerald-950/40 border border-emerald-500/20 hover:border-emerald-500 transition-all group">
+                                <img src="https://i.ibb.co.com/SXfnj442/ig.png" alt="Instagram" class="w-10 h-10 object-contain mb-2 group-hover:scale-110 transition-transform" onerror="this.src='https://placehold.co/40x400/064e3b/ffffff?text=IG'">
+                                <span class="text-xs font-medium text-gray-300">Instagram</span>
+                            </a>
+                            <!-- TikTok -->
+                            <a href="https://www.tiktok.com/@smaarrohmahputra" target="_blank" class="flex flex-col items-center p-3 rounded-2xl bg-emerald-950/40 border border-emerald-500/20 hover:border-emerald-500 transition-all group">
+                                <img src="https://i.ibb.co.com/rRsMT240/tiktok.png" alt="Tiktok" class="w-10 h-10 object-contain mb-2 group-hover:scale-110 transition-transform" onerror="this.src='https://placehold.co/40x400/064e3b/ffffff?text=TikTok'">
+                                <span class="text-xs font-medium text-gray-300">TikTok</span>
+                            </a>
+                            <!-- YouTube -->
+                            <a href="https://www.youtube.com/@smaartramalang" target="_blank" class="flex flex-col items-center p-3 rounded-2xl bg-emerald-950/40 border border-emerald-500/20 hover:border-emerald-500 transition-all group">
+                                <img src="https://i.ibb.co.com/tMrZjRZx/yt.png" alt="Youtube" class="w-10 h-10 object-contain mb-2 group-hover:scale-110 transition-transform" onerror="this.src='https://placehold.co/40x400/064e3b/ffffff?text=YT'">
+                                <span class="text-xs font-medium text-gray-300">YouTube</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-6 text-xs text-gray-400 text-center">
+                        Ikuti terus perkembangan dan dokumentasi kegiatan kami!
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= TAB B: GALERY ================= -->
+        <div x-show="currentTab === 'galery'" class="space-y-16" style="display: none;">
+            <!-- Gallery Header -->
+            <div class="text-center space-y-3">
+                <span class="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 inline-block">
+                    Dokumentasi Visual
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Galeri Angkatan Veterna</h2>
+                <p class="text-gray-300 max-w-xl mx-auto text-sm">Kumpulan 50+ momen berharga yang diabadikan dalam berbagai rasio (16:9, 1:1, 9:16) selama masa perjuangan di Ar-Rohmah.</p>
+            </div>
+
+            <!-- 1. Galery Veterna (50 Random Photos Grid) -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <template x-for="i in 50">
+                    <div class="glass-card rounded-2xl overflow-hidden shadow-lg border border-emerald-500/20 group cursor-pointer relative aspect-[1/1] hover:scale-[1.02] transition-all"
+                         @click="modalOpen = true; modalType = 'image'; modalImg = i % 3 === 0 ? 'https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg' : (i % 2 === 0 ? 'https://raw.githubusercontent.com/virtueterna28/web/refs/heads/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png' : 'https://raw.githubusercontent.com/virtueterna28/GPH/refs/heads/main/foto/DSC04162.jpg'); modalTitle = 'Dokumentasi Veterna #' + i; modalDesc = 'Momen kebersamaan kader Veterna 28 dalam kegiatan angkatan.'">
+                        <img :src="i % 3 === 0 ? 'https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg' : (i % 2 === 0 ? 'https://raw.githubusercontent.com/virtueterna28/web/refs/heads/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png' : 'https://raw.githubusercontent.com/virtueterna28/GPH/refs/heads/main/foto/DSC04162.jpg')" 
+                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                             onerror="this.src='https://placehold.co/400x400/064e3b/ffffff?text=Veterna+28'" alt="Gallery Item">
+                        <div class="absolute inset-0 bg-gradient-to-t from-darkBg/80 via-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-3">
+                            <span class="text-xs font-semibold text-white">Foto #<span x-text="i"></span></span>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <!-- 2. Only Vens Section -->
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-emerald-500/20 shadow-xl">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-4">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-gold-500/10 text-gold-400 text-xs font-semibold">
+                            <i data-lucide="cloud" class="w-4 h-4"></i>
+                            <span>V-Cloud & Eksklusif</span>
+                        </div>
+                        <h3 class="text-2xl sm:text-3xl font-bold text-white">Only Vens Cloud Archive</h3>
+                        <p class="text-gray-300 leading-relaxed text-sm sm:text-base">
+                            Akses penyimpanan awan eksklusif khusus keluarga besar Veterna. Temukan arsip video lengkap, rekaman kegiatan, dan galeri beresolusi tinggi di portal khusus Only Vens.
+                        </p>
+                        <div>
+                            <a href="https://virtueterna28.github.io/v-cloud/" target="_blank" class="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-sm shadow-lg shadow-emerald-900/50 hover:opacity-95 transition-all">
+                                <span>Lanjutkan ke Only Vens</span>
+                                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-emerald-500/30 aspect-video w-full">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/gallery/foto%20perwakilan%20kelas%20.png?raw=true" alt="Only Vens Perwakilan Kelas" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x450/064e3b/ffffff?text=Only+Vens'">
+                        </div>
+                        <span class="mt-3 text-sm font-semibold text-emerald-400 tracking-wider">perwakilan kelas veterna</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= TAB C: OUTFIT ================= -->
+        <div x-show="currentTab === 'outfit'" class="space-y-16" style="display: none;">
+            <div class="text-center space-y-3">
+                <span class="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 inline-block">
+                    Identitas & Seragam
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Outfit & Atribut Veterna</h2>
+                <p class="text-gray-300 max-w-xl mx-auto text-sm">Menampilkan ragam seragam, baju angkatan, seragam harian, hingga pakaian khusus kelas peminatan.</p>
+            </div>
+
+            <!-- Outfit List -->
+            <div class="space-y-12">
+                
+                <!-- 1. Baju Veterna -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border border-emerald-500/20 shadow-xl">
+                    <h3 class="text-xl font-bold text-gold-400 mb-6 text-center">1. Baju Kebanggaan Veterna</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                        <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                            <img src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Baju Veterna Kiri" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Veterna+Left'">
+                        </div>
+                        <div class="text-center space-y-3 px-2">
+                            <h4 class="text-lg font-bold text-white">Seragam Angkatan Veterna 28</h4>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                                Simbol kebersamaan dan identitas pemersatu seluruh kader Veterna di lingkungan Pondok Pesantren Ar-Rohmah Putra Malang. Dipakai dalam momen-momen penting keanggotan.
+                            </p>
+                        </div>
+                        <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                            <img src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Baju Veterna Kanan" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Veterna+Right'">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. Seragam Sekolah -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border border-emerald-500/20 shadow-xl">
+                    <h3 class="text-xl font-bold text-gold-400 mb-6 text-center">2. Seragam Harian Sekolah</h3>
+                    <div class="space-y-8">
+                        <!-- Senin-Selasa -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center border-b border-gray-700/50 pb-6">
+                            <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                                <img src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Senin-Selasa Kiri" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Senin-Selasa'">
+                            </div>
+                            <div class="text-center space-y-2 px-2">
+                                <h4 class="text-lg font-bold text-white">Seragam Senin - Selasa</h4>
+                                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                                    Seragam resmi upacara dan KBM awal pekan, mencerminkan kedisiplinan dan kerapian santri.
+                                </p>
+                            </div>
+                            <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                                <img src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Senin-Selasa Kanan" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Senin-Selasa'">
+                            </div>
+                        </div>
+                        <!-- Rabu-Kamis -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center border-b border-gray-700/50 pb-6">
+                            <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                                <img src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Rabu-Kamis Kiri" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Rabu-Kamis'">
+                            </div>
+                            <div class="text-center space-y-2 px-2">
+                                <h4 class="text-lg font-bold text-white">Seragam Rabu - Kamis</h4>
+                                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                                    Seragam KBM lanjutan dengan atribut lengkap pondok pesantren.
+                                </p>
+                            </div>
+                            <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                                <img src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Rabu-Kamis Kanan" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Rabu-Kamis'">
+                            </div>
+                        </div>
+                        <!-- Jumat -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center border-b border-gray-700/50 pb-6">
+                            <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                                <img src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Jumat Kiri" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Jumat+Muslim'">
+                            </div>
+                            <div class="text-center space-y-2 px-2">
+                                <h4 class="text-lg font-bold text-white">Seragam Jumat (Busana Muslim)</h4>
+                                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                                    Busana muslim sarung dan koko untuk menyemarakkan hari Jumat barokah di masjid pesantren.
+                                </p>
+                            </div>
+                            <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                                <img src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Jumat Kanan" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Jumat+Muslim'">
+                            </div>
+                        </div>
+                        <!-- Sabtu -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                            <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                                <img src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Sabtu Kiri" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Pramuka'">
+                            </div>
+                            <div class="text-center space-y-2 px-2">
+                                <h4 class="text-lg font-bold text-white">Seragam Sabtu (Pramuka)</h4>
+                                <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                                    Pakaian seragam kepramukaan untuk kegiatan ekstrakurikuler wajib dan pembinaan kedisiplinan akhir pekan.
+                                </p>
+                            </div>
+                            <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                                <img src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Sabtu Kanan" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Pramuka'">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Baju Kelas (Engineering, Agrobisnis, Medical, Kedinasan, Humanities) -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border border-emerald-500/20 shadow-xl space-y-12">
+                    <h3 class="text-xl font-bold text-gold-400 text-center">3. Baju Kelas Peminatan</h3>
+
+                    <!-- Kelas Engineering -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center border-b border-gray-700/50 pb-8">
+                        <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/baju%20%20ENGINEERING.jpg?raw=true" alt="Baju Engineering Kiri" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Engineering+1'">
+                        </div>
+                        <div class="text-center space-y-3 px-2">
+                            <h4 class="text-lg font-bold text-white">Kelas Engineering</h4>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                                Sebuah kelas berisi pikiran-pikiran muda yang belajar untuk melihat melampaui hal yang tampak jelas, mempertanyakan apa yang sudah ada, dan mengubah ide menjadi sesuatu yang berhasil. Melalui perhitungan, eksperimen, kegagalan, dan upaya yang tak terhitung jumlahnya, bab ini mengajarkan kita bahwa teknik bukan hanya tentang menemukan jawaban tetapi menemukan cara yang lebih baik untuk membangunnya.
+                            </p>
+                        </div>
+                        <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/Baju%20ENGINEERING%20utama.jpg?raw=true" alt="Baju Engineering Kanan" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Engineering+Utama'">
+                        </div>
+                    </div>
+
+                    <!-- Kelas Agrobisnis -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center border-b border-gray-700/50 pb-8">
+                        <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/baju%20agrobisnis.jpg?raw=true" alt="Baju Agrobisnis Kiri" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Agrobisnis+1'">
+                        </div>
+                        <div class="text-center space-y-3 px-2">
+                            <h4 class="text-lg font-bold text-white">Kelas Agrobisnis</h4>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                                Sebuah kelas berisi anak-anak muda yang belajar melihat pertanian lebih dari sekadar ladang, di mana ide bertemu sumber daya, produksi bertemu peluang, dan setiap panen membawa kisahnya sendiri. Melalui pelajaran, eksperimen, dan segala sesuatu di antaranya, bab ini mengajarkan kita bahwa menumbuhkan sesuatu membutuhkan lebih dari sekadar kesabaran. Dibutuhkan visi, ketekunan, dan kemauan untuk memulai dari nol.
+                            </p>
+                        </div>
+                        <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/Baju%20Agrobisnis%20utama.jpg?raw=true" alt="Baju Agrobisnis Kanan" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Agrobisnis+Utama'">
+                        </div>
+                    </div>
+
+                    <!-- Kelas Medical -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center border-b border-gray-700/50 pb-8">
+                        <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/Baju%20Medical.jpg?raw=true" alt="Baju Medical Kiri" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Medical+1'">
+                        </div>
+                        <div class="text-center space-y-3 px-2">
+                            <h4 class="text-lg font-bold text-white">Kelas Medical</h4>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                                Sekelompok anak muda yang belajar untuk melihat lebih dekat, berpikir lebih dalam, dan memikul tanggung jawab atas sesuatu yang lebih besar dari diri mereka sendiri. Di antara hari-hari yang panjang, istilah-istilah yang asing, dan ambisi untuk suatu hari nanti merawat orang lain, seragam ini menjadi bagian dari proses, pengingat yang tenang tentang di mana perjalanan dimulai.
+                            </p>
+                        </div>
+                        <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/Baju%20medical%20utama.jpg?raw=true" alt="Baju Medical Kanan" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Medical+Utama'">
+                        </div>
+                    </div>
+
+                    <!-- Kelas Kedinasan / PTK -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center border-b border-gray-700/50 pb-8">
+                        <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/baju%20PTK.jpg?raw=true" alt="Baju Kedinasan Kiri" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Kedinasan+1'">
+                        </div>
+                        <div class="text-center space-y-3 px-2">
+                            <h4 class="text-lg font-bold text-white">Kelas Kedinasan (PTK)</h4>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                                Sekelompok anak muda yang belajar untuk menjunjung disiplin, bertanggung jawab, dan memikul beban yang menyertai pengabdian kepada sesama. Karakter yang berbeda, satu seragam, dan babak bersama yang mengajarkan kita lebih dari sekadar berdiri dalam formasi.
+                            </p>
+                        </div>
+                        <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/baju%20PTK%20utama.jpg?raw=true" alt="Baju Kedinasan Kanan" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Kedinasan+Utama'">
+                        </div>
+                    </div>
+
+                    <!-- Kelas Humanities -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                        <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/Baju%20Humanities%20utama.jpg?raw=true" alt="Baju Humanities Kiri" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Humanities+1'">
+                        </div>
+                        <div class="text-center space-y-3 px-2">
+                            <h4 class="text-lg font-bold text-white">Kelas Humanities</h4>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed">
+                                Kelas yang terdiri dari pikiran kritis, jiwa yang ingin tahu, dan orang-orang yang belajar untuk melihat melampaui apa yang diberikan begitu saja. Beberapa bertanya, beberapa berdebat, beberapa mengamati, dan entah bagaimana, kami tumbuh melalui semua itu.
+                            </p>
+                        </div>
+                        <div class="aspect-[3/4] rounded-2xl overflow-hidden border border-emerald-500/30 shadow-lg">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/Baju%20humanities.jpg?raw=true" alt="Baju Humanities Kanan" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x800/064e3b/ffffff?text=Humanities+Utama'">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= TAB D: STORY BOARD ================= -->
+        <div x-show="currentTab === 'storyboard'" class="space-y-16" style="display: none;">
+            <div class="text-center space-y-3">
+                <span class="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 inline-block">
+                    Jejak Perjuangan
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Story Board Angkatan 28</h2>
+                <p class="text-gray-300 max-w-xl mx-auto text-sm">Kronologi lini masa dari awal mula Mastasis hingga Puncak Wisuda perjalanan Veterna.</p>
+            </div>
+
+            <!-- Milestones Vertical Timeline with Alternating Layout -->
+            <div class="relative space-y-12 before:absolute before:inset-0 before:left-1/2 before:-translate-x-1/2 before:w-0.5 before:bg-emerald-500/30 hidden lg:block">
+                
+                <!-- 1. Mastasis -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="text-right space-y-3 pr-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 01</span>
+                        <h3 class="text-2xl font-bold text-white">Mastasis</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Inilah momen pertama kita saling mengenal, bercengkrama, dan membentuk persahabatan awal dengan mengikuti segala kegiatan mastasis yang seru dan menyenangkan.</p>
+                        <div class="flex justify-end gap-2 pt-1">
+                            <a href="https://www.instagram.com/p/C9wUmXQS7qG/?img_index=9" target="_blank" class="px-3 py-1.5 rounded-xl bg-pink-600/20 text-pink-400 border border-pink-500/30 text-xs font-semibold hover:bg-pink-600/30">IG Video 1</a>
+                            <a href="https://www.instagram.com/p/C9zSZogyYHJ/?img_index=1" target="_blank" class="px-3 py-1.5 rounded-xl bg-pink-600/20 text-pink-400 border border-pink-500/30 text-xs font-semibold hover:bg-pink-600/30">IG Video 2</a>
+                        </div>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">1</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video">
+                            <img src="https://raw.githubusercontent.com/virtueterna28/web/refs/heads/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/064e3b/ffffff?text=Mastasis'">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. LKBB Boarschar 28 -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="relative pr-8 text-right">
+                        <div class="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">2</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video ml-auto">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Story%20board/Cuplikan%20layar%202026-10-07%20072728.png?raw=true" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/064e3b/ffffff?text=LKBB'">
+                        </div>
+                    </div>
+                    <div class="space-y-3 pl-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 02</span>
+                        <h3 class="text-2xl font-bold text-white">LKBB Boarschar 28</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Lomba Keterampilan Baris-Berbaris (LKBB) yang menjadi ajang pembuktian kedisiplinan, kekompakan, dan ketangkasan fisik serta mental santri angkatan Veterna.</p>
+                        <div>
+                            <a href="https://www.youtube.com/watch?v=J4UHYh5JrQE" target="_blank" class="px-3 py-1.5 rounded-xl bg-red-600/20 text-red-400 border border-red-500/30 text-xs font-semibold hover:bg-red-600/30 inline-flex items-center space-x-1">
+                                <i data-lucide="youtube" class="w-4 h-4"></i><span>YouTube Video</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. Fanfest Boarschar 28 2024 -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="text-right space-y-3 pr-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 03</span>
+                        <h3 class="text-2xl font-bold text-white">Fanfest Boarschar 28 2024</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Pergelaran seni teater megah tahunan yang dipimpin oleh Yanto, menampilkan bakat, kreativitas, seni pertunjukan, dan kerja sama tim angkatan.</p>
+                        <div>
+                            <a href="https://www.instagram.com/p/DBO16bZSFpP/" target="_blank" class="px-3 py-1.5 rounded-xl bg-pink-600/20 text-pink-400 border border-pink-500/30 text-xs font-semibold inline-flex items-center space-x-1">
+                                <i data-lucide="instagram" class="w-4 h-4"></i><span>IG Reel</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">3</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video bg-emerald-950/40 flex items-center justify-center">
+                            <span class="text-xs text-gray-400">Fanfest 2024 Ar-Rohmah</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. Study Tour Universitas Brawijaya -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="relative pr-8 text-right">
+                        <div class="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">4</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video ml-auto">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Story%20board/IMG_3368.jpg?raw=true" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/064e3b/ffffff?text=Study+Tour+UB'">
+                        </div>
+                    </div>
+                    <div class="space-y-3 pl-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 04</span>
+                        <h3 class="text-2xl font-bold text-white">Study Tour Universitas Brawijaya</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Kunjungan edukatif ke Universitas Brawijaya fakultas kedokteran untuk wawasan kampus dan orientasi dunia perkuliahan bagi santri Veterna.</p>
+                    </div>
+                </div>
+
+                <!-- 5. Jatim Park 1 -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="text-right space-y-3 pr-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 05</span>
+                        <h3 class="text-2xl font-bold text-white">Jatim Park 1</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Kegiatan rekreasi dan edukasi outdoor angkatan Veterna di Jatim Park 1 untuk menyegarkan pikiran dan mempererat kebersamaan setelah studi kampus.</p>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">5</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Story%20board/IMG_3579.jpg?raw=true" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/064e3b/ffffff?text=Jatim+Park+1'">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. Bukber Veterna 2025 -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="relative pr-8 text-right">
+                        <div class="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">6</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video bg-emerald-950/40 flex items-center justify-center ml-auto">
+                            <span class="text-xs text-gray-400">Bukber Veterna 2025</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3 pl-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 06</span>
+                        <h3 class="text-2xl font-bold text-white">Bukber Veterna 2025</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Momen buka puasa bersama seluruh santri angkatan Veterna di bulan Ramadan 2025, memperkuat ukhuwah dan berbagi kehangatan.</p>
+                    </div>
+                </div>
+
+                <!-- 7. Pemilu GPH Veterna -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="text-right space-y-3 pr-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 07</span>
+                        <h3 class="text-2xl font-bold text-white">Pemilu GPH Veterna</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Pesta demokrasi calon anggota Veterna untuk memilih ketua dan jajaran pengurus GPH, melatih jiwa kepemimpinan yang demokratis.</p>
+                        <div>
+                            <a href="https://www.instagram.com/p/DQd_et7CTEZ/" target="_blank" class="px-3 py-1.5 rounded-xl bg-pink-600/20 text-pink-400 border border-pink-500/30 text-xs font-semibold inline-flex items-center space-x-1">
+                                <i data-lucide="instagram" class="w-4 h-4"><span>IG Post</span></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">7</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video bg-emerald-950/40 flex items-center justify-center">
+                            <span class="text-xs text-gray-400">Pemilu GPH</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 8. Fanfest Veterna 2026 awal -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="relative pr-8 text-right">
+                        <div class="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">8</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video ml-auto">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Story%20board/Screenshot_20260106-164429.jpg?raw=true" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/064e3b/ffffff?text=Fanfest+2026'">
+                        </div>
+                    </div>
+                    <div class="space-y-3 pl-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 08</span>
+                        <h3 class="text-2xl font-bold text-white">Fanfest Veterna 2026 Awal</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Pagelaran drama musikal politik berjudul "Manusia Setengah Dewa" yang disutradarai oleh Arya, menjadi drama terkeren dan ternewah di Ar-Rohmah Putra.</p>
+                        <div>
+                            <a href="https://www.youtube.com/watch?v=-SbIxd6Xfng" target="_blank" class="px-3 py-1.5 rounded-xl bg-red-600/20 text-red-400 border border-red-500/30 text-xs font-semibold inline-flex items-center space-x-1">
+                                <i data-lucide="youtube" class="w-4 h-4"></i><span>YouTube Video</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9. Veter Tour Semarang Jogja -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="text-right space-y-3 pr-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 09</span>
+                        <h3 class="text-2xl font-bold text-white">Veter Tour Semarang Jogja</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Perjalanan wisata dan napak tilas kebersamaan khusus angkatan Veterna mengeksplorasi destinasi menarik sebelum ujian akhir.</p>
+                        <div>
+                            <a href="https://www.instagram.com/p/DVAuUSvD12y/" target="_blank" class="px-3 py-1.5 rounded-xl bg-pink-600/20 text-pink-400 border border-pink-500/30 text-xs font-semibold inline-flex items-center space-x-1">
+                                <i data-lucide="instagram" class="w-4 h-4"></i><span>IG Reel</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">9</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video bg-emerald-950/40 flex items-center justify-center">
+                            <span class="text-xs text-gray-400">Veter Tour Semarang Jogja</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10. Iktikaf dan Bukber Veterna 2026 -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="relative pr-8 text-right">
+                        <div class="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">10</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video bg-emerald-950/40 flex items-center justify-center ml-auto">
+                            <span class="text-xs text-gray-400">Iktikaf & Bukber 2026</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3 pl-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 10</span>
+                        <h3 class="text-2xl font-bold text-white">Iktikaf & Bukber Veterna 2026</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Acara buka puasa bersama angkatan Veterna di tahun 2026 yang penuh kehangatan, mempererat kekeluargaan menjelang akhir masa santri.</p>
+                        <div>
+                            <a href="https://www.instagram.com/p/DVWABzEj0x2/" target="_blank" class="px-3 py-1.5 rounded-xl bg-pink-600/20 text-pink-400 border border-pink-500/30 text-xs font-semibold inline-flex items-center space-x-1">
+                                <i data-lucide="instagram" class="w-4 h-4"></i><span>IG Post</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11. Shiru -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="text-right space-y-3 pr-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 11</span>
+                        <h3 class="text-2xl font-bold text-white">Shiru</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Kegiatan rutin angkatan setiap 2 minggu sekali dengan berkumpul di lapangan futsal SMA membentuk lingkaran untuk push up bersama guna meningkatkan solidaritas.</p>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">11</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video">
+                            <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Story%20board/IMG-20260215-WA0046.jpg?raw=true" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/064e3b/ffffff?text=Shiru'">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 12. PDPH -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="relative pr-8 text-right">
+                        <div class="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">12</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video bg-emerald-950/40 flex items-center justify-center ml-auto">
+                            <span class="text-xs text-gray-400">PDPH</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3 pl-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 12</span>
+                        <h3 class="text-2xl font-bold text-white">PDPH</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Praktik Dakwah Pandu Hidayatullah (PDPH) yang dirancang untuk membekali santri Veterna dengan keterampilan kepemimpinan dan kesiapan mental mengabdi.</p>
+                        <div>
+                            <a href="https://www.instagram.com/p/DYY8phIzEvP/" target="_blank" class="px-3 py-1.5 rounded-xl bg-pink-600/20 text-pink-400 border border-pink-500/30 text-xs font-semibold inline-flex items-center space-x-1">
+                                <i data-lucide="instagram" class="w-4 h-4"></i><span>IG Post</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 13. TKA Veterna -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="text-right space-y-3 pr-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 13</span>
+                        <h3 class="text-2xl font-bold text-white">TKA Veterna</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Tes Kemampuan Akademik (TKA) / Try Out khusus angkatan Veterna sebagai bentuk pemetaan kemampuan akademik dalam menghadapi ujian sekolah dan PTN.</p>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">13</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video bg-emerald-950/40 flex items-center justify-center">
+                            <span class="text-xs text-gray-400">TKA Veterna</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 14. Fanfest 2026 -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="relative pr-8 text-right">
+                        <div class="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">14</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video bg-emerald-950/40 flex items-center justify-center ml-auto">
+                            <span class="text-xs text-gray-400">Fanfest 2026</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3 pl-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 14</span>
+                        <h3 class="text-2xl font-bold text-white">Fanfest 2026</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Puncak pergelaran panggung gembira dan mahakarya terbesar angkatan Veterna menampilkan kolaborasi seni dan pertunjukan kolosal.</p>
+                    </div>
+                </div>
+
+                <!-- 15. Veter Tour Surabaya -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="text-right space-y-3 pr-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 15</span>
+                        <h3 class="text-2xl font-bold text-white">Veter Tour Surabaya</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Perjalanan wisata dan napak tilas kebersamaan khusus angkatan Veterna mengeksplorasi destinasi menarik di Surabaya.</p>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">15</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video bg-emerald-950/40 flex items-center justify-center">
+                            <span class="text-xs text-gray-400">Veter Tour Surabaya</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 16. Ujian Terbuka -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="relative pr-8 text-right">
+                        <div class="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">16</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video bg-emerald-950/40 flex items-center justify-center ml-auto">
+                            <span class="text-xs text-gray-400">Ujian Terbuka</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3 pl-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 16</span>
+                        <h3 class="text-2xl font-bold text-white">Ujian Terbuka</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Ujian komprehensif uji publik hafalan Al-Qur'an dan keilmuan syari'at di hadapan penguji dan orang tua santri.</p>
+                    </div>
+                </div>
+
+                <!-- 17. Bukber Veterna 2027 -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="text-right space-y-3 pr-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 17</span>
+                        <h3 class="text-2xl font-bold text-white">Bukber Veterna 2027</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Ajang buka puasa bersama angkatan Veterna di tahun 2027 menjadi momen reuni kebersamaan terakhir sebelum resmi menjadi alumni.</p>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">17</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video bg-emerald-950/40 flex items-center justify-center">
+                            <span class="text-xs text-gray-400">Bukber Veterna 2027</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 18. Pengumuman SNBP -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="relative pr-8 text-right">
+                        <div class="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">18</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video bg-emerald-950/40 flex items-center justify-center ml-auto">
+                            <span class="text-xs text-gray-400">Pengumuman SNBP</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3 pl-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 18</span>
+                        <h3 class="text-2xl font-bold text-white">Pengumuman SNBP</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Momen krusial saat dibukanya hasil SNBP, menyambut kelulusan masuk perguruan tinggi negeri impian.</p>
+                    </div>
+                </div>
+
+                <!-- 19. Pengumuman SNBT -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="text-right space-y-3 pr-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 19</span>
+                        <h3 class="text-2xl font-bold text-white">Pengumuman SNBT</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Hari pengumuman SNBT bagi santri Veterna yang telah berjuang keras dalam ujian UTBK.</p>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">19</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video bg-emerald-950/40 flex items-center justify-center">
+                            <span class="text-xs text-gray-400">Pengumuman SNBT</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 20. Wisuda -->
+                <div class="relative grid grid-cols-2 gap-8 items-center">
+                    <div class="relative pr-8 text-right">
+                        <div class="absolute -right-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-emerald-600 border-4 border-darkBg z-10 flex items-center justify-center text-xs font-bold">20</div>
+                        <div class="rounded-2xl overflow-hidden shadow-xl border border-emerald-500/30 aspect-video bg-emerald-950/40 flex items-center justify-center ml-auto">
+                            <span class="text-xs text-gray-400">Wisuda</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3 pl-8">
+                        <span class="text-xs font-bold text-gold-400 uppercase tracking-widest">Milestone 20</span>
+                        <h3 class="text-2xl font-bold text-white">Wisuda Veterna 28</h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">Prosesi kelulusan dan pelepasan resmi santri angkatan Veterna dari Pondok Pesantren Ar-Rohmah Putra Malang.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= TAB E: LEADERSHIP ================= -->
+        <div x-show="currentTab === 'leadership'" class="space-y-16" style="display: none;">
+            <div class="text-center space-y-3">
+                <span class="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 inline-block">
+                    Organisasi & Kepengurusan
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Leadership & Organisasi Veterna</h2>
+                <p class="text-gray-300 max-w-xl mx-auto text-sm">Pusat kepemimpinan angkatan, organisasi santri, dewan ambalan, takmir, dan komunitas kreatif.</p>
+            </div>
+
+            <!-- 1. Angkatan (Penggerak & Artistik/BTS) -->
+            <div class="space-y-8">
+                <h3 class="text-xl font-bold text-gold-400 border-b border-gray-700/50 pb-2">1. Tim Inti Angkatan</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Penggerak Angkatan -->
+                    <div class="glass-card rounded-3xl p-6 sm:p-8 border border-emerald-500/20 shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="aspect-video rounded-2xl overflow-hidden mb-4 border border-emerald-500/30">
+                                <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png?raw=true" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x450/064e3b/ffffff?text=Penggerak+Angkatan'">
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-2">Team Penggerak Angkatan Veteran</h4>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6">
+                                Team Penggerak Angkatan Veteran adalah jantung pergerakan, poros kepemimpinan, dan motor utama dalam merawat serta menguatkan solidaritas seluruh santri Angkatan Veterna.
+                            </p>
+                        </div>
+                        <a href="https://virtueterna28.github.io/penggerak/" target="_blank" class="inline-flex items-center justify-center space-x-2 py-3 rounded-xl bg-emerald-600 text-white font-bold text-sm shadow-lg hover:bg-emerald-500 transition-all">
+                            <span>Pelajari Selengkapnya</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                    <!-- Team Artistik & BTS -->
+                    <div class="glass-card rounded-3xl p-6 sm:p-8 border border-emerald-500/20 shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="aspect-video rounded-2xl overflow-hidden mb-4 border border-emerald-500/30">
+                                <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png?raw=true" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x450/064e3b/ffffff?text=Artistik+BTS'">
+                            </div>
+                            <h4 class="text-xl font-bold text-white mb-2">Team Artistik & BTS</h4>
+                            <p class="text-gray-300 text-xs sm:text-sm leading-relaxed mb-6">
+                                Team Artistik adalah wadah kolaborasi, imajinasi, dan panggung eksekusi seni. BTS (Behind The Scene) adalah saksi bisu dari setiap tetes keringat dan perjuangan di balik panggung.
+                            </p>
+                        </div>
+                        <a href="https://www.msn.com/id-id?ocid=wispr&pc=u477&AR=2" target="_blank" class="inline-flex items-center justify-center space-x-2 py-3 rounded-xl bg-emerald-600 text-white font-bold text-sm shadow-lg hover:bg-emerald-500 transition-all">
+                            <span>Pelajari Selengkapnya</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Organisasi (GPH, DKM, Kopastra, Sarpala, Avanti) -->
+            <div class="space-y-8">
+                <h3 class="text-xl font-bold text-gold-400 border-b border-gray-700/50 pb-2">2. Organisasi Kepemimpinan Pesantren</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- GPH -->
+                    <div class="glass-card rounded-3xl p-6 border border-emerald-500/20 shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-4 mb-4">
+                                <img src="https://github.com/virtueterna28/GPH/blob/main/gph.png?raw=true" class="w-12 h-12 rounded-full object-contain bg-white/10 p-1" onerror="this.src='https://placehold.co/100x100/064e3b/ffffff?text=GPH'">
+                                <h4 class="text-lg font-bold text-white">GPH (Gerakan Pandu Hidayatullah)</h4>
+                            </div>
+                            <div class="aspect-video rounded-xl overflow-hidden mb-4 border border-emerald-500/30">
+                                <img src="https://raw.githubusercontent.com/virtueterna28/GPH/refs/heads/main/foto/DSC04162.jpg" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/064e3b/ffffff?text=GPH'">
+                            </div>
+                            <p class="text-gray-300 text-xs leading-relaxed mb-6">
+                                Wadah kepemimpinan santri di SMA Ar-Rohmah Putra yang berfungsi sebagai penggerak kedisiplinan, kreativitas, dan pengembangan potensi santri guna membentuk generasi Rabbani.
+                            </p>
+                        </div>
+                        <a href="https://virtueterna28.github.io/GPH/" target="_blank" class="w-full py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-xs text-center shadow-lg hover:bg-emerald-500 transition-all">Pelajari Selengkapnya</a>
+                    </div>
+
+                    <!-- DKM -->
+                    <div class="glass-card rounded-3xl p-6 border border-emerald-500/20 shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-4 mb-4">
+                                <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/leadership/Organisasi/takmir%20logo.png?raw=true" class="w-12 h-12 rounded-full object-contain bg-white/10 p-1" onerror="this.src='https://placehold.co/100x100/064e3b/ffffff?text=DKM'">
+                                <h4 class="text-lg font-bold text-white">DKM (Takmir Baiturrohmah)</h4>
+                            </div>
+                            <div class="aspect-video rounded-xl overflow-hidden mb-4 border border-emerald-500/30">
+                                <img src="https://github.com/virtueterna28/DKM/blob/main/5.png?raw=true" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/064e3b/ffffff?text=DKM'">
+                            </div>
+                            <p class="text-gray-300 text-xs leading-relaxed mb-6">
+                                Organisasi pemakmuran masjid dalam upaya, kegiatan, dan perbuatan meramaikan serta menyemarakkan masjid Baiturrohmah dengan kegiatan keagamaan.
+                            </p>
+                        </div>
+                        <a href="https://virtueterna28.github.io/DKM/" target="_blank" class="w-full py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-xs text-center shadow-lg hover:bg-emerald-500 transition-all">Pelajari Selengkapnya</a>
+                    </div>
+
+                    <!-- Kopastra -->
+                    <div class="glass-card rounded-3xl p-6 border border-emerald-500/20 shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-4 mb-4">
+                                <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/leadership/Organisasi/kopastra.jpg?raw=true" class="w-12 h-12 rounded-full object-contain bg-white/10 p-1" onerror="this.src='https://placehold.co/100x100/064e3b/ffffff?text=Kopastra'">
+                                <h4 class="text-lg font-bold text-white">Kopastra</h4>
+                            </div>
+                            <div class="aspect-video rounded-xl overflow-hidden mb-4 border border-emerald-500/30">
+                                <img src="https://github.com/virtueterna28/kopastra/blob/main/mentahan%20foto/IMG-20250830-WA0047-scaled.jpeg?raw=true" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/064e3b/ffffff?text=Kopastra'">
+                            </div>
+                            <p class="text-gray-300 text-xs leading-relaxed mb-6">
+                                Komando Pasukan Ar-Rohmah Putra (Pramuka Ambalan Penegak Pangkalan SMAS Ar-Rohmah Putra) berlandaskan iman, ilmu, dan amal.
+                            </p>
+                        </div>
+                        <a href="https://virtueterna28.github.io/kopastra/" target="_blank" class="w-full py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-xs text-center shadow-lg hover:bg-emerald-500 transition-all">Pelajari Selengkapnya</a>
+                    </div>
+
+                    <!-- Sarpala -->
+                    <div class="glass-card rounded-3xl p-6 border border-emerald-500/20 shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-4 mb-4">
+                                <img src="https://github.com/virtueterna28/sarpala/blob/main/background_removed.png?raw=true" class="w-12 h-12 rounded-full object-contain bg-white/10 p-1" onerror="this.src='https://placehold.co/100x100/064e3b/ffffff?text=Sarpala'">
+                                <h4 class="text-lg font-bold text-white">Sarpala (Santri Pecinta Alam)</h4>
+                            </div>
+                            <div class="aspect-video rounded-xl overflow-hidden mb-4 border border-emerald-500/30">
+                                <img src="https://github.com/virtueterna28/sarpala/blob/main/Pencinta-Alam-1024x577.jpeg?raw=true" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/064e3b/ffffff?text=Sarpala'">
+                            </div>
+                            <p class="text-gray-300 text-xs leading-relaxed mb-6">
+                                Sarpala Kamufisa (Santri Ar-Rohmah Pecinta Alam – Kader Mujahid Fisabilillah) organisasi pecinta alam yang sarat akan sejarah dan nilai perjuangan.
+                            </p>
+                        </div>
+                        <a href="https://virtueterna28.github.io/sarpala/" target="_blank" class="w-full py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-xs text-center shadow-lg hover:bg-emerald-500 transition-all">Pelajari Selengkapnya</a>
+                    </div>
+
+                    <!-- Boarschar Avanti -->
+                    <div class="glass-card rounded-3xl p-6 border border-emerald-500/20 shadow-xl flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center space-x-4 mb-4">
+                                <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/leadership/Organisasi/Avanti.jpg?raw=true" class="w-12 h-12 rounded-full object-contain bg-white/10 p-1" onerror="this.src='https://placehold.co/100x100/064e3b/ffffff?text=Avanti'">
+                                <h4 class="text-lg font-bold text-white">Boarschar Avanti</h4>
+                            </div>
+                            <div class="aspect-video rounded-xl overflow-hidden mb-4 border border-emerald-500/30">
+                                <img src="https://github.com/virtueterna28/avanti/blob/main/foto/IMG_2650.jpg?raw=true" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/600x400/064e3b/ffffff?text=Avanti'">
+                            </div>
+                            <p class="text-gray-300 text-xs leading-relaxed mb-6">
+                                Organisasi suporter resmi SMA Ar-Rohmah Putra untuk mendukung seluruh ajang kompetisi (futsal, basket, voli) dan mempererat silaturahmi.
+                            </p>
+                        </div>
+                        <a href="https://virtueterna28.github.io/avanti/" target="_blank" class="w-full py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-xs text-center shadow-lg hover:bg-emerald-500 transition-all">Pelajari Selengkapnya</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 3. Komunitas -->
+            <div class="space-y-8">
+                <h3 class="text-xl font-bold text-gold-400 border-b border-gray-700/50 pb-2">3. Komunitas Kreatif</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-card rounded-3xl p-6 border border-emerald-500/20 shadow-xl">
+                        <h4 class="text-lg font-bold text-white mb-2">Yanber</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed">
+                            Yanber sebagai wadah anak-anak kreatif dan bersemangat dalam mewujudkan karya seni dan inovasi digital.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ================= TAB F: MEMBERS ================= -->
+        <div x-show="currentTab === 'members'" class="space-y-16" style="display: none;">
+            <div class="text-center space-y-3">
+                <span class="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 inline-block">
+                    Direktori Kader
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Members & Komponen Veterna</h2>
+                <p class="text-gray-300 max-w-xl mx-auto text-sm">Sebaran kader, data anggota, kelas peminatan, kamar asrama, halaqoh tahfidz, dan ekstrakurikuler.</p>
+            </div>
+
+            <!-- 1. Sebaran Kader & 2. Kader Veterna -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Sebaran Kader -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border border-emerald-500/20 shadow-xl">
+                    <h3 class="text-xl font-bold text-white mb-4">Sebaran Kader Veterna</h3>
+                    <div class="aspect-video rounded-2xl overflow-hidden mb-4 border border-emerald-500/30">
+                        <img src="https://raw.githubusercontent.com/virtueterna28/web/refs/heads/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/800x450/064e3b/ffffff?text=Sebaran+Kader'">
+                    </div>
+                    <p class="text-gray-300 text-xs sm:text-sm">Pemetaan sebaran asal daerah dan wilayah kader angkatan 28 di berbagai penjuru nusantara.</p>
+                </div>
+
+                <!-- Kader Veterna Web Link -->
+                <div class="glass-card rounded-3xl p-6 sm:p-8 border border-emerald-500/20 shadow-xl flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold text-white mb-4">Database Kader Veterna</h3>
+                        <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                            Disediakan portal khusus untuk mendata seluruh anggota kader Veterna 28 secara komprehensif, lengkap dengan biodata dan kontak.
+                        </p>
+                    </div>
+                    <a href="https://virtueterna28.github.io/anggota/" target="_blank" class="inline-flex items-center justify-center space-x-2 py-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold text-sm shadow-lg hover:opacity-95 transition-all">
+                        <span>Menuju Web Keanggotaan</span>
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3. Kelas -->
+            <div class="space-y-8">
+                <h3 class="text-xl font-bold text-gold-400 border-b border-gray-700/50 pb-2">3. Kelas Peminatan Angkatan</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-card rounded-2xl p-6 border border-emerald-500/20">
+                        <h4 class="text-lg font-bold text-white mb-2">Kelas Engineering</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed">Sebuah kelas berisi pikiran-pikiran muda yang belajar melihat melampaui hal yang tampak, mengubah ide menjadi sesuatu yang berhasil melalui perhitungan dan eksperimen.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 border border-emerald-500/20">
+                        <h4 class="text-lg font-bold text-white mb-2">Kelas Agrobisnis</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed">Anak-anak muda yang belajar melihat pertanian lebih dari sekadar ladang, di mana ide bertemu sumber daya, produksi bertemu peluang.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 border border-emerald-500/20">
+                        <h4 class="text-lg font-bold text-white mb-2">Kelas Kedinasan (PTK)</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed">Sekelompok anak muda yang belajar menjunjung disiplin, bertanggung jawab, dan memikul beban pengabdian kepada sesama.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 border border-emerald-500/20">
+                        <h4 class="text-lg font-bold text-white mb-2">Kelas Medical</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed">Belajar melihat lebih dekat, berpikir lebih dalam, dan memikul tanggung jawab merawat orang lain di masa depan.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 border border-emerald-500/20">
+                        <h4 class="text-lg font-bold text-white mb-2">Kelas Humanities</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed">Pikiran kritis, jiwa yang ingin tahu, dan orang-orang yang belajar melihat melampaui apa yang diberikan begitu saja.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Kamar Asrama (B1 - B8) -->
+            <div class="space-y-8">
+                <h3 class="text-xl font-bold text-gold-400 border-b border-gray-700/50 pb-2">4. Kamar Asrama Veterna</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="glass-card rounded-2xl p-6 border border-emerald-500/20">
+                        <h4 class="text-lg font-bold text-white mb-2">Kamar B1</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed">Salah satu kamar yang diisi oleh orang penting dan biasa yang menjadi pembakar semangat santri veterna dalam menjaga solidaritas dan kekompakan.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 border border-emerald-500/20">
+                        <h4 class="text-lg font-bold text-white mb-2">Kamar B2</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed">Kamar yang diisi oleh orang biasa dan suasana kamar yang terlihat suram seperti tidak ada kehidupan di dalamnya, sering kali sepi dan ramai di waktu tertentu.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 border border-emerald-500/20">
+                        <h4 class="text-lg font-bold text-white mb-2">Kamar B3</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed">Kamar yang rajin dan amat bersih, saling peduli satu sama lain dalam menempa kebaikan, menjadi markas obrolan bapak-bapak pada malam hari.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 border border-emerald-500/20">
+                        <h4 class="text-lg font-bold text-white mb-2">Kamar B4</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed">Kamar paling sepi di antara kamar lainnya, sering dijadikan tempat tidur orang yang tidak suka keramaian, diisi oleh orang pemberani dan pintar.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 border border-emerald-500/20">
+                        <h4 class="text-lg font-bold text-white mb-2">Kamar B5</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed">Sumber mata air veterna! Penghuninya unik-unik: pemain EBL terbaik, pemain basket terbaik se-Ar-Rohmah, artis TikTok nyerepo, capibara, friendly, soft spoken, soleh, ganteng asik calon penghuni surga anjayy mabar.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 border border-emerald-500/20">
+                        <h4 class="text-lg font-bold text-white mb-2">Kamar B6</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed">Kamar paling rame satu angkatan, sering jadi warnet dan tempat mabar, punya liga bola sepak dan voli serta santri pintar dan cerdas.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 border border-emerald-500/20">
+                        <h4 class="text-lg font-bold text-white mb-2">Kamar B7</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed">Kamar yang paling sering kacanya pecah, diisi hewan-hewan ganas dari berbagai daerah. Kalau berangkat sholat tahajud pasti sudah melihat semua anak B7 di masjid!</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-6 border border-emerald-500/20">
+                        <h4 class="text-lg font-bold text-white mb-2">Kamar B8</h4>
+                        <p class="text-gray-300 text-xs leading-relaxed">Kamar yang paling mudah diatur dan tidak pernah alpha sholat berjamaah kecuali pulang/sakit, sering dijadikan rest area teman-teman lainnya.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Halaqoh -->
+            <div class="space-y-8">
+                <h3 class="text-xl font-bold text-gold-400 border-b border-gray-700/50 pb-2">5. Halaqoh Tahfidz</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    <div class="glass-card rounded-2xl p-4 text-center border border-emerald-500/20">
+                        <h4 class="font-bold text-white mb-1">Takhasus</h4>
+                        <p class="text-xs text-emerald-400">Target Hafalan: 2 Halaman</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-4 text-center border border-emerald-500/20">
+                        <h4 class="font-bold text-white mb-1">Kelas A</h4>
+                        <p class="text-xs text-emerald-400">Target Hafalan: 1 Halaman</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-4 text-center border border-emerald-500/20">
+                        <h4 class="font-bold text-white mb-1">Kelas B1</h4>
+                        <p class="text-xs text-emerald-400">Target Hafalan: Setengah Halaman</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-4 text-center border border-emerald-500/20">
+                        <h4 class="font-bold text-white mb-1">Kelas B2</h4>
+                        <p class="text-xs text-emerald-400">Target Hafalan: Setengah Halaman</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-4 text-center border border-emerald-500/20">
+                        <h4 class="font-bold text-white mb-1">Kelas C1</h4>
+                        <p class="text-xs text-emerald-400">Target Hafalan: Setengah Halaman</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-4 text-center border border-emerald-500/20">
+                        <h4 class="font-bold text-white mb-1">Kelas C2</h4>
+                        <p class="text-xs text-emerald-400">Target Hafalan: 4 Baris</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Ekstrakurikuler -->
+            <div class="space-y-8">
+                <h3 class="text-xl font-bold text-gold-400 border-b border-gray-700/50 pb-2">6. Ekstrakurikuler & Pengembangan Bakat</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                    <div class="glass-card rounded-2xl p-4 border border-emerald-500/20 text-center">
+                        <h4 class="font-bold text-white text-sm mb-1">Badminton</h4>
+                        <p class="text-xs text-gray-300">Melatih keterampilan bulu tangkis & kebugaran.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-4 border border-emerald-500/20 text-center">
+                        <h4 class="font-bold text-white text-sm mb-1">Basket</h4>
+                        <p class="text-xs text-gray-300">Mewadahi minat & bakat olahraga bola basket.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-4 border border-emerald-500/20 text-center">
+                        <h4 class="font-bold text-white text-sm mb-1">Futsal</h4>
+                        <p class="text-xs text-gray-300">Olahraga indoor tim untuk ketangkasan & strategi.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-4 border border-emerald-500/20 text-center">
+                        <h4 class="font-bold text-white text-sm mb-1">Taekwondo</h4>
+                        <p class="text-xs text-gray-300">Seni bela diri ketangkasan fisik & disiplin mental.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-4 border border-emerald-500/20 text-center">
+                        <h4 class="font-bold text-white text-sm mb-1">Tapak Suci</h4>
+                        <p class="text-xs text-gray-300">Seni bela diri pencak silat Putera Muhammadiyah.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-4 border border-emerald-500/20 text-center">
+                        <h4 class="font-bold text-white text-sm mb-1">Voli</h4>
+                        <p class="text-xs text-gray-300">Kerja sama tim & olahraga bola voli.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-4 border border-emerald-500/20 text-center">
+                        <h4 class="font-bold text-white text-sm mb-1">Renang</h4>
+                        <p class="text-xs text-gray-300">Kesehatan fisik & kepercayaan diri di air.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-4 border border-emerald-500/20 text-center">
+                        <h4 class="font-bold text-white text-sm mb-1">Multimedia</h4>
+                        <p class="text-xs text-gray-300">Teknologi digital, desain, dan media visual.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-4 border border-emerald-500/20 text-center">
+                        <h4 class="font-bold text-white text-sm mb-1">Coding</h4>
+                        <p class="text-xs text-gray-300">Pemrograman web, game, dan animasi.</p>
+                    </div>
+                    <div class="glass-card rounded-2xl p-4 border border-emerald-500/20 text-center">
+                        <h4 class="font-bold text-white text-sm mb-1">Keislaman</h4>
+                        <p class="text-xs text-gray-300">Pendalaman ilmu agama & dakwah Islamiyah.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Modal Popup for Gallery / Media -->
+    <div class="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" x-show="modalOpen" style="display: none;" @click.away="modalOpen = false">
+        <div class="glass-card rounded-3xl max-w-2xl w-full p-6 relative border border-emerald-500/30 space-y-4" @click.stop>
+            <button @click="modalOpen = false" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <h3 class="text-xl font-bold text-white" x-text="modalTitle"></h3>
+            <div class="aspect-video rounded-xl overflow-hidden bg-black/40 flex items-center justify-center">
+                <img :src="modalImg" class="max-h-full object-contain" alt="Modal Preview">
+            </div>
+            <p class="text-gray-300 text-sm" x-text="modalDesc"></p>
+        </div>
     </div>
-    <div>
-     <p data-template-id="social-title" class="canva-text mb-3 text-sm font-bold uppercase tracking-widest text-amber-300" style="color: rgb(253, 233, 174); font-weight: 700; font-style: normal; font-size: 16px;">Ikuti Perjalanan Kami</p>
-     <div class="flex gap-3">
-      <a class="rounded-full bg-white p-2" href="https://www.instagram.com/veterna28/" target="_blank" rel="noopener noreferrer"><img data-template-id="social-instagram" loading="lazy" class="canva-image h-6 w-6" src="https://i.ibb.co.com/SXfnj442/ig.png" alt="Instagram Veterna"></a><a class="rounded-full bg-white p-2" href="https://www.tiktok.com/@smaarrohmahputra" target="_blank" rel="noopener noreferrer"><img data-template-id="social-tiktok" loading="lazy" class="canva-image h-6 w-6" src="https://i.ibb.co.com/rRsMT240/tiktok.png" alt="TikTok Veterna"></a><a class="rounded-full bg-white p-2" href="https://www.youtube.com/@smaartramalang" target="_blank" rel="noopener noreferrer"><img data-template-id="social-youtube" loading="lazy" class="canva-image h-6 w-6" src="https://i.ibb.co.com/tMrZjRZx/yt.png" alt="YouTube SMA Ar-Rohmah Putra"></a>
-     </div>
-    </div>
-   </div>
-  </footer>
-  <div id="image-modal" class="modal fixed inset-0 z-[80] flex items-center justify-center bg-slate-950/90 p-6" role="dialog" aria-modal="true" aria-label="Tampilan foto"><button id="modal-close" type="button" class="absolute right-6 top-6 rounded-full bg-white/15 p-3 text-white" aria-label="Tutup foto"><i data-lucide="x"></i></button> <img id="modal-image" class="max-h-full max-w-full rounded-xl object-contain" alt="">
-  </div>
-  <template id="fame-template">
-   <article class="rounded-2xl bg-white/10 p-4 text-center ring-1 ring-white/15">
-    <img data-template-id="fame-photo" loading="lazy" class="canva-image mx-auto aspect-square w-full rounded-xl object-cover">
-    <h3 class="mt-4 font-bold text-white"></h3>
-    <p class="mt-2 text-sm leading-6 text-blue-100"></p>
-   </article>
-  </template>
-  <template id="gallery-template">
-   <button type="button" class="gallery-item photo-card w-full" aria-label="Perbesar foto galeri"><img data-template-id="gallery-photo" loading="lazy" class="canva-image"></button>
-  </template>
-  <template id="outfit-template">
-   <article class="grid items-center gap-5 rounded-3xl border border-blue-100 bg-white p-5 shadow-sm md:grid-cols-[1fr_1.15fr_1fr]">
-    <img data-template-id="outfit-left" loading="lazy" class="canva-image aspect-[3/4] w-full rounded-2xl object-cover">
-    <div class="text-center">
-     <p class="eyebrow">Koleksi Veterna</p>
-     <h2 class="serif mt-3 text-3xl font-bold text-[#101b50]"></h2>
-     <p class="mt-4 text-sm leading-7 text-slate-600"></p>
-    </div><img data-template-id="outfit-right" loading="lazy" class="canva-image aspect-[3/4] w-full rounded-2xl object-cover">
-   </article>
-  </template>
-  <template id="outfit-class-template">
-   <article class="outfit-class-card grid items-center gap-5 p-5 md:grid-cols-[1fr_1.15fr_1fr]">
-    <img data-template-id="outfit-class-engineering-left" loading="lazy" class="canva-image"> <img data-template-id="outfit-class-agrobisnis-left" loading="lazy" class="hidden"> <img data-template-id="outfit-class-medical-left" loading="lazy" class="hidden"> <img data-template-id="outfit-class-kedinasan-left" loading="lazy" class="hidden"> <img data-template-id="outfit-class-humanities-left" loading="lazy" class="hidden">
-    <div class="outfit-copy text-center">
-     <p class="eyebrow">Koleksi Veterna</p>
-     <h2 class="serif mt-3 text-3xl font-bold text-[#101b50]"></h2>
-     <p class="mt-4 text-sm leading-7 text-slate-600"></p>
-    </div><img data-template-id="outfit-class-engineering-right" loading="lazy" class="canva-image"> <img data-template-id="outfit-class-agrobisnis-right" loading="lazy" class="hidden"> <img data-template-id="outfit-class-medical-right" loading="lazy" class="hidden"> <img data-template-id="outfit-class-kedinasan-right" loading="lazy" class="hidden"> <img data-template-id="outfit-class-humanities-right" loading="lazy" class="hidden">
-   </article>
-  </template>
-  <template id="story-template">
-   <article class="timeline-item relative grid items-center gap-7 md:grid-cols-2">
-    <span class="timeline-dot absolute left-1/2 z-10 h-5 w-5 -translate-x-1/2 rounded-full bg-[#d9ad46]"></span>
-    <div class="timeline-content photo-card aspect-video"></div>
-    <div class="timeline-content rounded-2xl bg-[#eef3ff] p-7">
-     <p class="eyebrow"></p>
-     <h2 class="serif mt-2 text-3xl font-bold text-[#101b50]"></h2>
-     <p class="mt-3 leading-7 text-slate-600"></p>
-    </div>
-   </article>
-  </template>
-  <template id="member-template">
-   <article class="member-card overflow-hidden rounded-2xl border border-blue-100 bg-white">
-    <img data-template-id="member-photo" loading="lazy" class="canva-image aspect-square w-full object-cover">
-    <div class="p-5">
-     <h3 class="font-bold text-[#101b50]"></h3>
-     <p class="mt-2 text-sm text-slate-500"></p>
-     <p class="mt-2 text-sm italic text-slate-600"></p><a class="mt-4 inline-flex text-sm font-bold text-[#233686]" target="_blank" rel="noopener noreferrer">Instagram <i data-lucide="arrow-up-right" class="ml-1 h-4 w-4"></i></a>
-    </div>
-   </article>
-  </template>
-  <template id="group-template">
-   <article class="overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-sm">
-    <img data-template-id="group-banner" loading="lazy" class="canva-image aspect-video w-full object-cover">
-    <div class="p-5">
-     <div class="flex items-center gap-3">
-      <img data-template-id="group-logo" loading="lazy" class="canva-image h-12 w-12 rounded-full object-cover">
-      <h3 class="font-bold text-[#101b50]"></h3>
-     </div>
-     <p class="mt-4 text-sm leading-6 text-slate-600"></p>
-    </div>
-   </article>
-  </template>
-  <script src="/_sdk/c6bcadf20ce5820f.editing_sdk.js" integrity="sha512-LVukVCTKnKSxy98w+wCVzDAxVXBG2vy32XblXlmJD9CPFnF2/FVc75CFngl41IdXcX3sVHJc9olw64zrPM/FIA=="></script>
-  <script>
-    const supplied = {
-      group:"https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg",
-      logo:"https://i.ibb.co.com/ccPhq5Wd/logo-removebg-preview-1.png",
-      emblem:"https://i.ibb.co.com/Kzsn6L9n/Untitled-design.jpg",
-      owl:"https://i.ibb.co.com/qYLDsMps/XXVIII.png",
-      chair:"https://i.ibb.co.com/3mxKpf4b/wdwdwdwd.png",
-      portrait:"https://i.ibb.co.com/qLr93kW8/Foto-hijrah-Laki-laki.jpg",
-      gallery:["https://i.ibb.co.com/vCXMRKhv/MG-7463.jpg","https://i.ibb.co.com/JRCVjfBy/Cuplikan-layar-2025-10-19-161215.png","https://i.ibb.co.com/Kzsn6L9n/Untitled-design.jpg","https://i.ibb.co.com/qLr93kW8/Foto-hijrah-Laki-laki.jpg"],
-      outfitL:"https://i.ibb.co.com/zVvP7T4R/VETERNA-ENGINEERING-Ar-Rohmah-Putra-SHS-Engineering-Major-class-uniforma-class-of-young-minds-le.jpg",
-      outfitR:"https://i.ibb.co.com/wrbXSGSX/VETERNA-ENGINEERING-Ar-Rohmah-Putra-SHS-Engineering-Major-class-uniforma-class-of-young-minds-le-1.jpg"
-    };
 
-    function addTemplate(id, target) { return document.getElementById(id).content.cloneNode(true); }
-    function setImg(el, src) { el.src = src; }
+    <!-- Footer -->
+    <footer class="bg-darkBg border-t border-emerald-900/40 py-12 mt-20 text-center text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto px-4 space-y-4">
+            <div class="flex items-center justify-center space-x-3">
+                <img src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/logo%20veterna%20(1).png?raw=true" alt="Logo" class="w-10 h-10 object-contain">
+                <span class="font-bold text-white text-base">Virtu Eterna - Angkatan 28 SMA Ar-Rohmah Putra Malang</span>
+            </div>
+            <p class="text-xs text-gray-500">© 2024 - 2027 Virtu Eterna 28. All Rights Reserved. Built with dedication & solidarity.</p>
+        </div>
+    </footer>
 
-    document.querySelectorAll("[data-nav]").forEach(btn => btn.addEventListener("click", () => {
-      let target = btn.dataset.nav; if(target === "profile") target="home";
-      document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-      document.getElementById(target).classList.add("active");
-      document.getElementById("mobile-menu").classList.add("hidden");
-      window.scrollTo({top:0,behavior:"smooth"});
-      if(btn.dataset.nav==="profile") document.getElementById("profile").scrollIntoView({behavior:"smooth"});
-    }));
-
-    const menu=document.getElementById("mobile-menu"), toggle=document.getElementById("menu-toggle");
-    toggle.addEventListener("click",()=>{menu.classList.toggle("hidden");toggle.setAttribute("aria-expanded",String(!menu.classList.contains("hidden")));});
-
-    const slides=[...document.querySelectorAll(".hero-slide")]; let index=0;
-    function showSlide(next){slides[index].classList.remove("active"); index=(next+slides.length)%slides.length; slides[index].classList.add("active");}
-    document.getElementById("slide-prev").onclick=()=>showSlide(index-1);
-    document.getElementById("slide-next").onclick=()=>showSlide(index+1);
-    setInterval(()=>showSlide(index+1),5500);
-
-    const fame=document.getElementById("fame-grid");
-    for(let i=1;i<=28;i++){const n=addTemplate("fame-template"); const card=n.querySelector("article"); setImg(n.querySelector("img"),supplied.portrait); n.querySelector("h3").textContent="Akh. Muhammad Isyan Aryastya"; n.querySelector("p").textContent="Prestasi unik: juara 1 lomba tidur, angkat beban, dan makan kerupuk."; fame.appendChild(n);}
-
-    const gallery=document.getElementById("gallery-grid");
-    for(let i=0;i<50;i++){const n=addTemplate("gallery-template"), img=n.querySelector("img"); setImg(img,supplied.gallery[i%supplied.gallery.length]); n.querySelector("button").addEventListener("click",()=>{document.getElementById("modal-image").src=img.src;document.getElementById("image-modal").classList.add("open");}); gallery.appendChild(n);}
-    document.getElementById("modal-close").onclick=()=>document.getElementById("image-modal").classList.remove("open");
-    document.getElementById("image-modal").addEventListener("click",e=>{if(e.target.id==="image-modal")e.currentTarget.classList.remove("open");});
-
-    const outfitNames=["Baju Veterna","Seragam Senin – Selasa","Seragam Rabu – Kamis","Seragam Jumat","Seragam Sabtu"];
-    const outfitList=document.getElementById("outfit-list");
-    outfitNames.forEach(name=>{const n=addTemplate("outfit-template");setImg(n.querySelector('[data-template-id="outfit-left"]'),supplied.outfitL);setImg(n.querySelector('[data-template-id="outfit-right"]'),supplied.outfitR);n.querySelector("h2").textContent=name;n.querySelector("p:last-child").textContent="Identitas kebersamaan Veterna: sederhana, rapi, dan siap menjalani setiap proses dengan disiplin.";outfitList.appendChild(n);});
-    const classOutfits=["Engineering","Agrobisnis","Medical","Kedinasan","Humanities"];
-    classOutfits.forEach(name=>{const n=addTemplate("outfit-class-template");n.querySelector("h2").textContent="Kelas "+name;n.querySelector("p:last-child").textContent="baju baju bajua baju baju baju abuabu abu abu abuuiasukdawkdjawkjdkjwacbjhwhdbwkqudwkuqudkjqwhkjwqbkwhqd";n.querySelector('[data-template-id="outfit-class-engineering-left"]').dataset.templateId="outfit-class-"+name.toLowerCase()+"-left";n.querySelector('[data-template-id="outfit-class-engineering-right"]').dataset.templateId="outfit-class-"+name.toLowerCase()+"-right";outfitList.appendChild(n);});
-
-    const storyNames=["Mastasis","yntkts","Mulyono","Mulyadi","Makannasi Ikan","Kalimantan Api Pa","Malang Panas","Molen Kepannham","Sante Tanteo","Mlopolijunn","mkmkmk","Mamkm","Maskkijiff","Massfewgrg","Wisuda"];
-    const timeline=document.getElementById("timeline");
-    storyNames.forEach((name,i)=>{const n=addTemplate("story-template"), slots=n.querySelectorAll(".timeline-content"); const image=document.createElement("img");image.src=supplied.gallery[0];image.alt="Momen Veterna";image.className="h-full w-full object-cover";slots[0].appendChild(image);slots[1].querySelector(".eyebrow").textContent="Momen "+String(i+1).padStart(2,"0");slots[1].querySelector("h2").textContent=name;slots[1].querySelector("p").textContent=i===4?"Momen khusus yang menyimpan cerita kebersamaan kader Veterna.":"Potongan perjalanan, kebersamaan, dan kenangan yang membentuk Virtu Eterna selama masa sekolah.";if(i%2){slots[0].classList.add("md:order-2");slots[1].classList.add("md:order-1");}timeline.appendChild(n);});
-
-    const members=document.getElementById("member-grid"), memberData=[];
-    for(let i=1;i<=96;i++){memberData.push({name:"Muhammad Isyan Aryasatya "+String(i).padStart(2,"0"),birth:"10 Agustus 2000",motto:"Keimanan lebih utama daripada lalai"});}
-    memberData.forEach(m=>{const n=addTemplate("member-template");setImg(n.querySelector("img"),supplied.portrait);const text=n.querySelectorAll("h3,p");text[0].textContent=m.name;text[1].textContent="Tanggal lahir: "+m.birth;text[2].textContent="“"+m.motto+"”";n.querySelector("a").href="https://www.instagram.com/isyanzzz_/";n.querySelector("article").dataset.name=m.name.toLowerCase();members.appendChild(n);});
-    lucide.createIcons();
-    const count=document.getElementById("member-count"); function filterMembers(){const q=document.getElementById("member-search").value.toLowerCase();let total=0;[...members.children].forEach(c=>{const hit=c.dataset.name.includes(q);c.classList.toggle("hidden-card",!hit);if(hit)total++;});count.textContent=total+" kader ditemukan";} filterMembers();
-    document.getElementById("member-search").addEventListener("input",filterMembers);
-
-    const groups=["GPH (Gerakan Pandu Hidayatullah)","DKM Takmir Baiturrohmah","Boarschar Avanti","JMYK","Yanber","Kelas Engineering","Kelas Agrobisnis","Kelas Kedinasan","Kelas Medical","Kelas Humanities","Ekstrakurikuler Veterna","Kamar B1","Kamar B2","Kamar B3","Kamar B4","Kamar B5","Kamar B6","Kamar B7","Kamar B8"];
-    const groupGrids={organisasi:document.getElementById("organisasi-grid"),komunitas:document.getElementById("komunitas-grid"),kelas:document.getElementById("kelas-grid"),kamar:document.getElementById("kamar-grid")};
-    groups.forEach(name=>{const n=addTemplate("group-template");setImg(n.querySelector('[data-template-id="group-banner"]'),supplied.group);setImg(n.querySelector('[data-template-id="group-logo"]'),supplied.logo);n.querySelector("h3").textContent=name;n.querySelector("p").textContent="Ruang bertumbuh, berkhidmat, dan menguatkan solidaritas kader Veterna dalam setiap kegiatan.";const category=name.startsWith("Kamar")?"kamar":name.startsWith("Kelas")?"kelas":["Boarschar Avanti","JMYK","Yanber","Ekstrakurikuler Veterna"].includes(name)?"komunitas":"organisasi";groupGrids[category].appendChild(n);});
-  </script>
- 
-</body></html>
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
