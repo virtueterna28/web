@@ -258,8 +258,8 @@
         <div class="eyebrow">
          Only Vens
         </div>
-        <h2 style="font-family:'Playfair Display',serif;font-size:2.5rem">Ruang cloud khusus Veterna.</h2>
-        <p class="copy">ruang Memori berharga kekerabatan dan solidaritas santri veterna dalam menjalankan kegiatan sehari hari di lingkungan pesantren.</p><label for="onlyVensLink" class="small" style="display:block;color:#243778;font-weight:800;margin-bottom:7px">URL tujuan</label><input id="onlyVensLink" type="url" value="https://virtueterna28.github.io/v-cloud/" style="width:100%;padding:12px;border:1px solid #cbd3e6;border-radius:9px">
+        <h2 style="font-family:'Playfair Display',serif;font-size:2.5rem">V cloud - Veterna.</h2>
+        <p class="copy">Ruang Memori berharga kekerabatan dan solidaritas santri veterna dalam menjalankan kegiatan sehari hari di lingkungan pesantren.</p><label for="onlyVensLink" class="small" style="display:block;color:#243778;font-weight:800;margin-bottom:7px">
         <div class="action-row">
          <a id="onlyVensButton" class="btn btn-primary" href="https://virtueterna28.github.io/v-cloud/" target="_blank" rel="noopener noreferrer">Lanjutkan ↗</a>
         </div>
@@ -545,7 +545,6 @@ document.addEventListener("DOMContentLoaded",()=>{
  function closeLightbox(){lightbox.classList.remove("open")}function cycleLightbox(step){openLightbox((galleryIndex+step+CONFIG.galleryPhotos.length)%CONFIG.galleryPhotos.length)}
  document.getElementById("galleryGrid").addEventListener("click",e=>{const b=e.target.closest("[data-gallery]");if(b)openLightbox(+b.dataset.gallery)});document.getElementById("lightboxClose").addEventListener("click",closeLightbox);document.getElementById("lightboxPrev").addEventListener("click",()=>cycleLightbox(-1));document.getElementById("lightboxNext").addEventListener("click",()=>cycleLightbox(1));lightbox.addEventListener("click",e=>{if(e.target===lightbox)closeLightbox()});
  document.addEventListener("keydown",e=>{if(!lightbox.classList.contains("open"))return;if(e.key==="Escape")closeLightbox();if(e.key==="ArrowLeft")cycleLightbox(-1);if(e.key==="ArrowRight")cycleLightbox(1)});
- document.getElementById("onlyVensLink").addEventListener("input",e=>{try{const url=new URL(e.target.value);const a=document.getElementById("onlyVensButton");a.href=url.href;a.setAttribute("aria-disabled","false")}catch{document.getElementById("onlyVensButton").setAttribute("aria-disabled","true")}});
  const toTop=document.getElementById("toTop");window.addEventListener("scroll",()=>toTop.classList.toggle("show",window.scrollY>450));toTop.addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
 });
 </script>
