@@ -5,107 +5,343 @@
   <title>Virtu Eterna — XXVIII</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;family=Fraunces:opsz,wght@9..144,600;9..144,700&amp;display=swap" rel="stylesheet">
   <style>
-    :root{--blue:#233686;--ink:#132052;--gold:#d5af4a;--mist:#f5f7fc;--line:#dfe5f5}
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{font-family:"DM Sans",sans-serif;color:#17213f;background:var(--mist);overflow-x:hidden}
-    .display{font-family:"Fraunces",serif}.view{display:none;animation:fade .5s ease}.view.active{display:block}
-    @keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-    .nav-link{position:relative;padding:.55rem .1rem;font-weight:700;color:#516084;white-space:nowrap}.nav-link.active,.nav-link:hover{color:var(--blue)}.nav-link.active:after{content:"";position:absolute;height:2px;border-radius:5px;background:var(--gold);bottom:0;left:0;right:0}
-    .card{background:#fff;border:1px solid rgba(35,54,134,.09);border-radius:1.35rem;box-shadow:0 10px 30px rgba(21,39,100,.07)}
-    .media{position:relative;overflow:hidden;border-radius:1.1rem;background:#e8edf8}.media img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease}.media:hover img{transform:scale(1.04)}
-    .asset-placeholder{min-height:170px;background:linear-gradient(135deg,#e8edf8,#f8f9fe);border:1.5px dashed #9aabd6;border-radius:1.1rem;display:flex;align-items:center;justify-content:center;flex-direction:column;color:#516084;text-align:center;padding:1.25rem}
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.78rem 1.05rem;border-radius:.8rem;font-weight:700;transition:.2s;border:1px solid transparent}.btn:hover{transform:translateY(-2px)}.btn-blue{background:var(--blue);color:#fff}.btn-gold{background:#e7c66b;color:#17213f}.btn-ghost{background:#fff;color:var(--blue);border-color:#cbd5ef}
-    .reveal{opacity:0;transform:translateY(16px);transition:.55s ease}.reveal.show{opacity:1;transform:none}
-    .section-head{padding:5rem 1.25rem 2.5rem;background:linear-gradient(118deg,#17265e,#233686 55%,#5267b8);color:white;position:relative;overflow:hidden}.section-head:after{content:"";position:absolute;width:360px;height:360px;border:1px solid rgba(255,255,255,.16);border-radius:50%;right:-100px;top:-150px}
-    .timeline:before{content:"";position:absolute;width:3px;background:linear-gradient(var(--gold),var(--blue));left:50%;top:0;bottom:0}.timeline-dot{position:absolute;left:50%;transform:translateX(-50%);top:2.25rem;width:18px;height:18px;border:4px solid #fff;background:var(--gold);border-radius:50%;box-shadow:0 0 0 3px var(--blue)}
-    .modal{display:none}.modal.open{display:flex}.toast{transform:translateY(120px);opacity:0;transition:.3s}.toast.show{transform:none;opacity:1}
-    .welcome-text{background:linear-gradient(90deg,#fff,#e5c868,#fff);background-size:220% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s linear infinite}@keyframes shine{to{background-position:220% center}}
-    .gallery-item{cursor:pointer}.gallery-item:hover{transform:translateY(-4px)}.gallery-item{transition:.2s}
-    .read-more{max-height:13rem;overflow:hidden;position:relative}.read-more.expanded{max-height:none}.read-more:not(.expanded):after{content:"";position:absolute;left:0;right:0;bottom:0;height:4rem;background:linear-gradient(transparent,#fff)}
-    .mobile-drawer{transform:translateX(100%);transition:.3s}.mobile-drawer.open{transform:none}
-    .progress{transform-origin:left}
-    @media(max-width:768px){.timeline:before{left:16px}.timeline-dot{left:16px}.timeline-row{padding-left:2.5rem}.timeline-row .order-1,.timeline-row .order-2{order:initial}.section-head{padding-top:4rem}.hero-copy{padding-top:2rem}}
-    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+    :root {
+      --blue: #233686;
+      --blue-deep: #132052;
+      --gold: #d5af4a;
+      --gold-light: #e7c66b;
+      --mist: #f5f7fc;
+      --ink: #17213f;
+      --line: #dfe5f5;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      width: 100%;
+      margin: 0;
+      color: var(--ink);
+      background: var(--mist);
+      font-family: "DM Sans", sans-serif;
+      overflow-x: hidden;
+    }
+
+    button, a, input { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible, input:focus-visible {
+      outline: 3px solid #d5af4a;
+      outline-offset: 3px;
+    }
+
+    .display { font-family: "Fraunces", serif; }
+    .view { display: none; animation: page-enter .35s ease both; }
+    .view.active { display: block; }
+
+    @keyframes page-enter {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav-link {
+      position: relative;
+      padding: .6rem .1rem;
+      color: #516084;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: color .2s ease;
+    }
+
+    .nav-link:hover, .nav-link.active { color: var(--blue); }
+    .nav-link.active::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      border-radius: 10px;
+      background: var(--gold);
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid rgba(35, 54, 134, .1);
+      border-radius: 1.35rem;
+      box-shadow: 0 12px 34px rgba(21, 39, 100, .08);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      min-height: 2.75rem;
+      padding: .72rem 1rem;
+      border: 1px solid transparent;
+      border-radius: .8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn:disabled { cursor: not-allowed; opacity: .6; transform: none; }
+    .btn-blue { color: #fff; background: var(--blue); }
+    .btn-blue:hover { background: #1a2b70; box-shadow: 0 8px 20px rgba(35,54,134,.22); }
+    .btn-gold { color: #17213f; background: var(--gold-light); }
+    .btn-ghost { color: var(--blue); background: #fff; border-color: #cbd5ef; }
+    .btn-ghost:hover { background: #edf1fb; }
+
+    .media {
+      position: relative;
+      overflow: hidden;
+      background: #e8edf8;
+      border-radius: 1.1rem;
+    }
+
+    .media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+
+    .media:hover img { transform: scale(1.035); }
+
+    .asset-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      min-height: 170px;
+      padding: 1.25rem;
+      color: #516084;
+      text-align: center;
+      background: linear-gradient(135deg, #e8edf8, #f8f9fe);
+      border: 1.5px dashed #9aabd6;
+      border-radius: 1.1rem;
+    }
+
+    .section-head {
+      position: relative;
+      overflow: hidden;
+      padding: 4.75rem 1.25rem 2.7rem;
+      color: #fff;
+      background: linear-gradient(118deg, #17265e, #233686 55%, #5267b8);
+    }
+
+    .section-head::after {
+      position: absolute;
+      top: -150px;
+      right: -100px;
+      width: 360px;
+      height: 360px;
+      content: "";
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .mobile-drawer {
+      transform: translateX(100%);
+      visibility: hidden;
+      transition: transform .3s ease, visibility .3s ease;
+    }
+
+    .mobile-drawer.open {
+      transform: translateX(0);
+      visibility: visible;
+    }
+
+    .modal {
+      display: none;
+      opacity: 0;
+      transition: opacity .2s ease;
+    }
+
+    .modal.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .read-more { position: relative; max-height: 13rem; overflow: hidden; }
+    .read-more.expanded { max-height: none; }
+    .read-more:not(.expanded)::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 4rem;
+      content: "";
+      background: linear-gradient(transparent, #fff);
+      pointer-events: none;
+    }
+
+    .timeline::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      content: "";
+      background: linear-gradient(var(--gold), var(--blue));
+      transform: translateX(-50%);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 2.25rem;
+      left: 50%;
+      width: 18px;
+      height: 18px;
+      background: var(--gold);
+      border: 4px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px var(--blue);
+      transform: translateX(-50%);
+    }
+
+    .toast {
+      visibility: hidden;
+      opacity: 0;
+      transform: translate(-50%, 120px);
+      transition: opacity .25s ease, transform .25s ease, visibility .25s;
+    }
+
+    .toast.show {
+      visibility: visible;
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .hero-image {
+      background-position: center;
+      background-size: cover;
+      transition: opacity .35s ease;
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      transition: transform .2s ease;
+    }
+
+    .gallery-item:hover { transform: translateY(-4px); }
+
+    .welcome-text {
+      color: transparent;
+      background: linear-gradient(90deg, #fff, #e5c868, #fff);
+      background-size: 220% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shine 7s linear infinite;
+    }
+
+    @keyframes shine {
+      to { background-position: 220% center; }
+    }
+
+    @media (max-width: 768px) {
+      .timeline::before { left: 16px; transform: none; }
+      .timeline-dot { left: 16px; transform: translateX(-50%); }
+      .timeline-row { padding-left: 2.5rem; }
+      .section-head { padding-top: 3.9rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
   </style>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
   <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
   <script src="/_sdk/263f7f1ec427fef1.data_sdk.js" type="text/javascript" integrity="sha512-G5r5+ZpgQ1ELqZ8tI9imlWClKvYZ57SrzbGr898u8le5l2OuBwnWDOf9qbb9mCGSCmLi/3zszXyL+nX96lu7Lg=="></script>
   <script src="/_sdk/7f51878a26dda571.editing_sdk.js" type="text/javascript" integrity="sha512-lv2tc4rONGhIWbY0ih8IjIqw943uiwvC9BM8dCj48SpTnOr728gJkoyMnfD0Yfa9KbBgBGdq6uAFyQuDfezvEg=="></script>
   <script src="/_sdk/221ab7571fc66e1b.resizing_sdk.js" type="text/javascript" integrity="sha512-brXJ8PEVMWyvFfRXR3J+lXcBL9xcTCDHg4wYW7JDpQNdbOBkBezAQsQLUeUc2BOFREYS4N9GREjyhzX1N1VFdA=="></script>
  </head>
  <body data-template-id="__page-root" style="background: rgb(245, 247, 252);">
-  <div class="fixed top-0 left-0 right-0 z-[70] h-1 bg-transparent">
-   <div id="scrollProgress" class="progress h-full bg-[#d5af4a]" style="width:0"></div>
+  <div class="fixed top-0 left-0 right-0 z-[100] h-1 bg-transparent" aria-hidden="true">
+   <div id="scrollProgress" class="h-full bg-[#d5af4a]" style="width:0"></div>
   </div>
-  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-[#e7ebf5]">
-   <div class="w-full max-w-7xl mx-auto px-4 h-[72px] flex items-center justify-between gap-5"><button type="button" class="flex items-center gap-3 text-left" onclick="openTab('beranda')"> <span class="w-10 h-10 rounded-xl bg-[#233686] text-[#e7c66b] flex items-center justify-center font-extrabold">V</span> <span><strong class="block text-[#233686] leading-none">VETERNA</strong><small class="text-slate-500 text-xs">Virtu Eterna • XXVIII</small></span> </button>
-    <nav class="hidden lg:flex items-center gap-5" aria-label="Navigasi utama"><button class="nav-link active" data-tab="beranda" onclick="openTab('beranda')">Beranda</button> <button class="nav-link" data-tab="galeri" onclick="openTab('galeri')">Galeri</button> <button class="nav-link" data-tab="outfit" onclick="openTab('outfit')">Outfit</button> <button class="nav-link" data-tab="storyboard" onclick="openTab('storyboard')">Storyboard</button> <button class="nav-link" data-tab="leadership" onclick="openTab('leadership')">Leadership</button> <button class="nav-link" data-tab="members" onclick="openTab('members')">Members</button>
+  <header class="sticky top-0 z-50 border-b border-[#e7ebf5] bg-white/95 backdrop-blur">
+   <div class="w-full max-w-7xl mx-auto px-4 h-[72px] flex items-center justify-between gap-4">
+    <button id="brandHome" type="button" class="flex items-center gap-3 text-left rounded-xl" aria-label="Kembali ke Beranda"> <span class="w-10 h-10 rounded-xl bg-[#233686] text-[#e7c66b] flex items-center justify-center font-extrabold">V</span> <span> <strong class="block text-[#233686] leading-none">VETERNA</strong> <small class="text-slate-500 text-xs">Virtu Eterna • XXVIII</small> </span> </button>
+    <nav class="hidden lg:flex items-center gap-5" aria-label="Navigasi utama">
+     <button class="nav-link active" type="button" data-tab="beranda">Beranda</button> <button class="nav-link" type="button" data-tab="galeri">Galeri</button> <button class="nav-link" type="button" data-tab="outfit">Outfit</button> <button class="nav-link" type="button" data-tab="storyboard">Storyboard</button> <button class="nav-link" type="button" data-tab="leadership">Leadership</button> <button class="nav-link" type="button" data-tab="members">Members</button>
     </nav>
-    <div class="flex items-center gap-2"><button data-template-id="contact-button" type="button" class="canva-button btn btn-blue hidden sm:inline-flex" onclick="openContact()" style="background: rgb(35, 54, 134); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Hubungi Kami</button> <button type="button" class="lg:hidden w-11 h-11 flex items-center justify-center rounded-xl text-[#233686] hover:bg-[#eef1fa]" onclick="toggleDrawer()" aria-label="Buka navigasi"><i data-lucide="menu"></i></button>
+    <div class="flex items-center gap-2">
+     <button data-template-id="contact-button" id="contactButton" type="button" class="canva-button btn btn-blue hidden sm:inline-flex" style="background: rgb(35, 54, 134); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Hubungi Kami</button> <button id="drawerButton" type="button" class="lg:hidden w-11 h-11 rounded-xl flex items-center justify-center text-[#233686] hover:bg-[#eef1fa]" aria-label="Buka navigasi" aria-controls="drawer" aria-expanded="false"> <i data-lucide="menu"></i> </button>
     </div>
    </div>
   </header>
-  <aside id="drawer" class="mobile-drawer fixed inset-y-0 right-0 z-[80] w-[min(86vw,360px)] bg-white shadow-2xl p-6 lg:hidden" aria-label="Menu mobile">
+  <aside id="drawer" class="mobile-drawer fixed inset-y-0 right-0 z-[90] w-[min(86vw,360px)] bg-white shadow-2xl p-6 lg:hidden" aria-label="Menu mobile" aria-hidden="true">
    <div class="flex justify-between items-center mb-9">
-    <strong class="text-[#233686]">MENU VETERNA</strong><button class="p-2" onclick="toggleDrawer()" aria-label="Tutup menu"><i data-lucide="x"></i></button>
+    <strong class="text-[#233686]">MENU VETERNA</strong> <button id="drawerClose" type="button" class="p-2 rounded-lg hover:bg-slate-100" aria-label="Tutup menu"> <i data-lucide="x"></i> </button>
    </div>
-   <nav class="grid gap-2"><button class="text-left p-3 rounded-xl hover:bg-[#f0f3fb]" onclick="openTab('beranda');toggleDrawer()">Beranda</button><button class="text-left p-3 rounded-xl hover:bg-[#f0f3fb]" onclick="openTab('galeri');toggleDrawer()">Galeri</button><button class="text-left p-3 rounded-xl hover:bg-[#f0f3fb]" onclick="openTab('outfit');toggleDrawer()">Outfit</button><button class="text-left p-3 rounded-xl hover:bg-[#f0f3fb]" onclick="openTab('storyboard');toggleDrawer()">Storyboard</button><button class="text-left p-3 rounded-xl hover:bg-[#f0f3fb]" onclick="openTab('leadership');toggleDrawer()">Leadership</button><button class="text-left p-3 rounded-xl hover:bg-[#f0f3fb]" onclick="openTab('members');toggleDrawer()">Members</button>
-   </nav><button data-template-id="contact-mobile-button" class="canva-button btn btn-blue w-full mt-7" onclick="openContact()" style="background: rgb(35, 54, 134); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Hubungi Kami</button>
+   <nav class="grid gap-2" aria-label="Navigasi mobile">
+    <button class="drawer-tab text-left p-3 rounded-xl hover:bg-[#f0f3fb]" type="button" data-tab="beranda">Beranda</button> <button class="drawer-tab text-left p-3 rounded-xl hover:bg-[#f0f3fb]" type="button" data-tab="galeri">Galeri</button> <button class="drawer-tab text-left p-3 rounded-xl hover:bg-[#f0f3fb]" type="button" data-tab="outfit">Outfit</button> <button class="drawer-tab text-left p-3 rounded-xl hover:bg-[#f0f3fb]" type="button" data-tab="storyboard">Storyboard</button> <button class="drawer-tab text-left p-3 rounded-xl hover:bg-[#f0f3fb]" type="button" data-tab="leadership">Leadership</button> <button class="drawer-tab text-left p-3 rounded-xl hover:bg-[#f0f3fb]" type="button" data-tab="members">Members</button>
+   </nav><button data-template-id="contact-mobile-button" id="contactMobileButton" type="button" class="canva-button btn btn-blue w-full mt-7" style="background: rgb(35, 54, 134); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Hubungi Kami</button>
   </aside>
   <main>
-   <section id="beranda" class="view active">
+   <section id="beranda" class="view active" aria-label="Beranda">
     <section class="relative bg-[#132052] overflow-hidden">
-     <div id="heroSlider" class="relative w-full aspect-[16/9] max-h-[680px] min-h-[430px]">
-      <div id="heroImage" class="absolute inset-0 bg-center bg-cover"></div>
+     <div id="heroSlider" class="relative w-full aspect-[16/9] max-h-[680px] min-h-[430px]" aria-roledescription="carousel" aria-label="Sorotan Virtu Eterna">
+      <div id="heroImage" class="hero-image absolute inset-0"></div>
       <div class="absolute inset-0 bg-gradient-to-r from-[#101c50]/95 via-[#233686]/65 to-[#233686]/20"></div>
       <div class="relative z-10 max-w-7xl mx-auto px-5 py-14 md:py-20 min-h-[430px] flex items-center">
-       <div class="hero-copy max-w-2xl text-white"><span class="inline-flex px-3 py-1 rounded-full border border-[#e7c66b]/70 bg-[#233686]/50 text-[#f1d77f] text-sm mb-5">Virtu Eterna • XXVIII</span>
+       <div class="max-w-2xl text-white">
+        <span class="inline-flex px-3 py-1 rounded-full border border-[#e7c66b]/70 bg-[#233686]/50 text-[#f1d77f] text-sm mb-5">Virtu Eterna • XXVIII</span>
         <p data-template-id="arabic-opening" class="canva-text text-[#f4dc87] text-xl md:text-2xl mb-3" dir="rtl" style="color: rgb(244, 220, 135); font-weight: 600; font-style: normal; font-size: 16px;">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</p>
         <h1 data-template-id="hero-title" class="canva-text display welcome-text text-4xl md:text-6xl font-bold leading-tight" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">WELCOME TO VIRTU ETERNA</h1>
         <p data-template-id="hero-school" class="canva-text mt-4 text-lg md:text-xl font-semibold" style="color: rgb(255, 255, 255); font-weight: 600; font-style: normal; font-size: 16px;">Angkatan ke-28 SMA Ar-Rohmah Putra Malang</p>
         <p data-template-id="hero-year" class="canva-text mt-1 tracking-[.28em] text-[#f1d77f]" style="color: rgb(241, 215, 127); font-weight: 700; font-style: normal; font-size: 16px;">2024 — 2027</p>
         <p data-template-id="hero-subtitle" class="canva-text mt-6 text-white/85 max-w-xl text-lg" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Kebajikan yang abadi, solidaritas yang tak terputus.</p>
-        <div class="flex flex-wrap gap-3 mt-8"><button data-template-id="explore-story-button" class="canva-button btn btn-gold" onclick="openTab('storyboard')" style="background: rgb(231, 198, 107); color: rgb(23, 33, 63); font-weight: 700; font-style: normal; font-size: 16px;">Jelajahi Kisah Kami</button> <button data-template-id="hero-contact-button" class="canva-button btn btn-ghost bg-white/10 border-white/30 text-white" onclick="openContact()" style="background: rgba(255, 255, 255, 0.1); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Hubungi Kami</button>
+        <div class="flex flex-wrap gap-3 mt-8">
+         <button data-template-id="explore-story-button" id="exploreStoryButton" type="button" class="canva-button btn btn-gold" style="background: rgb(231, 198, 107); color: rgb(23, 33, 63); font-weight: 700; font-style: normal; font-size: 16px;">Jelajahi Kisah Kami</button> <button data-template-id="hero-contact-button" id="heroContactButton" type="button" class="canva-button btn btn-ghost bg-white/10 border-white/30 text-white" style="background: rgba(255, 255, 255, 0.098); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Hubungi Kami</button>
         </div>
        </div>
       </div>
-      <div class="absolute bottom-5 right-5 z-20 flex gap-2"><button class="btn btn-ghost w-10 h-10 p-0 bg-white/90" onclick="moveHero(-1)" aria-label="Slide sebelumnya"><i data-lucide="chevron-left"></i></button> <button id="heroPause" class="btn btn-ghost w-10 h-10 p-0 bg-white/90" onclick="toggleHero()" aria-label="Jeda slider"><i data-lucide="pause"></i></button> <button class="btn btn-ghost w-10 h-10 p-0 bg-white/90" onclick="moveHero(1)" aria-label="Slide berikutnya"><i data-lucide="chevron-right"></i></button>
+      <div class="absolute bottom-5 right-5 z-20 flex gap-2">
+       <button id="heroPrevious" type="button" class="btn btn-ghost w-10 h-10 p-0 bg-white/90" aria-label="Slide sebelumnya"><i data-lucide="chevron-left"></i></button> <button id="heroPause" type="button" class="btn btn-ghost w-10 h-10 p-0 bg-white/90" aria-label="Jeda slider"><i data-lucide="pause"></i></button> <button id="heroNext" type="button" class="btn btn-ghost w-10 h-10 p-0 bg-white/90" aria-label="Slide berikutnya"><i data-lucide="chevron-right"></i></button>
       </div>
-      <div id="heroDots" class="absolute z-20 bottom-7 left-1/2 -translate-x-1/2 flex gap-2"></div>
+      <div id="heroDots" class="absolute z-20 bottom-7 left-1/2 -translate-x-1/2 flex gap-2" aria-label="Pilih slide"></div>
      </div>
     </section>
     <div class="w-full max-w-7xl mx-auto px-5 py-16 space-y-20">
-     <section class="grid md:grid-cols-2 gap-10 items-center reveal">
+     <section class="grid md:grid-cols-2 gap-10 items-center">
       <div>
        <p class="text-[#b38c2a] font-bold text-sm tracking-widest uppercase">Tentang kami</p>
        <h2 data-template-id="profile-title" class="canva-text display text-3xl mt-2 text-[#233686]" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 24px;">Profil Veterna</h2>
-       <p data-template-id="profile-copy" class="canva-text leading-8 text-slate-600 mt-5" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 16px;">Virtu Eterna (Veterna) adalah nama angkatan di SMA Ar-Rohmah Putra yang memiliki ikatan solidaritas yang tinggi dan salah satu angkatan paling disiplin dari padan angkatan yang lainnya serta memiliki tujuan yang yang abadi.</p>
+       <p data-template-id="profile-copy" class="canva-text leading-8 text-slate-600 mt-5" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 16px;">Virtu Eterna (Veterna) adalah nama angkatan di SMA Ar-Rohmah Putra yang memiliki ikatan solidaritas yang tinggi, disiplin, dan tujuan yang abadi.</p>
       </div>
       <figure>
        <div class="media aspect-video">
-        <img data-template-id="profile-image" class="canva-image" loading="lazy" onerror="mediaFallback(this,'Ruang aset gambar Profil Veterna')" src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Seluruh kader Veterna">
+        <img data-template-id="profile-image" class="canva-image" loading="lazy" src="https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg" alt="Seluruh kader Veterna">
        </div>
        <figcaption data-template-id="profile-caption" class="canva-text text-center text-sm text-slate-500 mt-3" style="color: rgb(100, 116, 139); font-weight: 400; font-style: normal; font-size: 16px;">Seluruh Kader Veterna</figcaption>
       </figure>
      </section>
-     <section class="grid md:grid-cols-2 gap-10 items-center reveal">
+     <section class="grid md:grid-cols-2 gap-10 items-center">
       <div class="md:order-2">
        <p class="text-[#b38c2a] font-bold text-sm tracking-widest uppercase">Identitas visual</p>
        <h2 data-template-id="logo-title" class="canva-text display text-3xl mt-2 text-[#233686]" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 24px;">Logo Veterna</h2>
-       <p data-template-id="logo-copy" class="canva-text leading-8 text-slate-600 mt-5" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 16px;">Logo Veterna mengambil referensi dari makna ‘Virtu Eterna’, yaitu kebajikan yang abadi, sehingga menjadi simbol angkatan yang solid dan kokoh dalam menghadapi tantangan. Logo menampilkan bintang segitiga berwarna keemasan di dalam lingkaran biru.</p>
+       <p data-template-id="logo-copy" class="canva-text leading-8 text-slate-600 mt-5" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 16px;">Logo Veterna mengambil referensi dari makna Virtu Eterna, yaitu kebajikan yang abadi, sehingga menjadi simbol angkatan yang solid dan kokoh dalam menghadapi tantangan. Logo menampilkan bintang segitiga berwarna keemasan di dalam lingkaran biru.</p>
       </div>
       <figure class="md:order-1">
        <div class="media aspect-video">
-        <img data-template-id="logo-image" class="canva-image object-contain bg-[#edf1fb]" loading="lazy" onerror="mediaFallback(this,'Ruang aset gambar Logo Veterna')" src="https://i.ibb.co.com/hRGTWGTG/wdwd.png" alt="Logo Veterna dengan bintang keemasan dalam lingkaran biru">
+        <img data-template-id="logo-image" class="canva-image object-contain bg-[#edf1fb]" loading="lazy" src="https://i.ibb.co.com/hRGTWGTG/wdwd.png" alt="Logo Veterna dengan bintang keemasan dalam lingkaran biru">
        </div>
        <figcaption data-template-id="logo-caption" class="canva-text text-center text-sm text-slate-500 mt-3" style="color: rgb(100, 116, 139); font-weight: 400; font-style: normal; font-size: 16px;">Bintang Biru</figcaption>
       </figure>
      </section>
-     <section class="grid md:grid-cols-2 gap-10 items-center reveal">
+     <section class="grid md:grid-cols-2 gap-10 items-center">
       <figure>
        <div class="media aspect-video">
-        <img data-template-id="mascot-image" class="canva-image object-contain bg-[#edf1fb]" loading="lazy" onerror="mediaFallback(this,'Ruang aset gambar Maskot Veterna')" src="https://i.ibb.co.com/qYLDsMps/XXVIII.png" alt="Maskot burung hantu putih Veterna">
+        <img data-template-id="mascot-image" class="canva-image object-contain bg-[#edf1fb]" loading="lazy" src="https://i.ibb.co.com/qYLDsMps/XXVIII.png" alt="Maskot burung hantu putih Veterna">
        </div>
-       <figcaption data-template-id="mascot-caption" class="canva-text text-center text-sm text-slate-500 mt-3" style="color: rgb(100, 116, 139); font-weight: 400; font-style: normal; font-size: 16px;">Burung Hantu Putih</figcaption><button data-template-id="model-button" class="canva-button btn btn-ghost mt-4 w-full" onclick="showToast('Tautan 3D Model View siap diisi programmer.')" style="background: rgb(255, 255, 255); color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">3D Model View</button>
+       <figcaption data-template-id="mascot-caption" class="canva-text text-center text-sm text-slate-500 mt-3" style="color: rgb(100, 116, 139); font-weight: 400; font-style: normal; font-size: 16px;">Burung Hantu Putih</figcaption><button data-template-id="model-button" id="modelButton" type="button" class="canva-button btn btn-ghost mt-4 w-full" style="background: rgb(255, 255, 255); color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">3D Model View</button>
       </figure>
       <div>
        <p class="text-[#b38c2a] font-bold text-sm tracking-widest uppercase">Maskot</p>
@@ -113,10 +349,10 @@
        <p data-template-id="mascot-copy" class="canva-text leading-8 text-slate-600 mt-5" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 16px;">Maskot Veterna merepresentasikan kebajikan yang abadi, ketangguhan, kejernihan berpikir, dan solidaritas angkatan. Sosok burung hantu putih menjadi simbol kebijaksanaan dan semangat untuk terus belajar.</p>
       </div>
      </section>
-     <section class="card p-6 md:p-9 reveal grid md:grid-cols-[230px_1fr] gap-8">
+     <section class="card p-6 md:p-9 grid md:grid-cols-[230px_1fr] gap-8">
       <figure>
        <div class="media aspect-square">
-        <img data-template-id="leader-image" class="canva-image" loading="lazy" onerror="mediaFallback(this,'Ruang foto ketua angkatan')" src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/IMG-20260323-WA0007%20-%20Dzaky%20Ammar.jpg?raw=true" alt="Muhammad Dzaky Ammar">
+        <img data-template-id="leader-image" class="canva-image" loading="lazy" src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/IMG-20260323-WA0007%20-%20Dzaky%20Ammar.jpg?raw=true" alt="Muhammad Dzaky Ammar">
        </div>
        <figcaption data-template-id="leader-caption" class="canva-text font-bold text-center mt-3 text-[#233686]" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Muhammad Dzaky Ammar</figcaption><a data-template-id="leader-instagram" class="canva-link block text-center text-sm text-[#516084] mt-1" href="https://www.instagram.com/dzakmarr/" target="_blank" rel="noopener noreferrer" style="color: rgb(81, 96, 132); font-weight: 400; font-style: normal; font-size: 16px;">@d zakmarr</a>
       </figure>
@@ -124,62 +360,24 @@
        <p class="text-[#b38c2a] font-bold text-sm tracking-widest uppercase">Sambutan</p>
        <h2 data-template-id="leader-title" class="canva-text display text-3xl mt-2 text-[#233686]" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 24px;">Sambutan Ketua Angkatan</h2>
        <div id="leaderSpeech" class="read-more mt-5 whitespace-pre-line leading-7 text-slate-600">
-        Assalamu’alaikum Warahmatullahi Wabarakatuh, Selamat pagi/siang, salam sejahtera untuk kita semua, Syalom, Om Swastiastu, Namo Buddhaya, Salam Kebajikan. Puji syukur kita panjatkan ke hadirat Allah SWT, karena atas rahmat-Nya kita dapat berkumpul hari ini dalam keadaan sehat walafat untuk merayakan momen perpisahan sekolah. Hadirin dan teman-teman sekalian, Tidak terasa tiga tahun sudah kita bersama-sama menimba ilmu di sekolah tercinta ini. Rasanya baru kemarin kita memakai seragam putih abu-abu untuk pertama kalinya, berkenalan dengan rasa gugup, dan mulai merajut mimpi di aula ini. Selama tiga tahun ini, kita sudah melalui banyak hal bersama. Mulai dari tugas menumpuk, ujian yang melelahkan, hingga tawa canda di jam istirahat. Saya mewakili seluruh teman-teman angkatan Veterna ingin mengucapkan terima kasih yang sebesar-besarnya kepada Bapak dan Ibu Guru. Terima kasih atas kesabaran, keikhlasan, dan ilmu yang luar biasa yang telah diberikan kepada kami. Tanpa bimbingan Guru sekalian, kami bukan siapa-siapa. Kepada orang tua kami tercinta, terima kasih atas doa dan dukungan tanpa henti. Dan untuk teman-temanku, perpisahan ini bukanlah akhir dari segalanya. Perjalanan kita masih panjang di luar sana. Mari kita jaga nama baik almamater dan terus melangkah maju membawa kenangan indah masa SMA. Mohon maaf atas segala kesalahan dan kekhilafan selama kita bersama. Sukses selalu untuk kita semua! Wabillahi taufiq wal hidayah, Wassalamu’alaikum Warahmatullahi Wabarakatuh.
-       </div><button data-template-id="expand-leader-button" class="canva-button btn btn-ghost mt-5" onclick="toggleRead('leaderSpeech',this)" style="background: rgb(255, 255, 255); color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Baca sambutan lengkap</button>
+        Assalamu’alaikum Warahmatullahi Wabarakatuh, Selamat pagi/siang, salam sejahtera untuk kita semua, Syalom, Om Swastiastu, Namo Buddhaya, Salam Kebajikan. Puji syukur kita panjatkan ke hadirat Allah SWT, karena atas rahmat-Nya kita dapat berkumpul hari ini dalam keadaan sehat walafiat untuk merayakan momen perpisahan sekolah. Hadirin dan teman-teman sekalian, tidak terasa tiga tahun sudah kita bersama-sama menimba ilmu di sekolah tercinta ini. Rasanya baru kemarin kita memakai seragam putih abu-abu untuk pertama kalinya, berkenalan dengan rasa gugup, dan mulai merajut mimpi di aula ini. Selama tiga tahun ini, kita sudah melalui banyak hal bersama. Mulai dari tugas menumpuk, ujian yang melelahkan, hingga tawa canda di jam istirahat. Saya mewakili seluruh teman-teman Angkatan Veterna ingin mengucapkan terima kasih yang sebesar-besarnya kepada Bapak dan Ibu Guru. Kepada orang tua kami tercinta, terima kasih atas doa dan dukungan tanpa henti. Dan untuk teman-temanku, perpisahan ini bukanlah akhir dari segalanya. Perjalanan kita masih panjang di luar sana. Mari kita jaga nama baik almamater dan terus melangkah maju membawa kenangan indah masa SMA.
+       </div><button data-template-id="expand-leader-button" id="expandLeader" type="button" class="canva-button btn btn-ghost mt-5" style="background: rgb(255, 255, 255); color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Baca sambutan lengkap</button>
       </div>
      </section>
-     <section class="card p-6 md:p-9 reveal grid md:grid-cols-[1fr_230px] gap-8">
-      <div>
-       <p class="text-[#b38c2a] font-bold text-sm tracking-widest uppercase">Tim pengembang</p>
-       <h2 data-template-id="developer-title" class="canva-text display text-3xl mt-2 text-[#233686]" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 24px;">Sambutan Koordinator Website</h2>
-       <div id="developerSpeech" class="read-more mt-5 whitespace-pre-line leading-7 text-slate-600">
-        Assalamu’alaikum Warahmatullahi Wabarakatuh. Alhamdulillahirabbil ‘alamin, washalatu wasalamu ‘ala asyrafil anbiya’i wal mursalin, wa ‘ala alihi washabihi ajma’in. Amma ba'du. Yang kami hormati, Pimpinan Pondok Pesantren Ar-Rohmah Putra beserta jajaran asatidz yang senantiasa membimbing kami. Serta yang saya cintai dan banggakan, saudara-saudara seperjuangan, keluarga besar Angkatan Veterna. Puji syukur kehadirat Allah SWT atas segala nikmat-Nya, sehingga pada kesempatan yang baik ini kita dapat berkumpul untuk menyaksikan realisasi dari salah satu cita-cita angkatan kita, yakni peluncuran website resmi Angkatan Veterna. Shalawat dan salam senantiasa tercurah kepada junjungan kita, Nabi Muhammad SAW. Berdirinya saya di sini mewakili tim pengembang, ingin menyampaikan rasa syukur dan terima kasih yang tak terhingga atas rampungnya proyek digital ini. Membangun sebuah ruang digital yang merepresentasikan identitas, kreativitas visual, dan rekam jejak kebaikan angkatan kita bukanlah hal yang bisa dilakukan sendirian. Kepada segenap asatidz, kami mengucapkan jazakumullah khairan katsiran. Terima kasih yang sebesar-besarnya atas doa, arahan, dan ruang kebebasan berekspresi yang ustadz berikan kepada kami. Dukungan para asatidz memotivasi kami untuk menjadikan teknologi dan desain digital sebagai sarana syiar dan silaturahmi yang bernilai positif. Ucapan terima kasih yang sama juga saya tujukan kepada seluruh teman-teman Angkatan Veterna. Terima kasih atas setiap sumbangsih ide, tenaga, materi, dan dukungan moril yang tiada henti. Layar digital ini adalah etalase ukhuwah kita; sebuah karya dari kita, oleh kita, dan untuk kenangan kita bersama di Ar-Rohmah Putra tercinta. Kami menyadari website ini masih jauh dari kata sempurna. Oleh karena itu, kami sangat terbuka terhadap setiap masukan agar platform ini dapat terus berkembang dan memberikan manfaat yang lebih luas. Semoga Allah SWT mencatat ikhtiar kecil kita ini sebagai amal jariyah yang membawa keberkahan. Nasrun minallah wa fathun qariib. Wassalamu’alaikum Warahmatullahi Wabarakatuh.
-       </div>
-       <div class="flex flex-wrap gap-3 mt-5">
-        <button data-template-id="expand-developer-button" class="canva-button btn btn-ghost" onclick="toggleRead('developerSpeech',this)" style="background: rgb(255, 255, 255); color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Baca sambutan lengkap</button><a data-template-id="developer-bio-button" class="canva-button btn btn-blue" href="https://virtueterna28.github.io/developerwebveterna/" target="_blank" rel="noopener noreferrer" style="background: rgb(35, 54, 134); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Biodata Web Developer</a>
-       </div>
-      </div>
-      <figure>
-       <div class="media aspect-square">
-        <img data-template-id="developer-image" class="canva-image" loading="lazy" onerror="mediaFallback(this,'Ruang foto koordinator website')" src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/damas.jpeg?raw=true" alt="Abhipraya Damas Okta Ardana">
-       </div>
-       <figcaption data-template-id="developer-caption" class="canva-text font-bold text-center mt-3 text-[#233686]" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Abhipraya Damas Okta Ardana</figcaption><a data-template-id="developer-instagram" class="canva-link block text-center text-sm text-[#516084] mt-1" href="https://www.instagram.com/rayfin_cruise/" target="_blank" rel="noopener noreferrer" style="color: rgb(81, 96, 132); font-weight: 400; font-style: normal; font-size: 16px;">@rayfin_cruise</a>
-      </figure>
-     </section>
-     <section class="card overflow-hidden reveal grid md:grid-cols-2">
-      <div class="media min-h-[250px] rounded-none">
-       <img data-template-id="fame-image" class="canva-image" loading="lazy" onerror="mediaFallback(this,'Ruang aset Hall of Fame')" src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png?raw=true" alt="Dokumentasi kegiatan Veterna">
+     <section class="card overflow-hidden grid md:grid-cols-2">
+      <div class="media rounded-none min-h-[250px]">
+       <img data-template-id="fame-image" class="canva-image" loading="lazy" src="https://raw.githubusercontent.com/virtueterna28/web/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png" alt="Dokumentasi kegiatan Veterna">
       </div>
       <div class="p-8 flex flex-col justify-center">
        <h2 data-template-id="fame-title" class="canva-text display text-3xl text-[#233686]" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 24px;">Hall of Fame</h2>
        <p data-template-id="fame-copy" class="canva-text text-slate-600 mt-3 leading-7" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 16px;">Lihat prestasi dan jejak inspiratif santri Veterna.</p><a data-template-id="fame-button" class="canva-button btn btn-blue mt-6 w-fit" href="https://www.msn.com/id-id?ocid=wispr&amp;pc=u477&amp;AR=2" target="_blank" rel="noopener noreferrer" style="background: rgb(35, 54, 134); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Lihat Prestasi Santri</a>
       </div>
      </section>
-     <section class="reveal">
-      <div class="text-center max-w-2xl mx-auto mb-8">
-       <p class="text-[#b38c2a] font-bold text-sm tracking-widest uppercase">Renungan</p>
-       <h2 data-template-id="quote-title" class="canva-text display text-3xl text-[#233686] mt-2" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 24px;">Ayat dan Hadis Inspiratif</h2>
-      </div>
-      <div class="grid md:grid-cols-3 gap-5">
-       <article class="card p-6">
-        <span class="text-[#b38c2a] font-bold text-sm">Referensi Al-Qur’an • Ali ‘Imran 3:103</span>
-        <p class="mt-4 italic leading-7">“Berpegang teguhlah kamu semuanya kepada tali Allah, dan janganlah kamu bercerai-berai.”</p>
-       </article>
-       <article class="card p-6">
-        <span class="text-[#b38c2a] font-bold text-sm">Referensi Al-Qur’an • Al-Insyirah 94:5–6</span>
-        <p class="mt-4 italic leading-7">“Sesungguhnya bersama kesulitan ada kemudahan.”</p>
-       </article>
-       <article class="card p-6">
-        <span class="text-[#b38c2a] font-bold text-sm">Referensi Hadis • Muttafaqun ‘alaih</span>
-        <p class="mt-4 italic leading-7">“Seorang mukmin dengan mukmin lainnya seperti bangunan yang saling menguatkan.”</p><small class="block mt-4 text-slate-500">Periksa kembali redaksi dan takhrij untuk publikasi resmi.</small>
-       </article>
-      </div>
-     </section>
     </div>
    </section>
-   <section id="galeri" class="view">
+   <section id="galeri" class="view" aria-label="Galeri">
     <div class="section-head">
-     <div class="max-w-7xl mx-auto">
+     <div class="max-w-7xl mx-auto relative z-10">
       <p class="text-[#ecd37b] font-bold tracking-widest uppercase text-sm">Dokumentasi</p>
       <h1 data-template-id="gallery-heading" class="canva-text display text-4xl md:text-5xl mt-2" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Galeri Veterna</h1>
       <p data-template-id="gallery-subheading" class="canva-text mt-3 text-white/75" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Fragmen kecil dari perjalanan besar.</p>
@@ -187,29 +385,29 @@
     </div>
     <div class="max-w-7xl mx-auto px-5 py-12">
      <div class="flex flex-wrap justify-between gap-4 mb-7">
-      <div class="flex flex-wrap gap-2">
-       <button class="btn btn-ghost gallery-filter" onclick="filterGallery('all')">Semua</button><button class="btn btn-ghost gallery-filter" onclick="filterGallery('16:9')">16:9</button><button class="btn btn-ghost gallery-filter" onclick="filterGallery('1:1')">1:1</button><button class="btn btn-ghost gallery-filter" onclick="filterGallery('9:16')">9:16</button>
-      </div><button class="btn btn-blue" onclick="shuffleGallery()"><i data-lucide="shuffle"></i> Acak urutan</button>
-     </div><!-- TODO_ASSET_GALERI: Ganti slot berikut dengan foto asli serta URL gambar yang telah disetujui. -->
-     <div id="galleryGrid" class="columns-1 sm:columns-2 lg:columns-4 gap-4"></div>
+      <div class="flex flex-wrap gap-2" aria-label="Filter galeri">
+       <button class="btn btn-blue gallery-filter" type="button" data-ratio="all">Semua</button> <button class="btn btn-ghost gallery-filter" type="button" data-ratio="16:9">16:9</button> <button class="btn btn-ghost gallery-filter" type="button" data-ratio="1:1">1:1</button> <button class="btn btn-ghost gallery-filter" type="button" data-ratio="9:16">9:16</button>
+      </div><button id="shuffleGallery" type="button" class="btn btn-blue"><i data-lucide="shuffle"></i><span>Acak urutan</span></button>
+     </div>
+     <div id="galleryGrid" class="columns-1 sm:columns-2 lg:columns-4 gap-4" aria-live="polite"></div>
      <section class="card mt-12 overflow-hidden grid md:grid-cols-2">
       <div class="p-7">
        <p class="text-[#b38c2a] font-bold text-sm">RUANG EKSKLUSIF</p>
        <h2 data-template-id="onlyvens-title" class="canva-text display text-3xl text-[#233686] mt-2" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 24px;">Only Vens</h2>
-       <form class="mt-5" onsubmit="openOnlyVens(event)">
-        <label data-template-id="onlyvens-label" class="canva-text block font-bold text-sm mb-2" for="vensUrl" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Masukkan tautan tujuan</label><input id="vensUrl" class="w-full rounded-xl border border-[#cbd5ef] px-4 py-3 outline-none focus:ring-2 focus:ring-[#233686]" value="https://virtueterna28.github.io/v-cloud/" aria-describedby="vensMessage">
-        <p id="vensMessage" class="text-sm mt-2 min-h-5 text-red-600"></p><button data-template-id="onlyvens-button" class="canva-button btn btn-blue mt-3" type="submit" style="background: rgb(35, 54, 134); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Lanjutkan</button>
+       <form id="onlyVensForm" class="mt-5">
+        <label data-template-id="onlyvens-label" class="canva-text block font-bold text-sm mb-2" for="vensUrl" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 16px;">Masukkan tautan tujuan</label> <input id="vensUrl" type="url" class="w-full rounded-xl border border-[#cbd5ef] px-4 py-3 outline-none focus:ring-2 focus:ring-[#233686]" value="https://virtueterna28.github.io/v-cloud/" aria-describedby="vensMessage">
+        <p id="vensMessage" class="text-sm mt-2 min-h-5 text-red-700" role="alert"></p><button data-template-id="onlyvens-button" type="submit" class="canva-button btn btn-blue mt-3" style="background: rgb(35, 54, 134); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Lanjutkan</button>
        </form>
       </div>
       <div class="media rounded-none min-h-[280px]">
-       <img data-template-id="onlyvens-image" class="canva-image" loading="lazy" onerror="mediaFallback(this,'Ruang aset Only Vens')" src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/gallery/foto%20perwakilan%20kelas%20.png?raw=true" alt="Foto perwakilan kelas Veterna">
+       <img data-template-id="onlyvens-image" class="canva-image" loading="lazy" src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/gallery/foto%20perwakilan%20kelas%20.png?raw=true" alt="Foto perwakilan kelas Veterna">
       </div>
      </section>
     </div>
    </section>
-   <section id="outfit" class="view">
+   <section id="outfit" class="view" aria-label="Outfit">
     <div class="section-head">
-     <div class="max-w-7xl mx-auto">
+     <div class="max-w-7xl mx-auto relative z-10">
       <p class="text-[#ecd37b] font-bold tracking-widest uppercase text-sm">Identitas gaya</p>
       <h1 data-template-id="outfit-heading" class="canva-text display text-4xl md:text-5xl mt-2" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Outfit Veterna</h1>
      </div>
@@ -218,9 +416,9 @@
      <div id="outfitList" class="space-y-8"></div>
     </div>
    </section>
-   <section id="storyboard" class="view">
+   <section id="storyboard" class="view" aria-label="Storyboard">
     <div class="section-head">
-     <div class="max-w-7xl mx-auto">
+     <div class="max-w-7xl mx-auto relative z-10">
       <p class="text-[#ecd37b] font-bold tracking-widest uppercase text-sm">Jejak perjalanan</p>
       <h1 data-template-id="story-heading" class="canva-text display text-4xl md:text-5xl mt-2" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Storyboard Veterna</h1>
       <p data-template-id="story-subheading" class="canva-text mt-3 text-white/75" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Dari pertemuan pertama hingga langkah menuju masa depan.</p>
@@ -230,23 +428,23 @@
      <div id="timeline" class="timeline relative space-y-10"></div>
     </div>
    </section>
-   <section id="leadership" class="view">
+   <section id="leadership" class="view" aria-label="Leadership">
     <div class="section-head">
-     <div class="max-w-7xl mx-auto">
+     <div class="max-w-7xl mx-auto relative z-10">
       <p class="text-[#ecd37b] font-bold tracking-widest uppercase text-sm">Ruang penggerak</p>
       <h1 data-template-id="leadership-heading" class="canva-text display text-4xl md:text-5xl mt-2" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Leadership Veterna</h1>
      </div>
     </div>
     <div class="max-w-7xl mx-auto px-5 py-12">
-     <div class="flex flex-wrap gap-2 mb-8">
-      <button class="btn btn-blue leadership-filter" onclick="renderLeadership('Angkatan')">Angkatan</button><button class="btn btn-ghost leadership-filter" onclick="renderLeadership('Organisasi')">Organisasi</button><button class="btn btn-ghost leadership-filter" onclick="renderLeadership('Komunitas')">Komunitas</button>
+     <div class="flex flex-wrap gap-2 mb-8" aria-label="Filter leadership">
+      <button class="btn btn-blue leadership-filter" type="button" data-leadership="Angkatan">Angkatan</button> <button class="btn btn-ghost leadership-filter" type="button" data-leadership="Organisasi">Organisasi</button> <button class="btn btn-ghost leadership-filter" type="button" data-leadership="Komunitas">Komunitas</button>
      </div>
      <div id="leadershipGrid" class="grid md:grid-cols-2 xl:grid-cols-3 gap-6"></div>
     </div>
    </section>
-   <section id="members" class="view">
+   <section id="members" class="view" aria-label="Members">
     <div class="section-head">
-     <div class="max-w-7xl mx-auto">
+     <div class="max-w-7xl mx-auto relative z-10">
       <p class="text-[#ecd37b] font-bold tracking-widest uppercase text-sm">Keluarga besar</p>
       <h1 data-template-id="members-heading" class="canva-text display text-4xl md:text-5xl mt-2" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 32px;">Members Veterna</h1>
      </div>
@@ -254,7 +452,7 @@
     <div class="max-w-7xl mx-auto px-5 py-12 space-y-14">
      <section class="card overflow-hidden grid md:grid-cols-2">
       <div class="media rounded-none min-h-[250px]">
-       <img data-template-id="map-image" class="canva-image" loading="lazy" onerror="mediaFallback(this,'Ruang aset peta sebaran kader')" src="https://media.istockphoto.com/id/1436907057/id/foto/peta-topografi-asia-tenggara-warna-render-3d-horisontal.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=ZH-aT0WgXcUvnPBQRxuSbGkBoY1Er8Aa1z8DR2WuSP8=" alt="Peta topografi Asia Tenggara untuk sebaran kader Veterna">
+       <img data-template-id="map-image" class="canva-image" loading="lazy" src="https://media.istockphoto.com/id/1436907057/id/foto/peta-topografi-asia-tenggara-warna-render-3d-horisontal.jpg?s=612x612&amp;w=0&amp;k=20&amp;c=ZH-aT0WgXcUvnPBQRxuSbGkBoY1Er8Aa1z8DR2WuSP8=" alt="Peta topografi Asia Tenggara untuk sebaran kader Veterna">
       </div>
       <div class="p-7">
        <h2 data-template-id="map-title" class="canva-text display text-3xl text-[#233686]" style="color: rgb(35, 54, 134); font-weight: 700; font-style: normal; font-size: 24px;">Sebaran kader Veterna</h2>
@@ -267,7 +465,7 @@
        <p data-template-id="members-intro-copy" class="canva-text leading-7 text-slate-600 mt-4" style="color: rgb(71, 85, 105); font-weight: 400; font-style: normal; font-size: 16px;">Kader Veterna adalah bagian dari perjalanan bersama: berbeda karakter, satu tujuan, dan terus bertumbuh dalam ukhuwah.</p><a data-template-id="members-button" class="canva-button btn btn-blue mt-6" href="https://virtueterna28.github.io/anggota/" target="_blank" rel="noopener noreferrer" style="background: rgb(35, 54, 134); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 16px;">Lihat Web Keanggotaan</a>
       </div>
       <div class="media rounded-none min-h-[260px]">
-       <img data-template-id="members-image" class="canva-image" loading="lazy" onerror="mediaFallback(this,'Ruang aset anggota Veterna')" src="https://raw.githubusercontent.com/virtueterna28/web/refs/heads/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png" alt="Dokumentasi kebersamaan kader Veterna">
+       <img data-template-id="members-image" class="canva-image" loading="lazy" src="https://raw.githubusercontent.com/virtueterna28/web/refs/heads/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png" alt="Dokumentasi kebersamaan kader Veterna">
       </div>
      </section>
      <div id="memberSections"></div>
@@ -278,7 +476,7 @@
    <div class="max-w-7xl mx-auto px-5 py-12 grid md:grid-cols-[1.3fr_1fr_1fr] gap-9">
     <div>
      <div class="flex items-center gap-3">
-      <span class="w-10 h-10 rounded-xl bg-[#e7c66b] text-[#233686] flex items-center justify-center font-extrabold">V</span><strong>VETERNA</strong>
+      <span class="w-10 h-10 rounded-xl bg-[#e7c66b] text-[#233686] flex items-center justify-center font-extrabold">V</span> <strong>VETERNA</strong>
      </div>
      <p data-template-id="footer-tagline" class="canva-text mt-4 text-[#f3d980]" style="color: rgb(243, 217, 128); font-weight: 700; font-style: normal; font-size: 16px;">Kebajikan yang abadi</p>
      <p data-template-id="footer-note" class="canva-text mt-2 text-white/70 text-sm" style="color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 16px;">Dibangun sebagai ruang kenangan, silaturahmi, dan inspirasi.</p>
@@ -286,88 +484,592 @@
     <nav aria-label="Navigasi footer">
      <h2 class="font-bold mb-3">Navigasi</h2>
      <div class="grid gap-2 text-white/75 text-sm">
-      <button class="text-left hover:text-white" onclick="openTab('beranda')">Beranda</button><button class="text-left hover:text-white" onclick="openTab('galeri')">Galeri</button><button class="text-left hover:text-white" onclick="openTab('storyboard')">Storyboard</button><button class="text-left hover:text-white" onclick="openTab('members')">Members</button>
+      <button class="footer-tab text-left hover:text-white" type="button" data-tab="beranda">Beranda</button> <button class="footer-tab text-left hover:text-white" type="button" data-tab="galeri">Galeri</button> <button class="footer-tab text-left hover:text-white" type="button" data-tab="storyboard">Storyboard</button> <button class="footer-tab text-left hover:text-white" type="button" data-tab="members">Members</button>
      </div>
     </nav>
     <div>
      <h2 class="font-bold mb-3">Terhubung</h2>
      <div class="flex gap-3">
-      <a class="w-10 h-10 bg-white rounded-lg p-2" href="https://www.instagram.com/veterna28/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Veterna"><img data-template-id="instagram-icon" class="canva-image w-full h-full object-contain" loading="lazy" src="https://i.ibb.co.com/SXfnj442/ig.png" alt="Ikon Instagram"></a><a class="w-10 h-10 bg-white rounded-lg p-2" href="https://www.tiktok.com/@smaarrohmahputra" target="_blank" rel="noopener noreferrer" aria-label="TikTok SMA Ar-Rohmah Putra"><img data-template-id="tiktok-icon" class="canva-image w-full h-full object-contain" loading="lazy" src="https://i.ibb.co.com/rRsMT240/tiktok.png" alt="Ikon TikTok"></a><a class="w-10 h-10 bg-white rounded-lg p-2" href="https://www.youtube.com/@smaartramalang" target="_blank" rel="noopener noreferrer" aria-label="YouTube SMA Ar-Rohmah"><img data-template-id="youtube-icon" class="canva-image w-full h-full object-contain" loading="lazy" src="https://i.ibb.co.com/tMrZjRZx/yt.png" alt="Ikon YouTube"></a>
-     </div><button data-template-id="footer-contact-button" class="canva-button btn btn-gold mt-5" onclick="openContact()" style="background: rgb(231, 198, 107); color: rgb(23, 33, 63); font-weight: 700; font-style: normal; font-size: 16px;">Hubungi Kami</button>
+      <a class="w-10 h-10 bg-white rounded-lg p-2" href="https://www.instagram.com/veterna28/" target="_blank" rel="noopener noreferrer" aria-label="Instagram Veterna"><i data-lucide="instagram" class="w-full h-full text-[#233686]"></i></a> <a class="w-10 h-10 bg-white rounded-lg p-2" href="https://www.tiktok.com/@smaarrohmahputra" target="_blank" rel="noopener noreferrer" aria-label="TikTok SMA Ar-Rohmah Putra"><i data-lucide="music-2" class="w-full h-full text-[#233686]"></i></a> <a class="w-10 h-10 bg-white rounded-lg p-2" href="https://www.youtube.com/@smaartramalang" target="_blank" rel="noopener noreferrer" aria-label="YouTube SMA Ar-Rohmah"><i data-lucide="youtube" class="w-full h-full text-[#233686]"></i></a>
+     </div><button data-template-id="footer-contact-button" id="footerContactButton" type="button" class="canva-button btn btn-gold mt-5" style="background: rgb(231, 198, 107); color: rgb(23, 33, 63); font-weight: 700; font-style: normal; font-size: 16px;">Hubungi Kami</button>
     </div>
    </div>
    <div class="border-t border-white/15 text-center text-white/60 py-4 text-sm">
     Virtu Eterna XXVIII • 2024–2027
    </div>
-  </footer><button id="toTop" class="fixed right-5 bottom-5 z-40 hidden w-11 h-11 rounded-full bg-[#233686] text-white shadow-xl items-center justify-center" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Kembali ke atas"><i data-lucide="arrow-up"></i></button>
-  <div id="toast" class="toast fixed z-[100] bottom-6 left-1/2 -translate-x-1/2 bg-[#132052] text-white rounded-xl px-5 py-3 shadow-2xl max-w-[90vw]" role="status"></div>
-  <div id="contactModal" class="modal fixed inset-0 z-[90] items-center justify-center p-4 bg-[#0c1438]/70" role="dialog" aria-modal="true" aria-labelledby="contactTitle">
+  </footer><button id="toTop" type="button" class="fixed right-5 bottom-5 z-40 hidden w-11 h-11 rounded-full bg-[#233686] text-white shadow-xl items-center justify-center" aria-label="Kembali ke atas"> <i data-lucide="arrow-up"></i> </button>
+  <div id="toast" class="toast fixed z-[110] bottom-6 left-1/2 bg-[#132052] text-white rounded-xl px-5 py-3 shadow-2xl max-w-[90vw]" role="status" aria-live="polite"></div>
+  <div id="contactModal" class="modal fixed inset-0 z-[100] items-center justify-center p-4 bg-[#0c1438]/70" role="dialog" aria-modal="true" aria-labelledby="contactTitle" aria-hidden="true">
    <div class="card w-full max-w-md p-7 relative">
-    <button class="absolute top-4 right-4 p-2" onclick="closeContact()" aria-label="Tutup"><i data-lucide="x"></i></button>
+    <button id="contactClose" type="button" class="absolute top-4 right-4 p-2 rounded-lg hover:bg-slate-100" aria-label="Tutup modal Hubungi Kami"><i data-lucide="x"></i></button>
     <p class="text-[#b38c2a] text-sm font-bold">TERHUBUNG DENGAN KAMI</p>
     <h2 id="contactTitle" class="display text-3xl text-[#233686] mt-1">Hubungi Veterna</h2>
     <p class="mt-3 text-slate-600">Pilih kanal resmi Veterna untuk mengikuti kabar terbaru.</p>
     <div class="grid gap-3 mt-6">
-     <a class="btn btn-ghost justify-start" href="https://www.instagram.com/veterna28/" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram"></i> Instagram Veterna</a><a class="btn btn-ghost justify-start" href="https://www.tiktok.com/@smaarrohmahputra" target="_blank" rel="noopener noreferrer"><i data-lucide="music-2"></i> TikTok</a><a class="btn btn-ghost justify-start" href="https://www.youtube.com/@smaartramalang" target="_blank" rel="noopener noreferrer"><i data-lucide="youtube"></i> YouTube</a>
+     <a class="btn btn-ghost justify-start" href="https://www.instagram.com/veterna28/" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram"></i> Instagram Veterna</a> <a class="btn btn-ghost justify-start" href="https://www.tiktok.com/@smaarrohmahputra" target="_blank" rel="noopener noreferrer"><i data-lucide="music-2"></i> TikTok</a> <a class="btn btn-ghost justify-start" href="https://www.youtube.com/@smaartramalang" target="_blank" rel="noopener noreferrer"><i data-lucide="youtube"></i> YouTube</a>
     </div>
    </div>
   </div>
-  <div id="lightbox" class="modal fixed inset-0 z-[95] items-center justify-center p-4 bg-[#071035]/90" role="dialog" aria-modal="true" aria-label="Pratinjau galeri">
-   <button class="absolute top-5 right-5 text-white p-3" onclick="closeLightbox()" aria-label="Tutup lightbox"><i data-lucide="x"></i></button><button class="absolute left-3 md:left-8 text-white p-3" onclick="lightboxMove(-1)" aria-label="Foto sebelumnya"><i data-lucide="chevron-left"></i></button>
+  <div id="lightbox" class="modal fixed inset-0 z-[105] items-center justify-center p-4 bg-[#071035]/90" role="dialog" aria-modal="true" aria-label="Pratinjau galeri" aria-hidden="true">
+   <button id="lightboxClose" type="button" class="absolute top-5 right-5 text-white p-3 rounded-lg hover:bg-white/10" aria-label="Tutup lightbox"><i data-lucide="x"></i></button> <button id="lightboxPrevious" type="button" class="absolute left-3 md:left-8 text-white p-3 rounded-lg hover:bg-white/10" aria-label="Foto sebelumnya"><i data-lucide="chevron-left"></i></button>
    <div class="max-w-xl w-full">
     <div id="lightboxContent"></div>
-   </div><button class="absolute right-3 md:right-8 text-white p-3" onclick="lightboxMove(1)" aria-label="Foto berikutnya"><i data-lucide="chevron-right"></i></button>
+   </div><button id="lightboxNext" type="button" class="absolute right-3 md:right-8 text-white p-3 rounded-lg hover:bg-white/10" aria-label="Foto berikutnya"><i data-lucide="chevron-right"></i></button>
   </div>
   <script>
-    const heroImages=["https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg","https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png?raw=true"];
-    let heroIndex=0,heroPaused=matchMedia("(prefers-reduced-motion: reduce)").matches,heroTimer;
-    function setHero(){const el=document.getElementById("heroImage");el.style.backgroundImage=`url("${heroImages[heroIndex]}")`;document.getElementById("heroDots").innerHTML=heroImages.map((_,i)=>`<button onclick="heroIndex=${i};setHero()" aria-label="Tampilkan slide ${i+1}" class="w-2.5 h-2.5 rounded-full ${i===heroIndex?"bg-[#e7c66b]":"bg-white/60"}"></button>`).join("")}
-    function moveHero(n){heroIndex=(heroIndex+n+heroImages.length)%heroImages.length;setHero()}
-    function toggleHero(){heroPaused=!heroPaused;document.getElementById("heroPause").innerHTML=heroPaused?'<i data-lucide="play"></i>':'<i data-lucide="pause"></i>';lucide.createIcons()}
-    setHero();heroTimer=setInterval(()=>{if(!heroPaused)moveHero(1)},6000);
-    let touchX=0;document.getElementById("heroSlider").addEventListener("touchstart",e=>touchX=e.changedTouches[0].screenX);document.getElementById("heroSlider").addEventListener("touchend",e=>{let d=e.changedTouches[0].screenX-touchX;if(Math.abs(d)>45)moveHero(d>0?-1:1)});
+    (() => {
+      "use strict";
 
-    function openTab(tab){document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===tab));document.querySelectorAll(".nav-link").forEach(n=>n.classList.toggle("active",n.dataset.tab===tab));history.replaceState(null,"","#"+tab);window.scrollTo({top:0,behavior:"smooth"});setTimeout(reveal,50)}
-    if(location.hash&&document.getElementById(location.hash.slice(1)))openTab(location.hash.slice(1));
-    function toggleDrawer(){document.getElementById("drawer").classList.toggle("open")}
-    function openContact(){document.getElementById("contactModal").classList.add("open")}
-    function closeContact(){document.getElementById("contactModal").classList.remove("open")}
-    function showToast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),3600)}
-    function toggleRead(id,button){document.getElementById(id).classList.toggle("expanded");button.textContent=document.getElementById(id).classList.contains("expanded")?"Tampilkan lebih sedikit":"Baca sambutan lengkap"}
-    function mediaFallback(img,text){const p=document.createElement("div");p.className="asset-placeholder w-full h-full";p.innerHTML='<i data-lucide="image-off"></i><span class="mt-2">'+text+"</span>";img.parentElement.replaceWith(p);lucide.createIcons()}
-    function reveal(){document.querySelectorAll(".reveal").forEach(e=>{if(e.getBoundingClientRect().top<innerHeight-30)e.classList.add("show")})}addEventListener("scroll",()=>{const h=document.documentElement.scrollHeight-innerHeight;document.getElementById("scrollProgress").style.width=(scrollY/h*100)+"%";document.getElementById("toTop").classList.toggle("hidden",scrollY<400);document.getElementById("toTop").classList.toggle("flex",scrollY>=400);reveal()});reveal();
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const tabIds = ["beranda", "galeri", "outfit", "storyboard", "leadership", "members"];
+      let lastFocusedElement = null;
+      let toastTimer = null;
 
-    const ratios=["16:9","1:1","9:16"];let gallery=Array.from({length:50},(_,i)=>({id:i+1,ratio:ratios[i%3]})),filteredGallery=[...gallery],lightIndex=0;
-    function renderGallery(){document.getElementById("galleryGrid").innerHTML=filteredGallery.map((g,i)=>`<button class="gallery-item break-inside-avoid mb-4 w-full text-left" onclick="openLightbox(${i})"><div class="asset-placeholder ${g.ratio==="16:9"?"aspect-video":g.ratio==="1:1"?"aspect-square":"aspect-[9/16]"}"><i data-lucide="image"></i><strong class="mt-2">Foto ${String(g.id).padStart(2,"0")}</strong><small class="mt-1">Ruang aset gambar • ${g.ratio}</small></div><span class="block text-xs text-slate-500 mt-2">Caption dapat diganti programmer</span></button>`).join("");lucide.createIcons()}
-    function filterGallery(r){filteredGallery=r==="all"?gallery.filter(()=>true):gallery.filter(g=>g.ratio===r);renderGallery()}
-    function shuffleGallery(){gallery.sort(()=>Math.random()-.5);filteredGallery=[...gallery];renderGallery();showToast("Urutan slot galeri telah diacak.")}
-    function openLightbox(i){lightIndex=i;renderLightbox();document.getElementById("lightbox").classList.add("open")}
-    function renderLightbox(){let g=filteredGallery[lightIndex];document.getElementById("lightboxContent").innerHTML=`<div class="asset-placeholder aspect-video"><i data-lucide="image"></i><strong class="mt-2">Foto ${String(g.id).padStart(2,"0")}</strong><span class="mt-1">Ruang aset gambar ${g.ratio}</span><small class="mt-4">TODO_ASSET_GALERI</small></div>`;lucide.createIcons()}
-    function lightboxMove(n){lightIndex=(lightIndex+n+filteredGallery.length)%filteredGallery.length;renderLightbox()}
-    function closeLightbox(){document.getElementById("lightbox").classList.remove("open")}
-    addEventListener("keydown",e=>{if(e.key==="Escape"){closeLightbox();closeContact()}if(document.getElementById("lightbox").classList.contains("open")){if(e.key==="ArrowRight")lightboxMove(1);if(e.key==="ArrowLeft")lightboxMove(-1)}});renderGallery();
-    function openOnlyVens(e){e.preventDefault();let u=document.getElementById("vensUrl").value.trim(),m=document.getElementById("vensMessage");try{let parsed=new URL(u);if(!/^https?:$/.test(parsed.protocol))throw 0;window.open(u,"_blank","noopener");m.textContent=""}catch{m.textContent="Masukkan URL http:// atau https:// yang valid."}}
+      function createIcons() {
+        if (window.lucide && typeof window.lucide.createIcons === "function") window.lucide.createIcons();
+      }
 
-    const outfitData=[
-      ["Baju Veterna","Konten dapat diganti programmer. Deskripsi baju Veterna dan detail penggunaan dapat ditambahkan di sini.",null,null],["Seragam Senin–Selasa","Konten dapat diganti programmer. Tambahkan deskripsi seragam hari Senin–Selasa.",null,null],["Seragam Rabu–Kamis","Konten dapat diganti programmer. Tambahkan deskripsi seragam hari Rabu–Kamis.",null,null],["Seragam Jumat","Konten dapat diganti programmer. Tambahkan deskripsi seragam hari Jumat.",null,null],["Seragam Sabtu","Konten dapat diganti programmer. Tambahkan deskripsi seragam hari Sabtu.",null,null],
-      ["Engineering","Sebuah kelas berisi pikiran-pikiran muda yang belajar untuk melihat melampaui hal yang tampak jelas, mempertanyakan apa yang sudah ada, dan mengubah ide menjadi sesuatu yang berhasil. Melalui perhitungan, eksperimen, kegagalan, dan upaya yang tak terhitung jumlahnya, bab ini mengajarkan kita bahwa teknik bukan hanya tentang menemukan jawaban tetapi menemukan cara yang lebih baik untuk membangunnya.","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/baju%20%20ENGINEERING.jpg?raw=true","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/Baju%20ENGINEERING%20utama.jpg?raw=true"],
-      ["Agrobisnis","Sebuah kelas berisi anak-anak muda yang belajar melihat pertanian lebih dari sekadar ladang, di mana ide bertemu sumber daya, produksi bertemu peluang, dan setiap panen membawa kisahnya sendiri. Melalui pelajaran, eksperimen, dan segala sesuatu di antaranya, bab ini mengajarkan kita bahwa menumbuhkan sesuatu membutuhkan lebih dari sekadar kesabaran. Dibutuhkan visi, ketekunan, dan kemauan untuk memulai dari nol.","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/Baju%20Agrobisnis%20utama.jpg?raw=true","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/baju%20agrobisnis.jpg?raw=true"],
-      ["Medical","Sekelompok anak muda yang belajar untuk melihat lebih dekat, berpikir lebih dalam, dan memikul tanggung jawab atas sesuatu yang lebih besar dari diri mereka sendiri. Di antara hari-hari yang panjang, istilah-istilah yang asing, dan ambisi untuk suatu hari nanti merawat orang lain, seragam ini menjadi bagian dari proses, pengingat yang tenang tentang di mana perjalanan dimulai.","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/Baju%20Medical.jpg?raw=true","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/Baju%20medical%20utama.jpg?raw=true"],
-      ["Kedinasan","Sekelompok anak muda yang belajar untuk menjunjung disiplin, bertanggung jawab, dan memikul beban yang menyertai pengabdian kepada sesama. Karakter yang berbeda, satu seragam, dan babak bersama yang mengajarkan kita lebih dari sekadar berdiri dalam formasi.","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/baju%20PTK.jpg?raw=true","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/baju%20PTK%20utama.jpg?raw=true"],
-      ["Humanities","Kelas yang terdiri dari pikiran kritis, jiwa yang ingin tahu, dan orang-orang yang belajar untuk melihat melampaui apa yang diberikan begitu saja. Beberapa bertanya, beberapa berdebat, beberapa mengamati, dan entah bagaimana, kami tumbuh melalui semua itu.","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/Baju%20Humanities%20utama.jpg?raw=true","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/outfit/Baju%20humanities.jpg?raw=true"]
-    ];
-    const media=(url,label,ratio="aspect-[3/4]")=>url?`<div class="media ${ratio}"><img src="${url}" alt="${label}" loading="lazy" onerror="mediaFallback(this,'Ruang aset gambar')"></div>`:`<div class="asset-placeholder ${ratio}"><i data-lucide="image-plus"></i><span class="mt-2">${label}</span><small class="mt-1">TODO_OUTFIT</small></div>`;
-    document.getElementById("outfitList").innerHTML=outfitData.map((o,i)=>`<article class="card p-5 md:p-7 grid md:grid-cols-[1fr_1.3fr_1fr] gap-5 items-center ${i%2?"md:[&>*:first-child]:order-3":""}">${media(o[2],"Aset kiri siap diisi")}<div class="text-center"><p class="text-[#b38c2a] font-bold text-sm">KOLEKSI OUTFIT</p><h2 class="display text-2xl text-[#233686] mt-2">${o[0]}</h2><p class="text-slate-600 leading-7 mt-4 text-sm">${o[1]}</p></div>${media(o[3],"Aset kanan siap diisi")}</article>`).join("");lucide.createIcons();
+      function showToast(message) {
+        const toast = document.getElementById("toast");
+        if (!toast) return;
+        toast.textContent = message;
+        toast.classList.add("show");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("show"), 3600);
+      }
 
-    const story=[
-      ["Mastasis","Inilah momen pertama kita saling mengenal, bercengkrama, dan membentuk persahabatan awal dengan mengikuti segala kegiatan mastasis yang seru dan menyenangkan.","https://raw.githubusercontent.com/virtueterna28/web/refs/heads/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png","https://www.instagram.com/p/C9wUmXQS7qG/?img_index=9","https://www.instagram.com/p/C9zSZogyYHJ/?img_index=1"],["LKBB Boarschar 28","Lomba Keterampilan Baris-Berbaris (LKBB) yang menjadi salah satu ajang pembuktian kedisiplinan, kekompakan, dan ketangkasan fisik serta mental santri angkatan Veterna.","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Story%20board/Cuplikan%20layar%202026-10-07%20072728.png?raw=true","https://www.youtube.com/watch?v=J4UHYh5JrQE"],["Fanfest Boarschar 28 2024","Pergelaran seni teater megah tahunan yang diikuti oleh angkatan Boarschar 28 pada tahun 2024. Dipimpin oleh Yanto, santri 28 dibina untuk menampilkan bakat, kreativitas, seni pertunjukan, dan kerja sama tim.",null,"https://www.instagram.com/p/DBO16bZSFpP/"],["Study Tour Universitas Brawijaya","Kegiatan kunjungan edukatif ke Universitas Brawijaya Fakultas Kedokteran untuk memberikan wawasan kampus dan orientasi dunia perkuliahan.","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Story%20board/IMG_3368.jpg?raw=true"],["Jatim Park 1","Kegiatan rekreasi dan edukasi outdoor angkatan Veterna di Jatim Park 1 untuk menyegarkan pikiran dan mempererat kebersamaan.","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Story%20board/IMG_3579.jpg?raw=true"],["Bukber Veterna 2025","Momen buka puasa bersama seluruh santri angkatan Veterna di bulan Ramadan 2025.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGuZEWUNFYyTnwQIz5LLV1jo4-R5boxHIN5ehCEo7DrA&s=10"],["Pemilu GPH Veterna","Pesta demokrasi dari calon anggota Veterna untuk memilih ketua dan jajaran pengurus Generasi Penanggung Jawab.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGuZEWUNFYyTnwQIz5LLV1jo4-R5boxHIN5ehCEo7DrA&s=10","https://www.instagram.com/p/DQd_et7CTEZ/"],["Fanfest Veterna 2026 Awal","Pagelaran Fanfest teater yang disutradarai oleh Arya, membangun konsep drama musikal politik berjudul Manusia Setengah Dewa.","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Story%20board/Screenshot_20260106-164429.jpg?raw=true","https://www.youtube.com/watch?v=-SbIxd6Xfng"],["Veter Tour Semarang–Jogja","Perjalanan wisata dan napak tilas kebersamaan khusus angkatan Veterna.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGuZEWUNFYyTnwQIz5LLV1jo4-R5boxHIN5ehCEo7DrA&s=10","https://www.instagram.com/p/DVAuUSvD12y/"],["I’tikaf dan Bulber Veterna 2026","Acara buka puasa bersama angkatan Veterna di tahun 2026 yang penuh kehangatan dan rasa syukur.",null,"https://www.instagram.com/p/DVWABzEj0x2/"],["Shiru","Kegiatan rutin angkatan setiap dua minggu sekali dengan berkumpul di lapangan futsal SMA, membentuk lingkaran untuk melakukan push-up bersama.","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Story%20board/IMG-20260215-WA0046.jpg?raw=true"],["PDPH","Praktik Dakwah Pandu Hidayatullah yang dirancang untuk santri Veterna dengan keterampilan dan kesiapan mental dalam mengabdi.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGuZEWUNFYyTnwQIz5LLV1jo4-R5boxHIN5ehCEo7DrA&s=10","https://www.instagram.com/p/DYY8phIzEvP/"],["TKA Veterna","Tes Kemampuan Akademik atau Try Out khusus angkatan Veterna sebagai bentuk pemetaan kemampuan akademik.","https://cdn-jpr.jawapos.com/images/16/2026/05/12/tka-smasmk-bukan-sekadar-ujian-tapi-tiket-menuju-masa-depan-nW37U.webp"],["Fanfest 2026","Puncak pergelaran panggung gembira dan mahakarya terbesar angkatan Veterna pada tahun 2026.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSn120w7FGVTr-ldTIt7qXIdP-G5GgffBVgijBQi_Ppaw&s=10"],["Veter Tour Surabaya","Perjalanan wisata dan napak tilas kebersamaan khusus angkatan Veterna.",null],["Ujian Terbuka","Ujian komprehensif uji publik hafalan Al-Qur’an, hadis, atau keilmuan syariat.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd4YA61J-9Vu2EWJrNjiRhn7XQdKpY36A4QUheExMJMw&s=10"],["Bukber Veterna 2027","Ajang buka puasa bersama angkatan Veterna di tahun 2027.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJGU5xq6JeAOG3jS7GCz8JY-ED1hXRCEwTRMiLaS674A&s=10"],["Pengumuman SNBP","Momen krusial dan mendebarkan saat dibukanya hasil Seleksi Nasional Berdasarkan Prestasi.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTint908HJHFQ7QarVz8ihQKQd2XFQe9UvspKL3XM5Nk5Q&s=10"],["Pengumuman SNBT","Hari pengumuman Seleksi Nasional Berdasarkan Tes bagi santri Veterna.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyIV7uqE1GjpX1SosD-fpnJE7gbx9jeTryZqm5oPTJvw&s=10"],["Wisuda","Prosesi kelulusan dan pelepasan resmi santri angkatan Veterna dari Pondok Pesantren Ar-Rohmah Putra Malang.","https://www.shutterstock.com/image-vector/students-reading-books-graduation-cap-260nw-2618887645.jpg"]];
-    document.getElementById("timeline").innerHTML=story.map((s,i)=>`<article class="timeline-row relative grid md:grid-cols-2 gap-6 items-center"><span class="timeline-dot"></span><div class="${i%2?"md:order-2":""}">${media(s[2],"Dokumentasi "+s[0],"aspect-video")}</div><div class="card p-6 ${i%2?"md:order-1":""}"><span class="text-[#b38c2a] text-sm font-bold">BAB ${String(i+1).padStart(2,"0")}</span><h2 class="display text-2xl text-[#233686] mt-2">${s[0]}</h2><p class="text-slate-600 leading-7 mt-3">${s[1]}</p><div class="flex flex-wrap gap-2 mt-5">${s.slice(3).filter(Boolean).map((v,x)=>`<a class="btn btn-blue text-sm" href="${v}" target="_blank" rel="noopener noreferrer"><i data-lucide="play"></i> Video ${x+1}</a>`).join("")||'<span class="text-sm text-slate-400">Video akan ditambahkan • TODO_STORY_VIDEO</span>'}</div></div></article>`).join("");lucide.createIcons();
+      function safeUrl(value) {
+        try {
+          const parsed = new URL(String(value || "").trim());
+          return /^https?:$/.test(parsed.protocol) ? parsed.href : null;
+        } catch {
+          return null;
+        }
+      }
 
-    const leadership={Angkatan:[["Penggerak Angkatan","Team Penggerak Angkatan Veterna adalah jantung pergerakan, poros kepemimpinan, dan motor utama dalam merawat serta menguatkan solidaritas seluruh santri Angkatan Veterna.","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png?raw=true","https://virtueterna28.github.io/penggerak/"],["Team Artistik & BTS","Team Artistik Angkatan Veterna adalah wadah kolaborasi, imajinasi, dan panggung eksekusi seni bagi para santri Veterna.","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png?raw=true","https://www.msn.com/id-id?ocid=wispr&pc=u477&AR=2"]],Organisasi:[["GPH (Gerakan Pandu Hidayatullah)","Organisasi kepemimpinan santri di SMA Ar-Rohmah Putra yang menjadi penggerak kedisiplinan, kreativitas, dan potensi santri.","https://raw.githubusercontent.com/virtueterna28/GPH/refs/heads/main/foto/DSC04162.jpg","https://virtueterna28.github.io/GPH/"],["DKM (Takmir Baiturrohmah)","Organisasi pemakmuran masjid melalui kegiatan keagamaan yang membawa seseorang kepada rida dan rahmat Allah SWT.","https://github.com/virtueterna28/DKM/blob/main/5.png?raw=true","https://virtueterna28.github.io/DKM/"],["KOPASTRA","Organisasi pramuka SMA Ar-Rohmah Malang yang berlandaskan iman, ilmu, dan amal.","https://github.com/virtueterna28/kopastra/blob/main/mentahan%20foto/IMG-20250830-WA0047-scaled.jpeg?raw=true","https://virtueterna28.github.io/kopastra/"],["Sarpala","Sarpala Kamufisa adalah organisasi pecinta alam SMA Ar-Rohmah Putra yang sarat sejarah dan nilai perjuangan.","https://github.com/virtueterna28/sarpala/blob/main/Pencinta-Alam-1024x577.jpeg?raw=true","https://virtueterna28.github.io/sarpala/"],["Boarschar Avanti","Organisasi suporter SMA Ar-Rohmah Putra sebagai wadah dukungan sekolah, solidaritas, dan silaturahmi.","https://github.com/virtueterna28/avanti/blob/main/foto/IMG_2650.jpg?raw=true","https://virtueterna28.github.io/avanti/"]],Komunitas:[["Yanber","Yanber sebagai wadah anak-anak kreatif dan bersemangat dalam mewujudkan karya.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHsJCBqIKKtS0M2SoMLWwuvDRbpOqeJz9_R4l1Z7qMcg&s=10",null]]};
-    function renderLeadership(type){document.querySelectorAll(".leadership-filter").forEach(b=>{b.className="btn "+(b.textContent===type?"btn-blue":"btn-ghost")+" leadership-filter"});document.getElementById("leadershipGrid").innerHTML=leadership[type].map(x=>`<article class="card overflow-hidden"><div class="media aspect-video"><img src="${x[2]}" alt="${x[0]}" loading="lazy" onerror="mediaFallback(this,'Ruang aset ${x[0]}')"></div><div class="p-6"><h2 class="display text-2xl text-[#233686]">${x[0]}</h2><p class="text-slate-600 leading-7 text-sm mt-3">${x[1]}</p>${x[3]?`<a class="btn btn-blue mt-5" href="${x[3]}" target="_blank" rel="noopener noreferrer">Pelajari Selengkapnya</a>`:'<span class="inline-block mt-5 text-sm text-slate-400">Tautan akan ditambahkan • TODO_YANBER_LINK</span>'}</div></article>`).join("");lucide.createIcons()}renderLeadership("Angkatan");
+      function safeOpen(value) {
+        const url = safeUrl(value);
+        if (!url) {
+          showToast("Tautan belum tersedia atau tidak valid.");
+          return false;
+        }
+        window.open(url, "_blank", "noopener,noreferrer");
+        return true;
+      }
 
-    const memberGroups={Kelas:[["Engineering","Sebuah kelas berisi pikiran-pikiran muda yang belajar untuk melihat melampaui hal yang tampak jelas, mempertanyakan apa yang sudah ada, dan mengubah ide menjadi sesuatu yang berhasil.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQh9CNkTicKOztEEtIfwd7YSV8k3Rsa6g7oLeR9fG3vkw&s=10"],["Agrobisnis","Sebuah kelas berisi anak-anak muda yang belajar melihat pertanian lebih dari sekadar ladang.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxrlgvH4ck8Kcb45AOO21QP9Wv6_8QLwQhaJwMjEdBTQ&s=10"],["Kedinasan","Sekelompok anak muda yang belajar untuk menjunjung disiplin, bertanggung jawab, dan pengabdian.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMohf7FsTglhH1FW4528bmiY5Bn169D9iG1ecr-T7JjQ&s=10"],["Medical","Sekelompok anak muda yang belajar melihat lebih dekat dan berpikir lebih dalam.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzNThai2HlgLeYGIFV_0mRApZsBlor8QHAVMzgpXopWQ&s=10"],["Humanities","Kelas yang terdiri dari pikiran kritis, jiwa yang ingin tahu, dan orang-orang yang belajar melampaui apa yang diberikan.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0mvUhAvp_gFXWYfaZRUEtSgHJCytZ_2fSFbQwm2pvAA&s=10"]],Kamar:[["B1","Salah satu kamar neraka yang diisi oleh wong penting dan biasa yang menjadi pembakar semangat santri Veterna dalam menjaga solidaritas dan kekompakan santri Veterna.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMf6w5ctt45eKiWUz4Bkj4k-XSqHqaPnxGmLs77U9MFA&s=10"],["B2","Kamar yang diisi oleh orang biasa dan suasana kamar yang terlihat suram seperti tidak ada kehidupan di dalamnya. Kamar ini sering kali sepi dan ramai di waktu tertentu.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlk4krzKwWPDB2QxGrOUkmZYOREr_9wFzB84E8HiZ1QA&s=10"],["B3","Salah satu kamar yang rajin dan amat bersih, serta saling peduli satu sama lain dalam menempa kebaikan.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZdS3Rstvpxg_B-MNFXvYS7H_ks9QNCs98Ou6t_Nm1dA&s=10"],["B4","Kamar paling sepi di antara kamar lainnya dan sering dijadikan tempat tidur oleh orang-orang yang tidak suka keramaian.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0BuMWooSPpikv2ZCH5Gkx-hsQeudz-5pco3DbU_7yEQ&s=10"],["B5","Veterna kalau haus ke mana? Bukannya ke kran air minum, malah ke B5. B5 menjadi sumber mata air Veterna.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8IxSmv7qzUihjbMz2Ll5BSslwOn9gfaN6Cilysq9VTA&s=10"],["B6","Kamar paling ramai satu angkatan yang sering dijadikan warnet dan tempat seru untuk mabar.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsgl9gCV-HOQ9QdPgxZ8rfkIa4qGd6cXIm3ArCY-Rf5w&s=10"],["B7","Kamar yang paling sering kacanya pecah, diisi oleh anak-anak dari berbagai daerah.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNBx8Xtl6NvL4N_y35UYyqk4-C4r3S3gjOaR1JwhYcxQ&s=10"],["B8","Kamar yang paling mudah diatur dan tidak pernah absen salat berjamaah kecuali pulang, izin, dan sakit.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2YufbDUeVChL85_LZN0_BsHqNWp_mBhav2EG3GrOclw&s"]],Halaqoh:[["Takhasus","Target hafalan: 2 halaman","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Members/halaqoh/DSC09598%20(1).jpg?raw=true"],["A","Target hafalan: 1 halaman","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhRj0b-nVaeZz-3nx1YuEqtBI-y38ImJW2r9GJ7FTsHA&s=10"],["B1","Target hafalan: setengah halaman","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJRo5u4WDDXvDEOidvJSccRL3gOcx59Mi5wExoHQibKg&s=10"],["B2","Target hafalan: setengah halaman","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbrRChuPlBr_2hMH1Ewp4X9nVWhSyDsc1A-QsOLLweQ&s=10"],["C1","Target hafalan: setengah halaman","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQs14MFocdXhwgFQeP0fxru0VHH07PlejhD-ch_-TO9xw&s=10"],["C2","Target hafalan: 4 baris","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlRVUb3BPrPXxvnKxpRtBzItTOz95RxEYbIhjltkTJjg&s=10"]],Ekstrakurikuler:[["Badminton","Kegiatan tambahan di sekolah untuk melatih dan mengembangkan keterampilan bermain bulu tangkis serta menjaga kebugaran jasmani siswa.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTsziNCEzWi8D1ib3CANUSdC6L87seaSRFEYvhLs01rQ&s=10"],["Basket","Ekstrakurikuler basket adalah kegiatan di luar jam sekolah yang mewadahi minat, bakat, serta pengembangan keterampilan siswa dalam olahraga bola basket.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShtPooTr2gvl5eQeRYi3TI_9b1zzv0_zcrAaO5byo-bg&s=10"],["Futsal","Ekstrakurikuler futsal adalah kegiatan sekolah di luar jam pelajaran utama yang mewadahi siswa untuk melatih keterampilan olahraga bola indoor.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO3WvBepwOrdI03WKVxaiiNsoeUAJJzPV1c1cepwJwdw&s=10"],["Taekwondo","Ekstrakurikuler taekwondo adalah kegiatan bela diri asal Korea yang melatih ketangkasan fisik, disiplin mental, dan karakter siswa.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSszez0rIe63i8I0EIO0Vy6gXJReJVlpZJ_xtzdCfv76w&s=10"],["Tapak Suci","Ekstrakurikuler Tapak Suci adalah kegiatan sekolah untuk melatih seni bela diri pencak silat.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQB53s1tQRyNDWIZIiu0GLg3SqKUzxH3NeKSzBnF1hv1A&s=10"],["Voli","Kegiatan sekolah di luar jam pelajaran utama yang melatih keterampilan olahraga voli dan kerja sama tim.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVnCE83sKEYnWf2zur-AvwHUP5tlsNkJ4xajb7AQsuPQ&s=10"],["Renang","Kegiatan di luar jam pelajaran sekolah yang melatih keterampilan berenang dan rasa percaya diri di dalam air.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ_9PAHuugZ2bCfR6_UC3AOZUwN_VmvCpcvOo0thr7uw&s=10"],["Multimedia","Kegiatan tambahan di sekolah untuk melatih dan mengembangkan bakat siswa dalam bidang teknologi digital, desain, dan media visual.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKZ9w2Kd6OvsFCXpp8Lp5Kg4_j2mKXaoWLVLJuV_HPdA&s=10"],["Coding","Ekstrakurikuler coding mengajarkan siswa cara menulis instruksi atau bahasa pemrograman untuk membuat game, animasi, website, atau aplikasi.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTA0yw6Hu74lO9DdflOWE8ftWqtlNWfFh_WQ_It7WBbZw&s=10"],["Keislaman","Kegiatan di luar jam pelajaran sekolah untuk memperdalam ilmu agama, memperkuat iman, dan membentuk karakter Islami.","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLnzUfur1fqeCFIi3-xFzlJFhtHEwSLKTvWHLOl3qPBQ&s=10"]]};
-    document.getElementById("memberSections").innerHTML=Object.entries(memberGroups).map(([title,items])=>`<section class="mt-14"><h2 class="display text-3xl text-[#233686] mb-6">${title}</h2><div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">${items.map(x=>`<article class="card overflow-hidden"><div class="media aspect-video"><img src="${x[2]}" alt="${x[0]}" loading="lazy" onerror="mediaFallback(this,'Ruang aset ${x[0]}')"></div><div class="p-5"><h3 class="font-extrabold text-[#233686] text-lg">${x[0]}</h3><p class="text-sm leading-6 text-slate-600 mt-2">${x[1]}</p></div></article>`).join("")}</div></section>`).join("");lucide.createIcons();
+      function imageFallback(img, label) {
+        if (!img || img.dataset.fallbackApplied === "true") return;
+        img.dataset.fallbackApplied = "true";
+        const holder = document.createElement("div");
+        holder.className = "asset-placeholder w-full h-full";
+        holder.innerHTML = '<i data-lucide="image-off"></i><strong class="mt-2">Aset belum tersedia</strong><span class="mt-1 text-sm">' + label + "</span>";
+        const media = img.closest(".media");
+        if (media) {
+          media.innerHTML = "";
+          media.appendChild(holder);
+        } else {
+          img.replaceWith(holder);
+        }
+        createIcons();
+      }
+
+      document.querySelectorAll("img[data-template-id]").forEach((img) => {
+        img.addEventListener("error", () => imageFallback(img, img.alt || "Gambar akan ditambahkan oleh programmer."), { once: true });
+      });
+
+      function openTab(tab, updateHash = true) {
+        const safeTab = tabIds.includes(tab) ? tab : "beranda";
+        document.querySelectorAll(".view").forEach((view) => view.classList.toggle("active", view.id === safeTab));
+        document.querySelectorAll(".nav-link").forEach((link) => link.classList.toggle("active", link.dataset.tab === safeTab));
+
+        if (updateHash) {
+          history.replaceState(null, "", "#" + safeTab);
+        }
+
+        closeDrawer();
+        window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+      }
+
+      document.querySelectorAll("[data-tab]").forEach((button) => {
+        button.addEventListener("click", () => openTab(button.dataset.tab));
+      });
+
+      document.getElementById("brandHome").addEventListener("click", () => openTab("beranda"));
+      document.getElementById("exploreStoryButton").addEventListener("click", () => openTab("storyboard"));
+
+      const initialHash = window.location.hash.replace("#", "");
+      if (tabIds.includes(initialHash)) openTab(initialHash, false);
+
+      const drawer = document.getElementById("drawer");
+      const drawerButton = document.getElementById("drawerButton");
+
+      function openDrawer() {
+        drawer.classList.add("open");
+        drawer.setAttribute("aria-hidden", "false");
+        drawerButton.setAttribute("aria-expanded", "true");
+        document.getElementById("drawerClose").focus();
+      }
+
+      function closeDrawer() {
+        drawer.classList.remove("open");
+        drawer.setAttribute("aria-hidden", "true");
+        drawerButton.setAttribute("aria-expanded", "false");
+      }
+
+      drawerButton.addEventListener("click", () => drawer.classList.contains("open") ? closeDrawer() : openDrawer());
+      document.getElementById("drawerClose").addEventListener("click", closeDrawer);
+
+      const contactModal = document.getElementById("contactModal");
+      const contactClose = document.getElementById("contactClose");
+
+      function openContact() {
+        lastFocusedElement = document.activeElement;
+        contactModal.classList.add("open");
+        contactModal.setAttribute("aria-hidden", "false");
+        contactClose.focus();
+      }
+
+      function closeContact() {
+        contactModal.classList.remove("open");
+        contactModal.setAttribute("aria-hidden", "true");
+        if (lastFocusedElement && typeof lastFocusedElement.focus === "function") lastFocusedElement.focus();
+      }
+
+      ["contactButton", "contactMobileButton", "heroContactButton", "footerContactButton"].forEach((id) => {
+        const button = document.getElementById(id);
+        if (button) button.addEventListener("click", openContact);
+      });
+
+      contactClose.addEventListener("click", closeContact);
+      contactModal.addEventListener("click", (event) => {
+        if (event.target === contactModal) closeContact();
+      });
+
+      const heroSlides = [
+        "https://i.ibb.co.com/d0YJZB4c/angkatan-1.jpg",
+        "https://raw.githubusercontent.com/virtueterna28/web/refs/heads/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png",
+        "https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png?raw=true"
+      ].filter(safeUrl);
+
+      let heroIndex = 0;
+      let heroPaused = reducedMotion || heroSlides.length < 2;
+      let heroTimer = null;
+      const heroImage = document.getElementById("heroImage");
+      const heroDots = document.getElementById("heroDots");
+      const heroPause = document.getElementById("heroPause");
+
+      function renderHero() {
+        if (!heroSlides.length) {
+          heroImage.style.backgroundImage = "linear-gradient(135deg,#132052,#233686)";
+          return;
+        }
+
+        heroImage.style.opacity = "0.35";
+        window.setTimeout(() => {
+          heroImage.style.backgroundImage = 'url("' + heroSlides[heroIndex] + '")';
+          heroImage.style.opacity = "1";
+        }, reducedMotion ? 0 : 120);
+
+        heroDots.innerHTML = "";
+        heroSlides.forEach((_, index) => {
+          const dot = document.createElement("button");
+          dot.type = "button";
+          dot.className = "w-2.5 h-2.5 rounded-full " + (index === heroIndex ? "bg-[#e7c66b]" : "bg-white/60");
+          dot.setAttribute("aria-label", "Tampilkan slide " + (index + 1));
+          dot.setAttribute("aria-current", index === heroIndex ? "true" : "false");
+          dot.addEventListener("click", () => {
+            heroIndex = index;
+            renderHero();
+            restartHeroTimer();
+          });
+          heroDots.appendChild(dot);
+        });
+
+        heroPause.setAttribute("aria-label", heroPaused ? "Putar slider" : "Jeda slider");
+        heroPause.innerHTML = heroPaused ? '<i data-lucide="play"></i>' : '<i data-lucide="pause"></i>';
+        createIcons();
+      }
+
+      function moveHero(direction) {
+        if (!heroSlides.length) return;
+        heroIndex = (heroIndex + direction + heroSlides.length) % heroSlides.length;
+        renderHero();
+      }
+
+      function restartHeroTimer() {
+        window.clearInterval(heroTimer);
+        if (!heroPaused && heroSlides.length > 1) {
+          heroTimer = window.setInterval(() => moveHero(1), 6000);
+        }
+      }
+
+      document.getElementById("heroPrevious").addEventListener("click", () => { moveHero(-1); restartHeroTimer(); });
+      document.getElementById("heroNext").addEventListener("click", () => { moveHero(1); restartHeroTimer(); });
+      heroPause.addEventListener("click", () => {
+        heroPaused = !heroPaused;
+        renderHero();
+        restartHeroTimer();
+      });
+
+      let touchStartX = 0;
+      const heroSlider = document.getElementById("heroSlider");
+      heroSlider.addEventListener("touchstart", (event) => { touchStartX = event.changedTouches[0].screenX; }, { passive: true });
+      heroSlider.addEventListener("touchend", (event) => {
+        const delta = event.changedTouches[0].screenX - touchStartX;
+        if (Math.abs(delta) > 45) {
+          moveHero(delta > 0 ? -1 : 1);
+          restartHeroTimer();
+        }
+      }, { passive: true });
+
+      renderHero();
+      restartHeroTimer();
+
+      function toggleRead(containerId, button) {
+        const content = document.getElementById(containerId);
+        if (!content || !button) return;
+        const expanded = content.classList.toggle("expanded");
+        button.dataset.state = expanded ? "expanded" : "collapsed";
+        button.textContent = expanded ? "Tampilkan lebih sedikit" : "Baca sambutan lengkap";
+        button.setAttribute("aria-expanded", String(expanded));
+      }
+
+      document.getElementById("expandLeader").addEventListener("click", (event) => toggleRead("leaderSpeech", event.currentTarget));
+      document.getElementById("modelButton").addEventListener("click", () => showToast("Tautan 3D Model View siap diisi programmer."));
+
+      const gallery = Array.from({ length: 50 }, (_, index) => ({
+        id: index + 1,
+        ratio: ["16:9", "1:1", "9:16"][index % 3]
+      }));
+
+      let selectedRatio = "all";
+      let galleryOrder = [...gallery];
+      let visibleGallery = [...gallery];
+      let lightboxIndex = 0;
+      const galleryGrid = document.getElementById("galleryGrid");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxContent = document.getElementById("lightboxContent");
+
+      function ratioClass(ratio) {
+        if (ratio === "16:9") return "aspect-video";
+        if (ratio === "9:16") return "aspect-[9/16]";
+        return "aspect-square";
+      }
+
+      function galleryItemsForCurrentFilter() {
+        return selectedRatio === "all" ? [...galleryOrder] : galleryOrder.filter((item) => item.ratio === selectedRatio);
+      }
+
+      function renderGallery() {
+        visibleGallery = galleryItemsForCurrentFilter();
+        galleryGrid.innerHTML = "";
+
+        if (!visibleGallery.length) {
+          galleryGrid.innerHTML = '<div class="asset-placeholder col-span-full"><i data-lucide="images"></i><strong class="mt-2">Belum ada foto untuk filter ini</strong></div>';
+          createIcons();
+          return;
+        }
+
+        visibleGallery.forEach((item, index) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "gallery-item mb-4 w-full text-left";
+          button.setAttribute("aria-label", "Buka Foto " + String(item.id).padStart(2, "0"));
+          button.innerHTML =
+            '<div class="asset-placeholder ' + ratioClass(item.ratio) + '">' +
+              '<i data-lucide="image"></i>' +
+              '<strong class="mt-2">Foto ' + String(item.id).padStart(2, "0") + "</strong>" +
+              '<small class="mt-1">Ruang aset gambar • ' + item.ratio + "</small>" +
+            "</div>" +
+            '<span class="block text-xs text-slate-500 mt-2">Caption dapat diganti programmer</span>';
+          button.addEventListener("click", () => openLightbox(index));
+          galleryGrid.appendChild(button);
+        });
+
+        createIcons();
+      }
+
+      function setGalleryFilter(ratio) {
+        selectedRatio = ratio;
+        document.querySelectorAll(".gallery-filter").forEach((button) => {
+          const active = button.dataset.ratio === ratio;
+          button.className = "btn " + (active ? "btn-blue" : "btn-ghost") + " gallery-filter";
+          button.setAttribute("aria-pressed", String(active));
+        });
+        renderGallery();
+      }
+
+      document.querySelectorAll(".gallery-filter").forEach((button) => {
+        button.addEventListener("click", () => setGalleryFilter(button.dataset.ratio));
+      });
+
+      document.getElementById("shuffleGallery").addEventListener("click", () => {
+        for (let i = galleryOrder.length - 1; i > 0; i -= 1) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [galleryOrder[i], galleryOrder[j]] = [galleryOrder[j], galleryOrder[i]];
+        }
+        renderGallery();
+        showToast("Urutan slot galeri telah diacak.");
+      });
+
+      function renderLightbox() {
+        const item = visibleGallery[lightboxIndex];
+        if (!item) {
+          closeLightbox();
+          return;
+        }
+        lightboxContent.innerHTML =
+          '<div class="asset-placeholder ' + ratioClass(item.ratio) + ' bg-white">' +
+            '<i data-lucide="image"></i>' +
+            '<strong class="mt-2">Foto ' + String(item.id).padStart(2, "0") + "</strong>" +
+            '<span class="mt-1">Ruang aset gambar ' + item.ratio + "</span>" +
+            '<small class="mt-4">Aset dapat ditambahkan programmer</small>' +
+          "</div>";
+        createIcons();
+      }
+
+      function openLightbox(index) {
+        if (!visibleGallery.length) return;
+        lastFocusedElement = document.activeElement;
+        lightboxIndex = index;
+        renderLightbox();
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+        document.getElementById("lightboxClose").focus();
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+        if (lastFocusedElement && typeof lastFocusedElement.focus === "function") lastFocusedElement.focus();
+      }
+
+      function moveLightbox(direction) {
+        if (!visibleGallery.length) return;
+        lightboxIndex = (lightboxIndex + direction + visibleGallery.length) % visibleGallery.length;
+        renderLightbox();
+      }
+
+      document.getElementById("lightboxClose").addEventListener("click", closeLightbox);
+      document.getElementById("lightboxPrevious").addEventListener("click", () => moveLightbox(-1));
+      document.getElementById("lightboxNext").addEventListener("click", () => moveLightbox(1));
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) closeLightbox();
+      });
+
+      document.getElementById("onlyVensForm").addEventListener("submit", (event) => {
+        event.preventDefault();
+        const field = document.getElementById("vensUrl");
+        const message = document.getElementById("vensMessage");
+        const url = safeUrl(field.value);
+
+        if (!url) {
+          message.textContent = "Masukkan URL http:// atau https:// yang valid.";
+          field.focus();
+          return;
+        }
+
+        message.textContent = "";
+        safeOpen(url);
+      });
+
+      const outfitData = [
+        ["Baju Veterna", "Konten dapat diganti programmer. Deskripsi baju Veterna dan detail penggunaan dapat ditambahkan di sini."],
+        ["Seragam Senin–Selasa", "Konten dapat diganti programmer. Tambahkan deskripsi seragam hari Senin–Selasa."],
+        ["Seragam Rabu–Kamis", "Konten dapat diganti programmer. Tambahkan deskripsi seragam hari Rabu–Kamis."],
+        ["Seragam Jumat", "Konten dapat diganti programmer. Tambahkan deskripsi seragam hari Jumat."],
+        ["Seragam Sabtu", "Konten dapat diganti programmer. Tambahkan deskripsi seragam hari Sabtu."],
+        ["Engineering", "Sebuah kelas berisi pikiran-pikiran muda yang belajar untuk melihat melampaui hal yang tampak jelas, mempertanyakan apa yang sudah ada, dan mengubah ide menjadi sesuatu yang berhasil."],
+        ["Agrobisnis", "Sebuah kelas berisi anak-anak muda yang belajar melihat pertanian lebih dari sekadar ladang, di mana ide bertemu sumber daya, produksi bertemu peluang, dan setiap panen membawa kisahnya sendiri."],
+        ["Medical", "Sekelompok anak muda yang belajar untuk melihat lebih dekat, berpikir lebih dalam, dan memikul tanggung jawab atas sesuatu yang lebih besar dari diri mereka sendiri."],
+        ["Kedinasan", "Sekelompok anak muda yang belajar untuk menjunjung disiplin, bertanggung jawab, dan memikul beban yang menyertai pengabdian kepada sesama."],
+        ["Humanities", "Kelas yang terdiri dari pikiran kritis, jiwa yang ingin tahu, dan orang-orang yang belajar untuk melihat melampaui apa yang diberikan begitu saja."]
+      ];
+
+      document.getElementById("outfitList").innerHTML = outfitData.map((item, index) =>
+        '<article class="card p-5 md:p-7 grid md:grid-cols-[1fr_1.3fr_1fr] gap-5 items-center">' +
+          '<div class="asset-placeholder aspect-[3/4]"><i data-lucide="shirt"></i><span class="mt-2">Aset outfit kiri</span><small class="mt-1">TODO_OUTFIT</small></div>' +
+          '<div class="text-center">' +
+            '<p class="text-[#b38c2a] font-bold text-sm">KOLEKSI OUTFIT</p>' +
+            '<h2 class="display text-2xl text-[#233686] mt-2">' + item[0] + '</h2>' +
+            '<p class="text-slate-600 leading-7 mt-4 text-sm">' + item[1] + '</p>' +
+          '</div>' +
+          '<div class="asset-placeholder aspect-[3/4]"><i data-lucide="image-plus"></i><span class="mt-2">Aset outfit kanan</span><small class="mt-1">TODO_OUTFIT</small></div>' +
+        '</article>'
+      ).join("");
+
+      const stories = [
+        ["Mastasis", "Inilah momen pertama kita saling mengenal, bercengkrama, dan membentuk persahabatan awal dengan mengikuti segala kegiatan mastasis yang seru dan menyenangkan.", "https://www.instagram.com/p/C9wUmXQS7qG/?img_index=9"],
+        ["LKBB Boarschar 28", "Lomba Keterampilan Baris-Berbaris yang menjadi salah satu ajang pembuktian kedisiplinan, kekompakan, dan ketangkasan fisik serta mental santri angkatan Veterna.", "https://www.youtube.com/watch?v=J4UHYh5JrQE"],
+        ["Fanfest Boarschar 28 2024", "Pergelaran seni teater megah tahunan yang diikuti oleh angkatan Boarschar 28 pada tahun 2024.", "https://www.instagram.com/p/DBO16bZSFpP/"],
+        ["Study Tour Universitas Brawijaya", "Kegiatan kunjungan edukatif ke Universitas Brawijaya Fakultas Kedokteran untuk memberikan wawasan kampus dan orientasi dunia perkuliahan.", ""],
+        ["Jatim Park 1", "Kegiatan rekreasi dan edukasi outdoor angkatan Veterna di Jatim Park 1 untuk menyegarkan pikiran dan mempererat kebersamaan.", ""],
+        ["Bukber Veterna 2025", "Momen buka puasa bersama seluruh santri angkatan Veterna di bulan Ramadan 2025.", ""],
+        ["Pemilu GPH Veterna", "Pesta demokrasi dari calon anggota Veterna untuk memilih ketua dan jajaran pengurus Generasi Penanggung Jawab.", "https://www.instagram.com/p/DQd_et7CTEZ/"],
+        ["Fanfest Veterna 2026 Awal", "Pagelaran Fanfest teater yang disutradarai oleh Arya, membangun konsep drama musikal politik berjudul Manusia Setengah Dewa.", "https://www.youtube.com/watch?v=-SbIxd6Xfng"],
+        ["Veter Tour Semarang–Jogja", "Perjalanan wisata dan napak tilas kebersamaan khusus angkatan Veterna.", "https://www.instagram.com/p/DVAuUSvD12y/"],
+        ["I’tikaf dan Bulber Veterna 2026", "Acara buka puasa bersama angkatan Veterna di tahun 2026 yang penuh kehangatan dan rasa syukur.", "https://www.instagram.com/p/DVWABzEj0x2/"],
+        ["Shiru", "Kegiatan rutin angkatan setiap dua minggu sekali dengan berkumpul di lapangan futsal SMA, membentuk lingkaran untuk melakukan push-up bersama.", ""],
+        ["PDPH", "Praktik Dakwah Pandu Hidayatullah yang dirancang untuk santri Veterna dengan keterampilan dan kesiapan mental dalam mengabdi.", "https://www.instagram.com/p/DYY8phIzEvP/"],
+        ["TKA Veterna", "Tes Kemampuan Akademik atau Try Out khusus angkatan Veterna sebagai bentuk pemetaan kemampuan akademik.", ""],
+        ["Fanfest 2026", "Puncak pergelaran panggung gembira dan mahakarya terbesar angkatan Veterna pada tahun 2026.", ""],
+        ["Veter Tour Surabaya", "Perjalanan wisata dan napak tilas kebersamaan khusus angkatan Veterna.", ""],
+        ["Ujian Terbuka", "Ujian komprehensif uji publik hafalan Al-Qur’an, hadis, atau keilmuan syariat.", ""],
+        ["Bukber Veterna 2027", "Ajang buka puasa bersama angkatan Veterna di tahun 2027.", ""],
+        ["Pengumuman SNBP", "Momen krusial dan mendebarkan saat dibukanya hasil Seleksi Nasional Berdasarkan Prestasi.", ""],
+        ["Pengumuman SNBT", "Hari pengumuman Seleksi Nasional Berdasarkan Tes bagi santri Veterna.", ""],
+        ["Wisuda", "Prosesi kelulusan dan pelepasan resmi santri Angkatan Veterna dari Pondok Pesantren Ar-Rohmah Putra Malang.", ""]
+      ];
+
+      document.getElementById("timeline").innerHTML = stories.map((story, index) =>
+        '<article class="timeline-row relative grid md:grid-cols-2 gap-6 items-center">' +
+          '<span class="timeline-dot" aria-hidden="true"></span>' +
+          '<div class="' + (index % 2 ? "md:order-2" : "") + '">' +
+            '<div class="asset-placeholder aspect-video"><i data-lucide="image"></i><strong class="mt-2">Dokumentasi ' + story[0] + '</strong><small class="mt-1">Aset storyboard siap diisi</small></div>' +
+          '</div>' +
+          '<div class="card p-6 ' + (index % 2 ? "md:order-1" : "") + '">' +
+            '<span class="text-[#b38c2a] text-sm font-bold">BAB ' + String(index + 1).padStart(2, "0") + '</span>' +
+            '<h2 class="display text-2xl text-[#233686] mt-2">' + story[0] + '</h2>' +
+            '<p class="text-slate-600 leading-7 mt-3">' + story[1] + '</p>' +
+            (safeUrl(story[2])
+              ? '<a class="btn btn-blue text-sm mt-5" href="' + story[2] + '" target="_blank" rel="noopener noreferrer"><i data-lucide="play"></i> Lihat Dokumentasi</a>'
+              : '<span class="inline-block mt-5 text-sm text-slate-400">Dokumentasi akan ditambahkan</span>') +
+          '</div>' +
+        '</article>'
+      ).join("");
+
+      const leadershipData = {
+        Angkatan: [
+          ["Penggerak Angkatan", "Team Penggerak Angkatan Veterna adalah jantung pergerakan, poros kepemimpinan, dan motor utama dalam merawat serta menguatkan solidaritas seluruh santri Angkatan Veterna.", "https://virtueterna28.github.io/penggerak/"],
+          ["Team Artistik & BTS", "Team Artistik Angkatan Veterna adalah wadah kolaborasi, imajinasi, dan panggung eksekusi seni bagi para santri Veterna.", ""]
+        ],
+        Organisasi: [
+          ["GPH (Gerakan Pandu Hidayatullah)", "Organisasi kepemimpinan santri di SMA Ar-Rohmah Putra yang menjadi penggerak kedisiplinan, kreativitas, dan potensi santri.", "https://virtueterna28.github.io/GPH/"],
+          ["DKM (Takmir Baiturrohmah)", "Organisasi pemakmuran masjid melalui kegiatan keagamaan yang membawa seseorang kepada rida dan rahmat Allah SWT.", "https://virtueterna28.github.io/DKM/"],
+          ["KOPASTRA", "Organisasi pramuka SMA Ar-Rohmah Malang yang berlandaskan iman, ilmu, dan amal.", "https://virtueterna28.github.io/kopastra/"],
+          ["Sarpala", "Sarpala Kamufisa adalah organisasi pecinta alam SMA Ar-Rohmah Putra yang sarat sejarah dan nilai perjuangan.", "https://virtueterna28.github.io/sarpala/"],
+          ["Boarschar Avanti", "Organisasi suporter SMA Ar-Rohmah Putra sebagai wadah dukungan sekolah, solidaritas, dan silaturahmi.", "https://virtueterna28.github.io/avanti/"]
+        ],
+        Komunitas: [
+          ["Yanber", "Yanber sebagai wadah anak-anak kreatif dan bersemangat dalam mewujudkan karya.", ""]
+        ]
+      };
+
+      function renderLeadership(category) {
+        const items = leadershipData[category] || leadershipData.Angkatan;
+        document.querySelectorAll(".leadership-filter").forEach((button) => {
+          const active = button.dataset.leadership === category;
+          button.className = "btn " + (active ? "btn-blue" : "btn-ghost") + " leadership-filter";
+          button.setAttribute("aria-pressed", String(active));
+        });
+
+        document.getElementById("leadershipGrid").innerHTML = items.map((item) =>
+          '<article class="card overflow-hidden">' +
+            '<div class="asset-placeholder aspect-video rounded-b-none"><i data-lucide="users"></i><span class="mt-2">Aset ' + item[0] + '</span></div>' +
+            '<div class="p-6">' +
+              '<h2 class="display text-2xl text-[#233686]">' + item[0] + '</h2>' +
+              '<p class="text-slate-600 leading-7 text-sm mt-3">' + item[1] + '</p>' +
+              (safeUrl(item[2])
+                ? '<a class="btn btn-blue mt-5" href="' + item[2] + '" target="_blank" rel="noopener noreferrer">Pelajari Selengkapnya</a>'
+                : '<span class="inline-block mt-5 text-sm text-slate-400">Tautan akan ditambahkan</span>') +
+            '</div>' +
+          '</article>'
+        ).join("");
+        createIcons();
+      }
+
+      document.querySelectorAll(".leadership-filter").forEach((button) => {
+        button.addEventListener("click", () => renderLeadership(button.dataset.leadership));
+      });
+      renderLeadership("Angkatan");
+
+      const memberGroups = {
+        Kelas: [
+          ["Engineering", "Sebuah kelas berisi pikiran-pikiran muda yang belajar untuk melihat melampaui hal yang tampak jelas, mempertanyakan apa yang sudah ada, dan mengubah ide menjadi sesuatu yang berhasil."],
+          ["Agrobisnis", "Sebuah kelas berisi anak-anak muda yang belajar melihat pertanian lebih dari sekadar ladang."],
+          ["Kedinasan", "Sekelompok anak muda yang belajar untuk menjunjung disiplin, bertanggung jawab, dan pengabdian."],
+          ["Medical", "Sekelompok anak muda yang belajar melihat lebih dekat dan berpikir lebih dalam."],
+          ["Humanities", "Kelas yang terdiri dari pikiran kritis, jiwa yang ingin tahu, dan orang-orang yang belajar melampaui apa yang diberikan."]
+        ],
+        Kamar: [
+          ["B1", "Salah satu kamar yang menjadi pembakar semangat santri Veterna dalam menjaga solidaritas dan kekompakan."],
+          ["B2", "Kamar dengan suasana khas dan cerita kebersamaan yang tumbuh dari hari ke hari."],
+          ["B3", "Salah satu kamar yang rajin, amat bersih, serta saling peduli satu sama lain dalam menempa kebaikan."],
+          ["B4", "Kamar yang tenang dan sering menjadi tempat beristirahat bagi anggota yang menyukai suasana hening."],
+          ["B5", "B5 menjadi salah satu sumber cerita dan kebersamaan Veterna."],
+          ["B6", "Kamar ramai satu angkatan yang sering dijadikan tempat seru untuk mabar dan berkumpul."],
+          ["B7", "Kamar yang diisi anak-anak dari berbagai daerah dengan kisah persaudaraan yang beragam."],
+          ["B8", "Kamar yang dikenal mudah diatur dan menjaga semangat salat berjamaah."]
+        ],
+        Halaqoh: [
+          ["Takhasus", "Target hafalan: 2 halaman"],
+          ["A", "Target hafalan: 1 halaman"],
+          ["B1", "Target hafalan: setengah halaman"],
+          ["B2", "Target hafalan: setengah halaman"],
+          ["C1", "Target hafalan: setengah halaman"],
+          ["C2", "Target hafalan: 4 baris"]
+        ],
+        Ekstrakurikuler: [
+          ["Badminton", "Kegiatan tambahan di sekolah untuk melatih dan mengembangkan keterampilan bermain bulu tangkis serta menjaga kebugaran jasmani siswa."],
+          ["Basket", "Ekstrakurikuler basket mewadahi minat, bakat, serta pengembangan keterampilan siswa dalam olahraga bola basket."],
+          ["Futsal", "Kegiatan sekolah di luar jam pelajaran utama yang mewadahi siswa untuk melatih keterampilan olahraga bola indoor."],
+          ["Taekwondo", "Kegiatan bela diri asal Korea yang melatih ketangkasan fisik, disiplin mental, dan karakter siswa."],
+          ["Tapak Suci", "Kegiatan sekolah untuk melatih seni bela diri pencak silat."],
+          ["Voli", "Kegiatan sekolah yang melatih keterampilan olahraga voli dan kerja sama tim."],
+          ["Renang", "Kegiatan yang melatih keterampilan berenang dan rasa percaya diri di dalam air."],
+          ["Multimedia", "Kegiatan tambahan untuk mengembangkan bakat siswa dalam bidang teknologi digital, desain, dan media visual."],
+          ["Coding", "Ekstrakurikuler coding mengajarkan siswa menulis instruksi atau bahasa pemrograman untuk membuat game, animasi, website, atau aplikasi."],
+          ["Keislaman", "Kegiatan untuk memperdalam ilmu agama, memperkuat iman, dan membentuk karakter Islami."]
+        ]
+      };
+
+      document.getElementById("memberSections").innerHTML = Object.entries(memberGroups).map(([title, items]) =>
+        '<section class="mt-14">' +
+          '<h2 class="display text-3xl text-[#233686] mb-6">' + title + '</h2>' +
+          '<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">' +
+            items.map((item) =>
+              '<article class="card overflow-hidden">' +
+                '<div class="asset-placeholder aspect-video rounded-b-none"><i data-lucide="image"></i><span class="mt-2">Aset ' + item[0] + '</span></div>' +
+                '<div class="p-5">' +
+                  '<h3 class="font-extrabold text-[#233686] text-lg">' + item[0] + '</h3>' +
+                  '<p class="text-sm leading-6 text-slate-600 mt-2">' + item[1] + '</p>' +
+                '</div>' +
+              '</article>'
+            ).join("") +
+          '</div>' +
+        '</section>'
+      ).join("");
+
+      const toTop = document.getElementById("toTop");
+      function updateScrollUi() {
+        const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const progress = Math.min(100, Math.max(0, (window.scrollY / maxScroll) * 100));
+        document.getElementById("scrollProgress").style.width = progress + "%";
+        toTop.classList.toggle("hidden", window.scrollY < 400);
+        toTop.classList.toggle("flex", window.scrollY >= 400);
+      }
+
+      window.addEventListener("scroll", updateScrollUi, { passive: true });
+      window.addEventListener("resize", updateScrollUi);
+      toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" }));
+      updateScrollUi();
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+          if (lightbox.classList.contains("open")) closeLightbox();
+          if (contactModal.classList.contains("open")) closeContact();
+          if (drawer.classList.contains("open")) closeDrawer();
+        }
+
+        if (lightbox.classList.contains("open")) {
+          if (event.key === "ArrowLeft") moveLightbox(-1);
+          if (event.key === "ArrowRight") moveLightbox(1);
+        }
+      });
+
+      setGalleryFilter("all");
+      createIcons();
+    })();
   </script>
  
 </body></html>
