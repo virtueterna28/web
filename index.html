@@ -884,6 +884,7 @@ const memberGroups = {
 function esc(value){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
 function media(src,alt,cls=""){return src?`<img class="${esc(cls)}" src="${esc(src)}" alt="${esc(alt)}" loading="lazy">`:`<div class="placeholder">${esc(alt)}</div>`}
 function safeImage(img){
+  let triedRawUrl=false;
   const showFallback=()=>{
     img.hidden=true;
     let holder=img.nextElementSibling;
@@ -894,13 +895,29 @@ function safeImage(img){
     }
     holder.textContent=img.alt||"Gambar tidak dapat dimuat";
   };
-  img.addEventListener("error",showFallback);
+  img.addEventListener("error",()=>{
+    if(!triedRawUrl){
+      try{
+        const url=new URL(img.src);
+        if(url.hostname==="github.com"&&url.pathname.includes("/blob/")){
+          triedRawUrl=true;
+          url.hostname="raw.githubusercontent.com";
+          url.pathname=url.pathname.replace("/blob/","/");
+          url.search="";
+          url.hash="";
+          img.src=url.href;
+          return;
+        }
+      }catch{}
+    }
+    showFallback();
+  });
   img.addEventListener("load",()=>{
     img.hidden=false;
     const holder=img.nextElementSibling;
     if(holder&&holder.classList.contains("image-fallback"))holder.remove();
   });
-  if(img.complete&&img.naturalWidth===0&&img.src)showFallback();
+  if(img.complete&&img.naturalWidth===0&&img.src)img.dispatchEvent(new Event("error"));
 }
 function initDynamicImages(){document.querySelectorAll("img").forEach(safeImage)}
 
