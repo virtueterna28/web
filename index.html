@@ -781,7 +781,6 @@ const CONFIG = {
     aspect: "landscape",
     caption: "Perwakilan kelas Veterna"
   }
-  
 ],
   outfits:[
     {title:"Baju Veterna",desc:"Ruang deskripsi tersedia untuk diisi programmer.",left:"",right:""},
@@ -861,7 +860,7 @@ const memberGroups = {
  ["B8","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2YufbDUeVChL85_LZN0_BsHqNWp_mBhav2EG3GrOclw&s","Kamar yang paling mudah diatur dan hampir tidak pernah alpha salat berjamaah kecuali pulang, izin, dan sakit. Kamar ini sering dijadikan rest area oleh teman-teman lainnya dan memiliki rasa kepedulian yang tinggi."]
  ],
  "Halaqoh":[
- ["Takhasus","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Members/halaqoh/DSC09598%20(1).jpg?raw=true","Target hafalan: 2 halaman"],
+ ["Takhasus","https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Members/halaqoh/DSC09598%201%201%201-200kb.jpg?raw=true","Target hafalan: 2 halaman"],
  ["A","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhRj0b-nVaeZz-3nx1YuEqtBI-y38ImJW2r9GJ7FTsHA&s=10","Target hafalan: 1 halaman"],
  ["B1","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJRo5u4WDDXvDEOidvJSccRL3gOcx59Mi5wExoHQibKg&s=10","Target hafalan: setengah halaman"],
  ["B2","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhbrRChuPlBr_2hMH1Ewp4X9nVWhSyDsc1A-QsOLLweQ&s=10","Target hafalan: setengah halaman"],
@@ -883,16 +882,35 @@ const memberGroups = {
 };
 
 function esc(value){return String(value).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
-function media(src,alt,cls=""){return src?`<img class="" src="" alt="" loading="lazy">`:`<div class="placeholder"></div>`}
-function safeImage(img){img.addEventListener("error",()=>{const holder=document.createElement("div");holder.className="placeholder";img.replaceWith()})}
+function media(src,alt,cls=""){return src?`<img class="${esc(cls)}" src="${esc(src)}" alt="${esc(alt)}" loading="lazy">`:`<div class="placeholder">${esc(alt)}</div>`}
+function safeImage(img){
+  const showFallback=()=>{
+    img.hidden=true;
+    let holder=img.nextElementSibling;
+    if(!holder||!holder.classList.contains("image-fallback")){
+      holder=document.createElement("div");
+      holder.className="placeholder image-fallback";
+      img.insertAdjacentElement("afterend",holder);
+    }
+    holder.textContent=img.alt||"Gambar tidak dapat dimuat";
+  };
+  img.addEventListener("error",showFallback);
+  img.addEventListener("load",()=>{
+    img.hidden=false;
+    const holder=img.nextElementSibling;
+    if(holder&&holder.classList.contains("image-fallback"))holder.remove();
+  });
+  if(img.complete&&img.naturalWidth===0&&img.src)showFallback();
+}
 function initDynamicImages(){document.querySelectorAll("img").forEach(safeImage)}
 
 function renderGallery() {
   const grid = document.getElementById("galleryGrid");
 
   grid.innerHTML = CONFIG.galleryPhotos
-    .filter(photo => photo.src && photo.src.trim() !== "")
-    .map((photo, index) => `
+    .map((photo, index) => ({ photo, index }))
+    .filter(({ photo }) => photo.src && photo.src.trim() !== "")
+    .map(({ photo, index }) => `
       <button
         class="gallery-item"
         type="button"
