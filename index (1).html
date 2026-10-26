@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtu Eterna </title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Font (Inter & JetBrains Mono for cyber touch) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandBlue: '#233686',
+                        darkNavy: '#070a14',
+                        cardNavy: '#0f172a',
+                        cyberRed: '#ff2a5f',
+                        cyberOrange: '#ff6b00',
+                        cyberCyan: '#00f0ff'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2.5s infinite ease-in-out',
+                        'float': 'float 4s ease-in-out infinite',
+                        'scanline': 'scanline 8s linear infinite',
+                        'glitch': 'glitch 1s linear infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 20px rgba(255, 42, 95, 0.4), inset 0 0 15px rgba(255, 42, 95, 0.2)' },
+                            '50%': { boxShadow: '0 0 45px rgba(255, 42, 95, 0.8), inset 0 0 25px rgba(255, 42, 95, 0.5)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-12px) rotate(1deg)' }
+                        },
+                        scanline: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(1000%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #050811;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Dark Glow Effects */
+        .scary-glow {
+            background: radial-gradient(circle at 50% 30%, rgba(35, 54, 134, 0.35) 0%, rgba(255, 42, 95, 0.15) 50%, rgba(5, 8, 17, 0.95) 100%);
+        }
+
+        /* Scanline Overlay Effect for Creepy Tech Vibe */
+        .scanlines {
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%, 
+                rgba(0, 0, 0, 0.35) 50%
+            ), linear-gradient(
+                90deg,
+                rgba(255, 0, 0, 0.03),
+                rgba(0, 255, 0, 0.01),
+                rgba(0, 0, 255, 0.03)
+            );
+            background-size: 100% 3px, 6px 100%;
+            pointer-events: none;
+        }
+
+        /* Glitch Animation for Locked Heading */
+        .glitch-text {
+            position: relative;
+            display: inline-block;
+        }
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            clip: rect(0, 0, 0, 0);
+        }
+        .glitch-text::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff2a5f;
+            animation: glitch-anim-1 2s infinite linear alternate-reverse;
+        }
+        .glitch-text::after {
+            left: -2px;
+            text-shadow: -2px 0 #00f0ff;
+            animation: glitch-anim-2 3s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-1 {
+            0% { clip: rect(20px, 9999px, 15px, 0); }
+            20% { clip: rect(50px, 9999px, 80px, 0); }
+            40% { clip: rect(10px, 9999px, 40px, 0); }
+            60% { clip: rect(70px, 9999px, 30px, 0); }
+            80% { clip: rect(30px, 9999px, 60px, 0); }
+            100% { clip: rect(90px, 9999px, 10px, 0); }
+        }
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(80px, 9999px, 10px, 0); }
+            20% { clip: rect(10px, 9999px, 40px, 0); }
+            40% { clip: rect(60px, 9999px, 90px, 0); }
+            60% { clip: rect(30px, 9999px, 20px, 0); }
+            80% { clip: rect(90px, 9999px, 50px, 0); }
+            100% { clip: rect(40px, 9999px, 70px, 0); }
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 42, 95, 0.25);
+        }
+
+        /* Pulsing Cyber Border */
+        .lock-glow-box {
+            box-shadow: 0 0 30px rgba(255, 42, 95, 0.35), 0 0 10px rgba(35, 54, 134, 0.8);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between font-sans scary-glow relative select-none">
+
+    <div class="fixed inset-0 scanlines z-50 pointer-events-none"></div>
+
+    <!-- Header dengan warna biru khas Virtu Eterna (#233686) -->
+    <header class="w-full bg-[#233686] border-b border-red-500/30 shadow-lg shadow-black/60 relative z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Virtu Eterna Logo Container -->
+            <div class="flex items-center space-x-3">
+                <div class="p-1.5 bg-black/40 rounded-xl border border-white/10 hover:border-cyan-400/50 transition-all duration-300">
+                    <img 
+                        src="https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/logo%20veterna%20(1).png?raw=true" 
+                        alt="Virtu Eterna Logo" 
+                        class="h-10 sm:h-12 w-auto object-contain filter drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]"
+                        onerror="this.onerror=null; this.src='https://placehold.co/200x60/233686/ffffff?text=VIRTU+ETERNA';"
+                    />
+                </div>
+                <div>
+                    <span class="text-xs font-mono tracking-widest text-red-400 font-semibold block uppercase">Official Domain</span>
+                    <span class="text-sm font-bold text-white tracking-wider">VIRTU ETERNA</span>
+                </div>
+            </div>
+
+            <!-- Lock Indicator Status Header -->
+            <div class="flex items-center space-x-2 bg-black/50 px-3 py-1.5 rounded-full border border-red-500/50 text-red-400 font-mono text-xs animate-pulse">
+                <i class="fa-solid fa-lock text-red-500"></i>
+                <span class="hidden sm:inline tracking-wider">STATUS: SYSTEM LOCKED</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow flex items-center justify-center px-4 py-10 relative z-10">
+        <div class="max-w-3xl w-full text-center">
+            
+            <!-- Giant Glowing & Floating Cyber Lock Icon -->
+            <div class="relative inline-block my-6">
+                <!-- Red Pulse Background Effect -->
+                <div class="absolute -inset-4 rounded-full bg-gradient-to-r from-red-600/40 via-brandBlue/50 to-red-600/40 blur-xl opacity-75 animate-pulse"></div>
+                
+                <!-- Main Lock Box Container -->
+                <div class="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto rounded-3xl bg-slate-950/90 border-2 border-red-500/60 flex items-center justify-center lock-glow-box animate-float">
+                    <svg class="w-16 h-16 sm:w-20 sm:h-20 text-red-500 drop-shadow-[0_0_15px_rgba(255,42,95,0.8)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                    </svg>
+                    
+                    <!-- Small Creepy Blinking Eye/Glow Signal -->
+                    <span class="absolute top-3 right-3 flex h-3 w-3">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Warning Glitch Title -->
+            <div class="mb-4">
+                <span class="inline-block px-3 py-1 bg-red-950/80 border border-red-500/40 text-red-400 font-mono text-xs rounded tracking-widest uppercase mb-3">
+                    <i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Access Restricted by Developer
+                </span>
+                <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight glitch-text" data-text="WEBSITE DIKUNCI / LOCKED">
+                    WEBSITE DIKUNCI / LOCKED
+                </h1>
+            </div>
+
+            <!-- Descriptive Text -->
+            <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed mb-8">
+                Akses menuju platform <span class="text-cyan-400 font-semibold">Virtu Eterna</span> saat ini ditangguhkan sementara. Layanan dilindungi oleh protokol keamanan developer dan hanya dapat dibuka kembali dengan otoritas pengembang resmi.
+            </p>
+
+            <!-- Developer Info Card -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 max-w-xl mx-auto mb-8 border-l-4 border-l-red-500 shadow-2xl relative overflow-hidden group hover:border-red-500 transition-all duration-300">
+                <!-- Subtle Background Grid -->
+                <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:16px_16px] pointer-events-none"></div>
+
+                <div class="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-14 h-14 rounded-2xl bg-brandBlue/80 border border-cyan-400/30 flex items-center justify-center text-cyan-300 text-2xl shadow-inner flex-shrink-0">
+                            <i class="fa-solid fa-user-shield"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-mono text-slate-400 uppercase tracking-wider">Silakan Hubungi Developer Web:</p>
+                            <h3 class="text-lg sm:text-xl font-bold text-white tracking-wide mt-0.5 group-hover:text-cyan-300 transition-colors">
+                                Abhipraya Damas Okta Ardana, S.Kom.
+                            </h3>
+                            <p class="text-xs text-red-400 font-mono mt-1">
+                                <i class="fa-solid fa-circle text-[8px] animate-pulse mr-1"></i> Lead Web Developer & System Administrator
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Button Group inside Card -->
+                <div class="mt-6 pt-5 border-t border-slate-800 flex flex-col sm:flex-row items-center gap-3">
+                    <!-- Primary CTA: WhatsApp -->
+                    <a 
+                        href="https://wa.me/?text=Halo%20Mas%20Abhipraya%20Damas%20Okta%20Ardana,%20S.Kom.,%20saya%20ingin%20mengonfirmasi%20mengenai%20status%20website%20Virtu%20Eterna%20yang%20saat%20ini%20terkunci." 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="w-full sm:w-1/2 py-3 px-5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-sm flex items-center justify-center space-x-2 shadow-lg shadow-emerald-900/30 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                    >
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span>Hubungi Kami</span>
+                    </a>
+
+                    <!-- Secondary CTA: Direct Email / Info Modal Trigger -->
+                    <button 
+                        onclick="toggleModal()"
+                        class="w-full sm:w-1/2 py-3 px-5 rounded-xl bg-brandBlue/60 hover:bg-brandBlue/90 text-slate-200 hover:text-white font-medium text-sm border border-brandBlue flex items-center justify-center space-x-2 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                    >
+                        <i class="fa-solid fa-circle-info"></i>
+                        <span>Detail & Otorisasi</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- SYSTEM LOG MONITOR / LIVE FEED -->
+            <div class="max-w-xl mx-auto text-left bg-black/70 rounded-xl p-3 border border-slate-800 font-mono text-[11px] text-slate-400">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-1.5 mb-2 text-slate-500">
+                    <span><i class="fa-solid fa-terminal text-red-500 mr-1"></i> SECURITY TERMINAL LOG</span>
+                    <span id="live-clock">00:00:00 UTC</span>
+                </div>
+                <div id="terminal-text" class="space-y-1 text-slate-300 h-16 overflow-hidden">
+                    <p class="text-red-400">[LOCK_EVENT] Site lock engaged by administrator.</p>
+                    <p class="text-amber-400">[AUTH] Pending developer credentials...</p>
+                    <p class="text-cyan-400">[CONTACT] Authorized developer: Abhipraya Damas Okta Ardana, S.Kom.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full bg-slate-950/90 border-t border-slate-900 py-4 relative z-40">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-xs text-slate-500 font-mono">
+                &copy; <span id="year"></span> Virtu Eterna. WEB By Abhipraya Damas - Dilindungi oleh hak Cipta.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Modal Detail Otorisasi -->
+    <div id="infoModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-slate-900 border border-red-500/40 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="toggleModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="text-center mb-5">
+                <div class="w-12 h-12 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center mx-auto mb-3 border border-red-500/30">
+                    <i class="fa-solid fa-lock text-xl"></i>
+                </div>
+                <h3 class="text-lg font-bold text-white">Informasi Penguncian Website</h3>
+                <p class="text-xs text-slate-400 mt-1">Status Sistem: Terkunci (Locked)</p>
+            </div>
+
+            <div class="space-y-3 text-xs text-slate-300 font-mono bg-slate-950 p-4 rounded-xl border border-slate-800">
+                <div class="flex justify-between border-b border-slate-800 pb-1">
+                    <span class="text-slate-500">Domain:</span>
+                    <span class="text-cyan-400">Virtu Eterna</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-1">
+                    <span class="text-slate-500">Developer:</span>
+                    <span class="text-white font-bold">Abhipraya Damas Okta Ardana, S.Kom.</span>
+                </div>
+                <div class="flex justify-between border-b border-slate-800 pb-1">
+                    <span class="text-slate-500">Protokol:</span>
+                    <span class="text-red-400">DEV_LOCK_ACTIVE</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-slate-500">Akses Kembali:</span>
+                    <span class="text-amber-400">Menunggu Verifikasi</span>
+                </div>
+            </div>
+
+            <p class="text-xs text-slate-400 mt-4 text-center">
+                Untuk pembukaan kunci atau pembaruan konfigurasi web, silakan hubungi developer penanggung jawab.
+            </p>
+
+            <div class="mt-5">
+                <a 
+                    href="https://wa.me/?text=Halo%20Mas%20Abhipraya%20Damas%20Okta%20Ardana,%20S.Kom.,%20mohon%20bantuan%20terkait%20pembukaan%20kunci%20website%20Virtu%20Eterna." 
+                    target="_blank"
+                    class="w-full py-2.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs flex items-center justify-center space-x-2 transition-colors"
+                >
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>Kirim Pesan Langsung ke Developer</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Set dynamic year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Live UTC Clock for creepy terminal effect
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toUTCString().split(' ')[4] + ' UTC';
+            document.getElementById('live-clock').textContent = timeStr;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        // Dynamic terminal text output simulation
+        const terminal = document.getElementById('terminal-text');
+        const logs = [
+            '<p class="text-red-400">[SECURITY] Integrity check failed - Key missing.</p>',
+            '<p class="text-slate-400">[SYSTEM] Server status: READ-ONLY MODE.</p>',
+            '<p class="text-cyan-400">[CONTACT] Developer: Abhipraya Damas Okta Ardana, S.Kom.</p>',
+            '<p class="text-amber-400">[LOCK] Site locked pending developer release.</p>'
+        ];
+        let logIndex = 0;
+
+        setInterval(() => {
+            logIndex = (logIndex + 1) % logs.length;
+            const newLog = document.createElement('div');
+            newLog.innerHTML = logs[logIndex];
+            terminal.appendChild(newLog.firstChild);
+            if (terminal.children.length > 3) {
+                terminal.removeChild(terminal.firstChild);
+            }
+        }, 3500);
+
+        // Modal Toggle
+        function toggleModal() {
+            const modal = document.getElementById('infoModal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            } else {
+                modal.classList.add('opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            }
+        }
+    </script>
+</body>
+</html>
