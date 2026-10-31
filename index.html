@@ -253,6 +253,33 @@
                 </div>
             </div>
 
+            <!-- Hitung mundur rilis website -->
+            <section class="glass-card max-w-xl mx-auto rounded-2xl p-5 sm:p-6 mb-6 border border-cyan-400/30" aria-labelledby="countdown-title">
+                <p class="text-cyan-400 font-mono text-xs uppercase tracking-widest mb-2">
+                    <i class="fa-solid fa-hourglass-half mr-1.5" aria-hidden="true"></i> Jadwal Rilis
+                </p>
+                <h2 id="countdown-title" class="text-lg sm:text-xl font-bold text-white mb-1">Virtu Eterna segera hadir</h2>
+                <p class="text-xs text-slate-400 mb-5">28 Desember 2026 · 09.30</p>
+                <div class="grid grid-cols-4 gap-2 sm:gap-4 font-mono" aria-live="polite" aria-atomic="true">
+                    <div class="bg-slate-950/80 rounded-xl p-3 border border-slate-700/70">
+                        <span id="countdown-days" class="block text-2xl sm:text-3xl font-bold text-cyan-300">--</span>
+                        <span class="text-[10px] uppercase tracking-wider text-slate-500">Hari</span>
+                    </div>
+                    <div class="bg-slate-950/80 rounded-xl p-3 border border-slate-700/70">
+                        <span id="countdown-hours" class="block text-2xl sm:text-3xl font-bold text-cyan-300">--</span>
+                        <span class="text-[10px] uppercase tracking-wider text-slate-500">Jam</span>
+                    </div>
+                    <div class="bg-slate-950/80 rounded-xl p-3 border border-slate-700/70">
+                        <span id="countdown-minutes" class="block text-2xl sm:text-3xl font-bold text-cyan-300">--</span>
+                        <span class="text-[10px] uppercase tracking-wider text-slate-500">Menit</span>
+                    </div>
+                    <div class="bg-slate-950/80 rounded-xl p-3 border border-slate-700/70">
+                        <span id="countdown-seconds" class="block text-2xl sm:text-3xl font-bold text-cyan-300">--</span>
+                        <span class="text-[10px] uppercase tracking-wider text-slate-500">Detik</span>
+                    </div>
+                </div>
+            </section>
+
             <!-- SYSTEM LOG MONITOR / LIVE FEED -->
             <div class="max-w-xl mx-auto text-left bg-black/70 rounded-xl p-3 border border-slate-800 font-mono text-[11px] text-slate-400">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-1.5 mb-2 text-slate-500">
@@ -332,6 +359,41 @@
     <script>
         // Set dynamic year
         document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Countdown to the website release (local browser time)
+        const releaseDate = new Date(2026, 11, 28, 9, 30, 0);
+        const countdownElements = {
+            days: document.getElementById('countdown-days'),
+            hours: document.getElementById('countdown-hours'),
+            minutes: document.getElementById('countdown-minutes'),
+            seconds: document.getElementById('countdown-seconds')
+        };
+        const countdownTitle = document.getElementById('countdown-title');
+
+        function updateCountdown() {
+            const remaining = releaseDate.getTime() - Date.now();
+            if (remaining <= 0) {
+                Object.values(countdownElements).forEach(element => element.textContent = '00');
+                countdownTitle.textContent = 'Virtu Eterna telah dirilis!';
+                clearInterval(countdownInterval);
+                return;
+            }
+
+            const days = Math.floor(remaining / 86400000);
+            const hours = Math.floor((remaining % 86400000) / 3600000);
+            const minutes = Math.floor((remaining % 3600000) / 60000);
+            const seconds = Math.floor((remaining % 60000) / 1000);
+            countdownElements.days.textContent = String(days).padStart(2, '0');
+            countdownElements.hours.textContent = String(hours).padStart(2, '0');
+            countdownElements.minutes.textContent = String(minutes).padStart(2, '0');
+            countdownElements.seconds.textContent = String(seconds).padStart(2, '0');
+        }
+
+        let countdownInterval;
+        updateCountdown();
+        if (releaseDate.getTime() > Date.now()) {
+            countdownInterval = setInterval(updateCountdown, 1000);
+        }
 
         // Live UTC Clock for creepy terminal effect
         function updateClock() {
