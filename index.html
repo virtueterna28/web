@@ -6,6 +6,7 @@
     <title>Virtu Eterna </title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
     <!-- Google Font (Inter & JetBrains Mono for cyber touch) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,11 +60,6 @@
             background-color: #050811;
             color: #e2e8f0;
             overflow-x: hidden;
-        }
-
-        /* Ambient Dark Glow Effects */
-        .scary-glow {
-            background: radial-gradient(circle at 50% 30%, rgba(35, 54, 134, 0.35) 0%, rgba(255, 42, 95, 0.15) 50%, rgba(5, 8, 17, 0.95) 100%);
         }
 
         /* Scanline Overlay Effect for Creepy Tech Vibe */
@@ -204,7 +200,7 @@
 
             <!-- Descriptive Text -->
             <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed mb-8">
-                Akses menuju platform <span class="text-cyan-400 font-semibold">Virtu Eterna</span> saat ini ditangguhkan sementara. Layanan dilindungi oleh protokol keamanan developer dan hanya dapat dibuka kembali dengan otoritas pengembang resmi.
+                Akses menuju platform <span class="text-cyan-400 font-semibold">Virtu Eterna</span> saat ini ditangguhkan sementara. Layanan dilindungi oleh protokol keamanan developer karena fitur keamanan  masih dalam tahap pengembangandan akan dibuka setelah peresmian website.
             </p>
 
             <!-- Developer Info Card -->
@@ -214,13 +210,15 @@
 
                 <div class="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
                     <div class="flex items-center space-x-4">
-                        <div class="w-14 h-14 rounded-2xl bg-brandBlue/80 border border-cyan-400/30 flex items-center justify-center text-cyan-300 text-2xl shadow-inner flex-shrink-0">
-                            <i class="fa-solid fa-user-shield"></i>
-                        </div>
+                        <div
+                            class="developer-photo w-14 h-14 rounded-2xl border border-cyan-400/30 shadow-inner flex-shrink-0"
+                            role="img"
+                            aria-label="Foto developer Abhipraya Damas Okta Ardana"
+                        ></div>
                         <div>
                             <p class="text-xs font-mono text-slate-400 uppercase tracking-wider">Silakan Hubungi Developer Web:</p>
                             <h3 class="text-lg sm:text-xl font-bold text-white tracking-wide mt-0.5 group-hover:text-cyan-300 transition-colors">
-                                Abhipraya Damas Okta Ardana, S.Kom.
+                                Abhipraya Damas Okta Ardana
                             </h3>
                             <p class="text-xs text-red-400 font-mono mt-1">
                                 <i class="fa-solid fa-circle text-[8px] animate-pulse mr-1"></i> Lead Web Developer & System Administrator
@@ -280,6 +278,20 @@
                 </div>
             </section>
 
+            <!-- Alternatif akses web -->
+            <section class="glass-card max-w-xl mx-auto rounded-2xl p-5 sm:p-6 mb-6 border border-cyan-400/30" aria-labelledby="alternative-site-title">
+                <p class="text-cyan-400 font-mono text-xs uppercase tracking-widest mb-2">
+                    <i class="fa-solid fa-cloud mr-1.5" aria-hidden="true"></i> Alternatif Akses
+                </p>
+                <h2 id="alternative-site-title" class="text-lg sm:text-xl font-bold text-white mb-2">V-Cloud</h2>
+                <p class="text-sm text-slate-400 mb-4">Kunjungi situs alternatif Virtu Eterna melalui V-Cloud.</p>
+                <a href="https://v-cloud.virtueterna28.workers.dev/" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-700 hover:from-cyan-500 hover:to-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                    <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                    <span>Buka V-Cloud</span>
+                </a>
+            </section>
+
             <!-- SYSTEM LOG MONITOR / LIVE FEED -->
             <div class="max-w-xl mx-auto text-left bg-black/70 rounded-xl p-3 border border-slate-800 font-mono text-[11px] text-slate-400">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-1.5 mb-2 text-slate-500">
@@ -289,7 +301,7 @@
                 <div id="terminal-text" class="space-y-1 text-slate-300 h-16 overflow-hidden">
                     <p class="text-red-400">[LOCK_EVENT] Site lock engaged by administrator.</p>
                     <p class="text-amber-400">[AUTH] Pending developer credentials...</p>
-                    <p class="text-cyan-400">[CONTACT] Authorized developer: Abhipraya Damas Okta Ardana, S.Kom.</p>
+                    <p class="text-cyan-400">[CONTACT] Authorized developer: Abhipraya Damas Okta Ardana</p>
                 </div>
             </div>
 
@@ -323,11 +335,11 @@
             <div class="space-y-3 text-xs text-slate-300 font-mono bg-slate-950 p-4 rounded-xl border border-slate-800">
                 <div class="flex justify-between border-b border-slate-800 pb-1">
                     <span class="text-slate-500">Domain:</span>
-                    <span class="text-cyan-400">Virtu Eterna</span>
+                    <span class="text-cyan-400">https://web.virtueterna28.workers.dev/</span>
                 </div>
                 <div class="flex justify-between border-b border-slate-800 pb-1">
                     <span class="text-slate-500">Developer:</span>
-                    <span class="text-white font-bold">Abhipraya Damas Okta Ardana, S.Kom.</span>
+                    <span class="text-white font-bold">Abhipraya Damas Okta Ardana</span>
                 </div>
                 <div class="flex justify-between border-b border-slate-800 pb-1">
                     <span class="text-slate-500">Protokol:</span>
@@ -335,12 +347,12 @@
                 </div>
                 <div class="flex justify-between">
                     <span class="text-slate-500">Akses Kembali:</span>
-                    <span class="text-amber-400">Menunggu Verifikasi</span>
+                    <span class="text-amber-400">28 Desember 2026</span>
                 </div>
             </div>
 
             <p class="text-xs text-slate-400 mt-4 text-center">
-                Untuk pembukaan kunci atau pembaruan konfigurasi web, silakan hubungi developer penanggung jawab.
+                Untuk informasi atau pembaruan konfigurasi web, silakan hubungi developer penanggung jawab.
             </p>
 
             <div class="mt-5">
@@ -409,7 +421,7 @@
         const logs = [
             '<p class="text-red-400">[SECURITY] Integrity check failed - Key missing.</p>',
             '<p class="text-slate-400">[SYSTEM] Server status: READ-ONLY MODE.</p>',
-            '<p class="text-cyan-400">[CONTACT] Developer: Abhipraya Damas Okta Ardana, S.Kom.</p>',
+            '<p class="text-cyan-400">[CONTACT] Developer: Abhipraya Damas Okta Ardana</p>',
             '<p class="text-amber-400">[LOCK] Site locked pending developer release.</p>'
         ];
         let logIndex = 0;
