@@ -1,6 +1,23 @@
-body{
-  padding: 25px;
+body {
+  padding: 0;
 }
+
 .title {
-	color: #5C6AC4;
+  color: #5C6AC4;
+}
+
+.scary-glow {
+  background-image:
+    radial-gradient(circle at 50% 30%, rgba(35, 54, 134, 0.35) 0%, rgba(255, 42, 95, 0.15) 50%, rgba(5, 8, 17, 0.78) 100%),
+    linear-gradient(rgba(5, 8, 17, 0.48), rgba(5, 8, 17, 0.72)),
+    url("https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png?raw=true");
+  background-position: center, center, center;
+  background-size: cover, cover, cover;
+  background-attachment: fixed;
+}
+
+.developer-photo {
+  background-image: url("https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/damas.jpeg?raw=true");
+  background-position: center;
+  background-size: cover;
 }
