@@ -1,23 +1,137 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   padding: 0;
 }
 
-.title {
-  color: #5C6AC4;
+.royal-theme .developer-photo {
+  background-image: url("https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/damas.jpeg?raw=true");
+  background-size: cover;
+  background-position: center;
 }
 
-.scary-glow {
+body.royal-theme {
+  --royal-navy: #071329;
+  --royal-blue: #102b55;
+  --royal-gold: #f5c95d;
+  --royal-cream: #fff3cc;
+  background-color: var(--royal-navy) !important;
+  color: var(--royal-cream) !important;
+}
+
+.royal-theme.scary-glow {
   background-image:
-    radial-gradient(circle at 50% 30%, rgba(35, 54, 134, 0.35) 0%, rgba(255, 42, 95, 0.15) 50%, rgba(5, 8, 17, 0.78) 100%),
-    linear-gradient(rgba(5, 8, 17, 0.48), rgba(5, 8, 17, 0.72)),
+    linear-gradient(135deg, rgba(4, 13, 31, 0.94), rgba(13, 39, 77, 0.82) 48%, rgba(83, 57, 13, 0.62)),
     url("https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png?raw=true");
-  background-position: center, center, center;
-  background-size: cover, cover, cover;
+  background-position: center;
+  background-size: cover;
   background-attachment: fixed;
 }
 
-.developer-photo {
-  background-image: url("https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/damas.jpeg?raw=true");
-  background-position: center;
-  background-size: cover;
+.royal-theme .scanlines {
+  opacity: 0.18;
+  background: repeating-linear-gradient(0deg, transparent 0 5px, rgba(245, 201, 93, 0.16) 6px);
+}
+
+.royal-theme header {
+  background: linear-gradient(110deg, #08152d, #15396b 55%, #72521a) !important;
+  border-bottom: 1px solid rgba(245, 201, 93, 0.65) !important;
+}
+
+.royal-theme footer {
+  background: linear-gradient(90deg, #061126, #10284c, #061126) !important;
+  border-color: rgba(245, 201, 93, 0.3) !important;
+}
+
+.royal-theme .glass-card,
+.royal-theme #terminal-text,
+.royal-theme main .bg-black\/70 {
+  background: linear-gradient(145deg, rgba(9, 25, 51, 0.94), rgba(20, 46, 83, 0.88)) !important;
+  border-color: rgba(245, 201, 93, 0.45) !important;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.35), inset 0 1px rgba(255, 235, 181, 0.08);
+}
+
+.royal-theme .lock-glow-box {
+  background: linear-gradient(145deg, #0b1c38, #173968) !important;
+  border-color: var(--royal-gold) !important;
+  box-shadow: 0 0 28px rgba(245, 201, 93, 0.32), inset 0 0 24px rgba(245, 201, 93, 0.1);
+}
+
+.royal-theme .lock-glow-box svg,
+.royal-theme .text-red-400,
+.royal-theme .text-red-500,
+.royal-theme .text-cyan-300,
+.royal-theme .text-cyan-400,
+.royal-theme .text-amber-400 {
+  color: var(--royal-gold) !important;
+}
+
+.royal-theme [class*="border-red"],
+.royal-theme [class*="border-cyan"],
+.royal-theme [class*="border-brandBlue"] {
+  border-color: rgba(245, 201, 93, 0.52) !important;
+}
+
+.royal-theme [class*="bg-red-"],
+.royal-theme [class*="bg-cyan-"],
+.royal-theme [class*="bg-brandBlue"] {
+  background-color: rgba(115, 82, 23, 0.28) !important;
+}
+
+.royal-theme [class*="text-slate-300"],
+.royal-theme [class*="text-slate-400"],
+.royal-theme [class*="text-slate-500"] {
+  color: #d9d5c9 !important;
+}
+
+.royal-theme [class*="border-slate-"] {
+  border-color: rgba(245, 201, 93, 0.2) !important;
+}
+
+.royal-theme .lock-glow-box,
+.royal-theme .glass-card,
+.royal-theme #infoModal > div {
+  border-radius: 1rem;
+}
+
+.royal-theme #infoModal > div {
+  background: linear-gradient(145deg, #091933, #173663) !important;
+  border-color: rgba(245, 201, 93, 0.65) !important;
+}
+
+.royal-theme a[class*="bg-gradient-to-r"] {
+  color: #071329 !important;
+  background: linear-gradient(110deg, #f7d878, #d49a2b) !important;
+  box-shadow: 0 8px 22px rgba(154, 111, 31, 0.28) !important;
+}
+
+.royal-theme a[class*="bg-gradient-to-r"]:hover {
+  background: linear-gradient(110deg, #ffe9a3, #efbb4d) !important;
+}
+
+.royal-theme button[class*="bg-brandBlue"] {
+  color: #fff0c2 !important;
+  background: linear-gradient(110deg, #102b55, #77551b) !important;
+}
+
+.royal-theme .glitch-text::before,
+.royal-theme .glitch-text::after {
+  text-shadow: -2px 0 #f5c95d;
+}
+
+.royal-theme .animate-ping,
+.royal-theme .bg-red-600 {
+  background-color: #f5c95d !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .royal-theme *,
+  .royal-theme *::before,
+  .royal-theme *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
 }
