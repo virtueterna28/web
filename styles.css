@@ -1,137 +1,333 @@
-* {
-  box-sizing: border-box;
+/* Shared full-page royal background for every tab. */
+.page:before {
+  background:
+    linear-gradient(rgba(5, 12, 38, 0.42), rgba(5, 12, 38, 0.42)),
+    url("https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png?raw=true") center / cover fixed,
+    repeating-linear-gradient(135deg, #ffffff08 0 1px, transparent 1px 5px) !important;
 }
 
-body {
-  padding: 0;
-}
-
-.royal-theme .developer-photo {
-  background-image: url("https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/damas.jpeg?raw=true");
-  background-size: cover;
-  background-position: center;
-}
-
-body.royal-theme {
-  --royal-navy: #071329;
-  --royal-blue: #102b55;
-  --royal-gold: #f5c95d;
-  --royal-cream: #fff3cc;
-  background-color: var(--royal-navy) !important;
-  color: var(--royal-cream) !important;
-}
-
-.royal-theme.scary-glow {
-  background-image:
-    linear-gradient(135deg, rgba(4, 13, 31, 0.94), rgba(13, 39, 77, 0.82) 48%, rgba(83, 57, 13, 0.62)),
-    url("https://github.com/virtueterna28/web/blob/main/mentahan%20aset%20web/Beranda/coban%20talun%20veterna.png?raw=true");
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-.royal-theme .scanlines {
-  opacity: 0.18;
-  background: repeating-linear-gradient(0deg, transparent 0 5px, rgba(245, 201, 93, 0.16) 6px);
-}
-
-.royal-theme header {
-  background: linear-gradient(110deg, #08152d, #15396b 55%, #72521a) !important;
-  border-bottom: 1px solid rgba(245, 201, 93, 0.65) !important;
-}
-
-.royal-theme footer {
-  background: linear-gradient(90deg, #061126, #10284c, #061126) !important;
-  border-color: rgba(245, 201, 93, 0.3) !important;
-}
-
-.royal-theme .glass-card,
-.royal-theme #terminal-text,
-.royal-theme main .bg-black\/70 {
-  background: linear-gradient(145deg, rgba(9, 25, 51, 0.94), rgba(20, 46, 83, 0.88)) !important;
-  border-color: rgba(245, 201, 93, 0.45) !important;
-  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.35), inset 0 1px rgba(255, 235, 181, 0.08);
-}
-
-.royal-theme .lock-glow-box {
-  background: linear-gradient(145deg, #0b1c38, #173968) !important;
-  border-color: var(--royal-gold) !important;
-  box-shadow: 0 0 28px rgba(245, 201, 93, 0.32), inset 0 0 24px rgba(245, 201, 93, 0.1);
-}
-
-.royal-theme .lock-glow-box svg,
-.royal-theme .text-red-400,
-.royal-theme .text-red-500,
-.royal-theme .text-cyan-300,
-.royal-theme .text-cyan-400,
-.royal-theme .text-amber-400 {
-  color: var(--royal-gold) !important;
-}
-
-.royal-theme [class*="border-red"],
-.royal-theme [class*="border-cyan"],
-.royal-theme [class*="border-brandBlue"] {
-  border-color: rgba(245, 201, 93, 0.52) !important;
-}
-
-.royal-theme [class*="bg-red-"],
-.royal-theme [class*="bg-cyan-"],
-.royal-theme [class*="bg-brandBlue"] {
-  background-color: rgba(115, 82, 23, 0.28) !important;
-}
-
-.royal-theme [class*="text-slate-300"],
-.royal-theme [class*="text-slate-400"],
-.royal-theme [class*="text-slate-500"] {
-  color: #d9d5c9 !important;
-}
-
-.royal-theme [class*="border-slate-"] {
-  border-color: rgba(245, 201, 93, 0.2) !important;
-}
-
-.royal-theme .lock-glow-box,
-.royal-theme .glass-card,
-.royal-theme #infoModal > div {
-  border-radius: 1rem;
-}
-
-.royal-theme #infoModal > div {
-  background: linear-gradient(145deg, #091933, #173663) !important;
-  border-color: rgba(245, 201, 93, 0.65) !important;
-}
-
-.royal-theme a[class*="bg-gradient-to-r"] {
-  color: #071329 !important;
-  background: linear-gradient(110deg, #f7d878, #d49a2b) !important;
-  box-shadow: 0 8px 22px rgba(154, 111, 31, 0.28) !important;
-}
-
-.royal-theme a[class*="bg-gradient-to-r"]:hover {
-  background: linear-gradient(110deg, #ffe9a3, #efbb4d) !important;
-}
-
-.royal-theme button[class*="bg-brandBlue"] {
-  color: #fff0c2 !important;
-  background: linear-gradient(110deg, #102b55, #77551b) !important;
-}
-
-.royal-theme .glitch-text::before,
-.royal-theme .glitch-text::after {
-  text-shadow: -2px 0 #f5c95d;
-}
-
-.royal-theme .animate-ping,
-.royal-theme .bg-red-600 {
-  background-color: #f5c95d !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .royal-theme *,
-  .royal-theme *::before,
-  .royal-theme *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    scroll-behavior: auto !important;
+@media (max-width: 800px) {
+  .page:before {
+    background-attachment: scroll, scroll, scroll !important;
   }
+}
+
+/* Interactive royal details shared by every tab. */
+.royal-toggle {
+  position: absolute;
+  top: 82px;
+  right: clamp(16px, 4vw, 48px);
+  z-index: 12;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #e0bf72a8;
+  border-radius: 50%;
+  color: #f6d993;
+  background: #101735d9;
+  box-shadow: 0 5px 22px #0006, inset 0 0 12px #e0bf7222;
+  font-size: 1.6rem;
+  transition: transform .25s ease, color .25s ease, background .25s ease, box-shadow .25s ease;
+}
+.royal-toggle:hover, .royal-toggle:focus-visible {
+  transform: translateY(-3px) rotate(-8deg) scale(1.08);
+  color: #fff3c4;
+  background: #28376f;
+  box-shadow: 0 8px 26px #0008, 0 0 18px #e0bf7288;
+}
+.royal-toggle:focus-visible { outline: 2px solid #fff3c4; outline-offset: 3px; }
+.royal-toggle[aria-pressed="true"] { color: #fff3c4; background: #8b6825; box-shadow: 0 0 26px #e0bf72aa; }
+.royal-spark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  pointer-events: none;
+  color: #ffe9a4;
+  font-size: 13px;
+  animation: royalSpark .75s ease-out forwards;
+}
+@keyframes royalSpark {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(.4); }
+  to { opacity: 0; transform: translate(calc(-50% + var(--spark-x)), calc(-50% + var(--spark-y))) scale(1.35); }
+}
+.page.royal-awakened .section-head h2,
+.page.royal-awakened .hero h1,
+.page.royal-awakened .section-banner h1 { text-shadow: 0 0 18px #e0bf7270; }
+.page.royal-awakened .card,
+.page.royal-awakened .profile-card,
+.page.royal-awakened .quote {
+  border-color: #c8a45c;
+  box-shadow: 0 12px 30px #c8a45c26, inset 0 0 0 1px #c8a45c20;
+  transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+}
+.page.royal-awakened .card:hover,
+.page.royal-awakened .profile-card:hover,
+.page.royal-awakened .quote:hover { transform: translateY(-4px); }
+@media (max-width: 800px) {
+  .royal-toggle { top: 76px; right: 16px; width: 44px; height: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .royal-spark { animation: none; display: none; }
+}
+
+/* Royal styling for the shared navigation bar. */
+.topbar {
+  background: rgba(16, 25, 54, .96);
+  border-bottom: 1px solid #c8a45c;
+  box-shadow: 0 5px 22px #0004;
+}
+.brand { color: #f4d98e; }
+.brand-mark { border-color: #c8a45c; }
+.brand [data-template-id="brand-name"] { color: #f4d98e !important; }
+.nav-link {
+  color: #e5dfd0;
+  transition: color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+.nav-link:hover,
+.nav-link.active {
+  color: #fff3c4;
+  background: #806126;
+  box-shadow: inset 0 0 0 1px #e0bf72;
+}
+.nav-link.v-cloud-link,
+.nav-link.v-cloud-link:hover {
+  color: #31230a;
+  background: #e0bf72;
+  box-shadow: inset 0 0 0 1px #f6d993;
+}
+.menu-toggle {
+  color: #f4d98e;
+  border-color: #c8a45c;
+  background: #202a4a;
+}
+@media (max-width: 800px) {
+  .nav-links {
+    background: #101936;
+    border-color: #c8a45c;
+    box-shadow: 0 18px 35px #0007;
+  }
+  .nav-link { color: #e5dfd0; }
+}
+
+/* Full royal treatment when the crown is activated on a tab. */
+.page.royal-awakened {
+  color: #f8efd8;
+  --royal-gold: #e0bf72;
+  --royal-ink: #f5edda;
+}
+.page.royal-awakened .section,
+.page.royal-awakened .section.white,
+.page.royal-awakened .section-tint {
+  color: var(--royal-ink);
+  background: linear-gradient(135deg, rgba(17, 25, 54, .96), rgba(48, 28, 47, .94)) !important;
+}
+.page.royal-awakened :is(h1, h2, h3) {
+  color: #f4d98e !important;
+  text-shadow: 0 2px 16px #e0bf724d;
+}
+.page.royal-awakened :is(p, .copy, .caption, .speech, .small, figcaption) {
+  color: #e5dfd0 !important;
+}
+.page.royal-awakened :is(.eyebrow, .tag, .breadcrumb) {
+  color: #f0d181 !important;
+}
+.page.royal-awakened :is(.card, .profile-card, .quote, .story-card, .placeholder) {
+  color: var(--royal-ink);
+  background: linear-gradient(145deg, #202a4a, #30243d) !important;
+  border: 1px solid #c8a45c !important;
+  box-shadow: 0 12px 30px #0005, inset 0 0 18px #e0bf7214;
+}
+.page.royal-awakened :is(img, .asset-image) {
+  border-color: #d7b85f;
+  box-shadow: 0 5px 18px #0005, 0 0 0 2px #c8a45c33;
+}
+.page.royal-awakened a:not(.brand) {
+  color: #f4d98e;
+  text-decoration-color: #c8a45c;
+}
+.page.royal-awakened .btn-primary,
+.page.royal-awakened button:not(.royal-toggle) {
+  border-color: #e0bf72;
+  color: #fff4d2;
+  background: linear-gradient(135deg, #806126, #49371b);
+  box-shadow: 0 4px 14px #0004, inset 0 0 10px #f2d78a20;
+}
+.page.royal-awakened .btn-outline,
+.page.royal-awakened .btn-light {
+  color: #f4d98e;
+  border-color: #d7b85f;
+  background: #18213dcc;
+}
+.page.royal-awakened :is(.round-control, .dot) {
+  background-color: #806126;
+}
+.page.royal-awakened .gold-rule {
+  border-color: #e0bf72;
+  box-shadow: 0 0 10px #e0bf7280;
+}
+.page.royal-awakened .gallery-item:hover:after {
+  background: #6b5129d9;
+}
+
+/* Smooth royal transition overlay for tab and primary-button interactions. */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  color: #f6d993;
+  background: radial-gradient(ellipse at center, #24305eeF 0%, #101735f5 72%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .35s ease, visibility .35s ease;
+}
+.page-loader.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.loader-content {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  transform: translateY(12px) scale(.96);
+  transition: transform .4s cubic-bezier(.2,.8,.2,1);
+}
+.page-loader.show .loader-content { transform: translateY(0) scale(1); }
+.loader-crown {
+  color: #f6d993;
+  font-size: 3.2rem;
+  line-height: 1;
+  text-shadow: 0 0 22px #e0bf72aa;
+  animation: loaderCrown 1.2s ease-in-out infinite alternate;
+}
+.loader-ring {
+  width: 54px;
+  height: 54px;
+  border: 3px solid #f6d99335;
+  border-top-color: #f6d993;
+  border-right-color: #c8a45c;
+  border-radius: 50%;
+  animation: loaderSpin .9s linear infinite;
+}
+.loader-label {
+  color: #f5edda;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+@keyframes loaderSpin { to { transform: rotate(360deg); } }
+@keyframes loaderCrown { to { transform: translateY(-5px); filter: brightness(1.25); } }
+@media (prefers-reduced-motion: reduce) {
+  .page-loader, .loader-content { transition-duration: .01ms; }
+  .loader-crown, .loader-ring { animation-duration: 1.8s; }
+}
+
+/* Smooth, consistent hover motion across page elements. */
+:is(button, a, .card, .profile-card, .quote, .gallery-item, .media, .asset-image, .social-icon, .brand-mark) {
+  transition: transform .28s cubic-bezier(.2, .8, .2, 1), box-shadow .28s ease, filter .28s ease;
+}
+:is(button, a, .card, .profile-card, .quote, .gallery-item, .media, .asset-image, .social-icon, .brand-mark):hover {
+  transform: translateY(-3px) scale(1.015);
+  filter: brightness(1.04);
+}
+:is(button, a, .card, .profile-card, .quote, .gallery-item, .media, .asset-image, .social-icon, .brand-mark):focus-visible {
+  outline: 2px solid #e0bf72;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  :is(button, a, .card, .profile-card, .quote, .gallery-item, .media, .asset-image, .social-icon, .brand-mark) {
+    transition: none;
+  }
+  :is(button, a, .card, .profile-card, .quote, .gallery-item, .media, .asset-image, .social-icon, .brand-mark):hover {
+    transform: none;
+    filter: none;
+  }
+}
+
+/* Interactive royal decree button and accessible message toast. */
+.royal-decree {
+  position: fixed;
+  left: 20px;
+  bottom: 22px;
+  z-index: 45;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 0 16px;
+  border: 1px solid #e0bf72;
+  border-radius: 999px;
+  color: #fff3c4;
+  background: linear-gradient(135deg, #19264f, #49371b);
+  box-shadow: 0 8px 24px #07113f66, inset 0 0 12px #e0bf7222;
+  font-size: .82rem;
+  font-weight: 800;
+}
+.royal-decree span:first-child { color: #f6d993; font-size: 1.2rem; }
+.royal-music {
+  position: fixed;
+  left: 190px;
+  bottom: 22px;
+  z-index: 45;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 0 16px;
+  border: 1px solid #e0bf72;
+  border-radius: 999px;
+  color: #fff3c4;
+  background: linear-gradient(135deg, #19264f, #49371b);
+  box-shadow: 0 8px 24px #07113f66, inset 0 0 12px #e0bf7222;
+  font-size: .82rem;
+  font-weight: 800;
+}
+.royal-music span:first-child { color: #f6d993; font-size: 1.2rem; }
+.royal-music[aria-pressed="true"] { border-color: #fff0b3; box-shadow: 0 0 18px #e0bf7277; }
+.royal-decree:hover, .royal-decree:focus-visible, .royal-music:hover, .royal-music:focus-visible {
+  color: #fff8dd;
+  border-color: #fff0b3;
+  box-shadow: 0 10px 30px #07113f88, 0 0 20px #e0bf7288;
+}
+.royal-decree.celebrate { animation: decreePulse .55s ease-out; }
+.royal-message {
+  position: fixed;
+  left: 20px;
+  bottom: 80px;
+  z-index: 46;
+  width: min(360px, calc(100vw - 40px));
+  padding: 15px 18px;
+  border: 1px solid #e0bf72;
+  border-radius: 13px;
+  color: #fff3c4;
+  background: linear-gradient(135deg, #101936f5, #49371bf2);
+  box-shadow: 0 12px 30px #0007, inset 0 0 16px #e0bf7220;
+  font-size: .9rem;
+  font-weight: 700;
+  line-height: 1.55;
+  opacity: 0;
+  transform: translateY(10px) scale(.98);
+  visibility: hidden;
+  transition: opacity .28s ease, transform .28s ease, visibility .28s ease;
+}
+.royal-message.show { opacity: 1; transform: none; visibility: visible; }
+@keyframes decreePulse {
+  0% { box-shadow: 0 0 0 0 #e0bf7288; }
+  100% { box-shadow: 0 0 0 18px #e0bf7200; }
+}
+@media (max-width: 800px) {
+  .royal-decree { left: 14px; bottom: 16px; min-height: 43px; padding: 0 13px; }
+  .royal-music { left: 174px; bottom: 16px; min-height: 43px; padding: 0 13px; }
+  .royal-message { left: 14px; bottom: 70px; width: min(340px, calc(100vw - 28px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .royal-decree.celebrate { animation: none; }
+  .royal-message { transition-duration: .01ms; }
 }
